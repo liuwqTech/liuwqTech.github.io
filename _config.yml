@@ -105,5 +105,5 @@ deploy:
   type: git
   repo: 
     github: git@github.com:liuwqTech/liuwqTech.github.io.git
-    coding: git@e.coding.net:liuwqtech/liuwqtech/liuwqtech.coding.me.git
+    # coding: git@e.coding.net:liuwqtech/liuwqtech/liuwqtech.coding.me.git
   branch: master
