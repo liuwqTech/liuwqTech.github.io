@@ -1,0 +1,32 @@
+- class_name: 好友
+  class_desc: 大学同学
+  link_list:
+    - name: cjpnice
+      link: https://cjpnice.gitee.io
+      avatar: https://cjpnice-picture.oss-cn-hangzhou.aliyuncs.com/img/20200414223227.jpg
+      descr: 学无止境
+
+
+- class_name: 各位大佬
+  class_desc: 时不时偷偷看看，就能上天，真的！ 
+  link_list:
+    - name: 如履薄彬
+      link: http://rbin.top
+      avatar: http://rbin.top/medias/logo.gif
+      descr: 一个苦命的打工崽哈
+
+- class_name: 网站
+  class_desc: 值得推荐的网站
+  link_list:
+    - name: Youtube
+      link: https://www.youtube.com/
+      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
+      descr: 视频网站
+    - name: Weibo
+      link: https://www.weibo.com/
+      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
+      descr: 中国最大社交分享平台
+    - name: Twitter
+      link: https://twitter.com/
+      avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+      descr: 社交分享平台
