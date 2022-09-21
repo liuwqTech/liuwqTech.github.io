@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L12-Java常用类 | 小新's Blog</title><meta name="keywords" content="Java"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="字符串相关类String类概述String类：构造字符串对象  常量对象：字符串常量对象是用双引号括起的字符序列。    例如：”你好”、”12.97”、”boy”等。 字符串的字符使用Unicode字符编码，一个字符占两个字节 String类较常用构造方法： String s1 &#x3D; new String(); String s2 &#x3D; new String(String original); St">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L12-Java常用类">
+<meta property="og:url" content="https://liuwqtech.github.io/2022/09/21/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L12-Java%E5%B8%B8%E7%94%A8%E7%B1%BB/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="字符串相关类String类概述String类：构造字符串对象  常量对象：字符串常量对象是用双引号括起的字符序列。    例如：”你好”、”12.97”、”boy”等。 字符串的字符使用Unicode字符编码，一个字符占两个字节 String类较常用构造方法： String s1 &#x3D; new String(); String s2 &#x3D; new String(String original); St">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c0uncavoj20hg0egmy4.jpg">
+<meta property="article:published_time" content="2022-09-21T05:14:46.000Z">
+<meta property="article:modified_time" content="2022-09-21T05:07:48.780Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c0uncavoj20hg0egmy4.jpg"><link rel="shortcut icon" href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2022/09/21/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L12-Java%E5%B8%B8%E7%94%A8%E7%B1%BB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-21 13:07:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tva1.sinaimg.cn/large/e6c9d24ely1h6c0uncavoj20hg0egmy4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">L12-Java常用类</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-21T05:14:46.000Z" title="发表于 2022-09-21 13:14:46">2022-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-21T05:07:48.780Z" title="更新于 2022-09-21 13:07:48">2022-09-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/">Java基础详述</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L12-Java常用类"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="字符串相关类"><a href="#字符串相关类" class="headerlink" title="字符串相关类"></a>字符串相关类</h1><h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>String类：<strong>构造字符串对象</strong></p>
+<ul>
+<li>常量对象：字符串常量对象是用<strong>双引号括起的字符序列</strong>。    例如：”你好”、”12.97”、”boy”等。</li>
+<li>字符串的字符使用Unicode字符编码，一个字符占两个字节</li>
+<li>String类较常用构造方法：<ul>
+<li><code>String s1 = new String();</code></li>
+<li><code>String s2 = new String(String original);</code></li>
+<li><code>String s3 = new String(char[] a);</code></li>
+<li><code>String s4 = new String(char[] a, int startIndex, int count);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="字符串的特性"><a href="#字符串的特性" class="headerlink" title="字符串的特性"></a>字符串的特性</h3><ul>
+<li><strong>String是一个final类，代表不可变的字符序列</strong></li>
+<li>字符串是不可变的。一个字符串对象一旦被配置，其内容是不可变的。</li>
+</ul>
+<h3 id="字符串对象操作"><a href="#字符串对象操作" class="headerlink" title="字符串对象操作"></a>字符串对象操作</h3><ul>
+<li><strong><code>public int length()</code>：返回字符串的长度</strong></li>
+<li><strong><code>public char charAt(int index)</code>：返回指定index位置的字符，index从0开始</strong></li>
+<li><strong><code>public boolean equals(Object anObject)</code>：比较两个字符串是否相等。相等为true，否则为false</strong></li>
+<li><code>public int compareTo(String anotherString)</code></li>
+<li><strong><code>public int indexOf(String s)</code>：返回字符串在当前字符串首次出现的位置，若没有，返回-1</strong></li>
+<li><code>public int indexOf(String s ,int startpoint)</code>：返回字符串从当前字符串startpoint位置开始，首次出现的位置</li>
+<li><code>public int lastIndexOf(String s)</code>：返回字符串在当前字符串最后一次出现的位置，若没有，返回-1</li>
+<li><code>public int lastIndexOf(String s ,int startpoint)</code>：返回字符串从当前字符串startpoint位置开始，最后一次出现的位置</li>
+<li><code>public boolean startsWith(String prefix)</code>：判断当前字符串是否以prefix开始</li>
+<li><code>public boolean endsWith(String suffix)</code>：判断当前字符串是否以suffix结束</li>
+<li><code>public boolean regionMatches(int firstStart,String other,int otherStart ,int length)</code>：判断当前字符串从firstStart开始的子串与另一字符串other从otherStart开始，length长度的字符串是否相等</li>
+</ul>
+<h3 id="字符串对象修改"><a href="#字符串对象修改" class="headerlink" title="字符串对象修改"></a>字符串对象修改</h3><ul>
+<li><code>public String substring(int startpoint)</code>：返回从startpoint开始到结束的字符串</li>
+<li><code>public String substring(int start,int end)</code>：返回从startpoint开始到end结束的字符串</li>
+<li><strong><code>pubic String replace(char oldChar,char newChar)</code>：将字符串中oldChar全部替换为newChar</strong></li>
+<li><code>public String replaceAll(String old,String new)</code>：将原字符串old替换为新字符串new</li>
+<li><strong><code>public String trim()</code>：去除当前字符串中首和尾的空格</strong></li>
+<li><strong><code>public String concat(String str)</code>：连接当前字符串和str</strong></li>
+<li><strong><code>public String[] split(String regex)</code>：将原有字符串以regex分割，返回String类型的数组</strong></li>
+</ul>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p><strong>练习1：</strong>模拟一个trim方法，去除字符串两端的空格。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(myTrim(<span class="string">&quot;  小新不吃 蔬菜   &quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">myTrim</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = str.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end &amp;&amp; str.charAt(start) == <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">            start ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end &amp;&amp; str.charAt(end) == <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">            end --;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str.substring(start, end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习2：</strong>将一个字符串进行反转。将字符串中指定部分进行反转。比如将“ab<strong>cdef</strong>g”反转为”ab<strong>fedc</strong>g”</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(reverseString(<span class="string">&quot;小123新&quot;</span>,<span class="number">1</span>,<span class="number">3</span>));</span><br><span class="line">        System.out.println(reverseString2(<span class="string">&quot;小123新&quot;</span>,<span class="number">1</span>,<span class="number">3</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    方法一</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverseString</span><span class="params">(String str, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reverseArray(str.toCharArray(),start,end);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverseArray</span><span class="params">(<span class="keyword">char</span>[] c, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start, j = end; i &lt; j; i++, j--)&#123;</span><br><span class="line">            <span class="keyword">char</span> temp = c[i];</span><br><span class="line">            c[i] = c[j];</span><br><span class="line">            c[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    方法二</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">reverseString2</span><span class="params">(String str, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        String str1 = str.substring(<span class="number">0</span>,start);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = end; j &gt;= start; j--)&#123;</span><br><span class="line">            <span class="keyword">char</span> c = str.charAt(j);</span><br><span class="line">            str1 += c;</span><br><span class="line">        &#125;</span><br><span class="line">        str1 += str.substring(end + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> str1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习3：</strong>获取一个字符串在另一个字符串中出现的次数。比如：获取“ab”在 “abkkcadkabkebfkabkskab”中出现的次数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(getTimes(<span class="string">&quot;abkkcadkabkebfkabkskab&quot;</span>, <span class="string">&quot;ab&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    获取一个字符串在另一个字符串中出现的次数。比如：获取“ab”在 “abkkcadkabkebfkabkskab”中出现的次数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTimes</span><span class="params">(String str1, String str2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        <span class="keyword">while</span> ((len = str1.indexOf(str2)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            count ++;</span><br><span class="line">            str1 = str1.substring(len + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习4：</strong>获取两个字符串中最大相同子串。比如：str1 = “abcwerthelloyuiodef”；str2 = “cvhellobnm”。提示：将短的那个串进行长度依次递减的子串与较长的串比较。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = getMaxSubString(<span class="string">&quot;abcwerthelloyuiodef&quot;</span>, <span class="string">&quot;abcwevhellobnm&quot;</span>);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    获取两个字符串中最大相同子串。比如：str1 = &quot;abcwerthelloyuiodef&quot;；str2 = &quot;cvhellobnm&quot;。</span></span><br><span class="line"><span class="comment">    提示：将短的那个串进行长度依次递减的子串与较长的串比较。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getMaxSubString</span><span class="params">(String str1, String str2)</span></span>&#123;</span><br><span class="line">        String max = (str1.length() &gt; str2.length()) ? str1 : str2;</span><br><span class="line">        String min = (str1.length() &lt; str2.length()) ? str1 : str2;</span><br><span class="line">        <span class="keyword">int</span> len = min.length();</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>, y = len - i; y &lt;= len; x++, y++)&#123;</span><br><span class="line">                String str = min.substring(x, y);</span><br><span class="line">                <span class="keyword">if</span> (max.contains(str))&#123;</span><br><span class="line">                    list.add(str);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (list.size() != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> list;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习5：</strong>对字符串中字符进行自然顺序排序。提示：</p>
+<ol>
+<li>字符串变成字符数组。</li>
+<li>对数组排序，选择，冒泡，Arrays.sort();</li>
+<li>将排序后的数组变成字符串。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(Sort(<span class="string">&quot;fgebdca&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    练习5：对字符串中字符进行自然顺序排序。提示：</span></span><br><span class="line"><span class="comment">            1. 字符串变成字符数组。</span></span><br><span class="line"><span class="comment">            2. 对数组排序，选择，冒泡，Arrays.sort();</span></span><br><span class="line"><span class="comment">            3. 将排序后的数组变成字符串。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Sort</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] c = str.toCharArray();</span><br><span class="line">        Arrays.sort(c);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串与基本数据类型相互转化"><a href="#字符串与基本数据类型相互转化" class="headerlink" title="字符串与基本数据类型相互转化"></a>字符串与基本数据类型相互转化</h3><ul>
+<li><p><strong>字符串转换为基本数据类型</strong></p>
+<ul>
+<li>Integer包装类的<code>public static int parseInt(String s)</code>，可以将由“数字”字符组成的字符串转换为整型。</li>
+<li>类似地，使用java.lang包中的Byte、Short、Long、Float、Double类调相应的类方法可以将由“数字”字符组成的字符串，转化为相应的基本数据类型。</li>
+</ul>
+</li>
+<li><p><strong>基本数据类型转换为字符串</strong></p>
+<ul>
+<li>调用String类的<code>public String valueOf(int n)</code>可将int型转换为字符串</li>
+<li>相应的<code>valueOf(byte b)</code>、<code>valueOf(long l)</code>、<code>valueOf(float f)</code>、<code>valueOf(double d)</code>、<code>valueOf(boolean b)</code>可由参数的相应类到字符串的转换</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符串与字节数组相互转化"><a href="#字符串与字节数组相互转化" class="headerlink" title="字符串与字节数组相互转化"></a>字符串与字节数组相互转化</h3><ul>
+<li><p><strong>字符串转换为字节数组</strong></p>
+<ul>
+<li><code>public byte[] getBytes() </code>方法使用平台默认的字符编码，将当前字符串转化为一个字节数组。</li>
+<li><code>public byte[] getBytes(String charsetName)</code> 使用参数指定字符编码，将当前字符串转化为一个字节数组。 </li>
+</ul>
+</li>
+<li><p><strong>字节数组转换为字符串</strong></p>
+<ul>
+<li><code>String(byte[])</code>用指定的字节数组构造一个字符串对象。</li>
+<li><code>String(byte[]，int offset，int length) </code>用指定的字节数组的一部分，即从数组起始位置offset开始取length个字节构造一个字符串对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="字符串与字符数组相互转化"><a href="#字符串与字符数组相互转化" class="headerlink" title="字符串与字符数组相互转化"></a>字符串与字符数组相互转化</h3><ul>
+<li><p><strong>字符串转换为字符数组</strong></p>
+<ul>
+<li>将字符串中的全部字符存放在一个字符数组中的方法：<code>public char[] toCharArray() </code>          </li>
+</ul>
+</li>
+<li><p><strong>字符数组转换为字符串</strong></p>
+<ul>
+<li>String 类的构造方法：<code>String(char[])</code> 和 <code>String(char[]，int offset，int length) </code>分别用字符数组中的全部字符和部分字符创建字符串对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>java.lang.StringBuffer代表<strong>可变的字符序列</strong>，可以对字符串内容进行增删。</li>
+<li>很多方法与String相同，但<strong>StingBuffer是可变长度的。</strong></li>
+<li>StringBuffer是一个容器。</li>
+<li>StringBuffer类有三个构造方法：<ul>
+<li><code>StringBuffer()</code>初始容量为16的字符串缓冲区</li>
+<li><code>StringBuffer(int size)</code>构造指定容量的字符串缓冲区</li>
+<li><code>StringBuffer(String str)</code>将内容初始化为指定字符串内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li><p>添加</p>
+<ul>
+<li><code>StringBuffer append(String s)</code></li>
+<li><code>StringBuffer append(int n) </code></li>
+<li><code>StringBuffer append(Object o) </code></li>
+<li><code>StringBuffer append(char n)</code></li>
+<li><code>StringBuffer append(long n)</code></li>
+<li><code>StringBuffer append(boolean n)</code></li>
+</ul>
+</li>
+<li><p>插入</p>
+<ul>
+<li><code>StringBuffer insert(int index, String str) </code></li>
+</ul>
+</li>
+<li><p>反转</p>
+<ul>
+<li><code>public StringBuffer reverse() </code></li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li><code>StringBuffer delete(int startIndex, int endIndex) </code></li>
+</ul>
+</li>
+<li><p>查</p>
+<ul>
+<li><code>public char charAt(int n )</code></li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li><code>public void setCharAt(int n ,char ch)</code></li>
+</ul>
+</li>
+<li><p>替换</p>
+<ul>
+<li><code>StringBuffer replace( int startIndex ,int endIndex, String str) </code></li>
+</ul>
+</li>
+<li><p>返回索引</p>
+<ul>
+<li><code>public int indexOf(String str)</code></li>
+</ul>
+</li>
+<li><p>返回子串</p>
+<ul>
+<li><code>public String substring(int start,int end)</code></li>
+</ul>
+</li>
+<li><p>返回长度</p>
+<ul>
+<li><code>public int length()</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h2><ul>
+<li>StringBuilder 和 StringBuffer 非常类似，均代表可变的字符序列，而且方法也一样<ul>
+<li>String：不可变字符序列</li>
+<li>StringBuffer：可变字符序列、效率低、线程安全</li>
+<li><strong>StringBuilder(JDK1.5)：可变字符序列、效率高、线程不安全</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="日期类"><a href="#日期类" class="headerlink" title="日期类"></a>日期类</h1><h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>System类提供的<code>public static long currentTimeMillis()</code>用来返回当前时间与1970年1月1日0时0分0秒之间以毫秒为单位的时间差。<strong>此方法适于计算时间差。</strong></p>
+<p>计算世界时间的主要标准有：</p>
+<ul>
+<li>UTC(Universal Time Coordinated)</li>
+<li>GMT(Greenwich Mean Time)</li>
+<li>CST(Central Standard Time)</li>
+</ul>
+<h2 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h2><p>表示特定的瞬间，精确到毫秒。</p>
+<p>构造方法：</p>
+<ul>
+<li>**<code>Date()</code>**：使用Date类的无参数构造方法创建的对象可以获取本地当前时间。</li>
+<li><strong><code>Date(long date)</code></strong></li>
+</ul>
+<p>常用方法：</p>
+<ul>
+<li>**<code>getTime()</code>**：返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数。</li>
+<li>**<code>toString()</code>**：把此 Date 对象转换为以下形式的 String：dow mon dd hh:mm:ss zzz yyyy ，其中：dow 是一周中的某一天 (Sun, Mon, Tue, Wed, Thu, Fri, Sat)，zzz是时间标准。</li>
+</ul>
+<h2 id="SimpleDateFormat类"><a href="#SimpleDateFormat类" class="headerlink" title="SimpleDateFormat类"></a>SimpleDateFormat类</h2><p>Date类的API不易于国际化，大部分被废弃了，<strong>java.text.SimpleDateFormat</strong>类是一个不与语言环境有关的方式来<strong>格式化和解析日期的具体类。</strong></p>
+<ul>
+<li><p>它允许进行<strong>格式化（日期—&gt;文本）、解析（文本&gt;日期）</strong></p>
+</li>
+<li><p><strong>格式化：</strong></p>
+<ul>
+<li><strong>SimpleDateFormat()</strong> ：默认的模式和语言环境创建对象</li>
+<li><strong>public SimpleDateFormat(String pattern)<strong>：该构造方法可以用</strong>参数pattern</strong>指定的格式创建一个对象</li>
+<li>该对象调用：**public String format(Date date)**：方法格式化时间对象date</li>
+</ul>
+</li>
+<li><p><strong>解析：</strong></p>
+<ul>
+<li><strong>public Date parse(String source)：</strong>从给定字符串的开始解析文本，以生成一个日期。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Calendar-日历-类"><a href="#Calendar-日历-类" class="headerlink" title="Calendar(日历)类"></a>Calendar(日历)类</h2><p>Calendar是一个抽象基类，主用用于完成日期字段之间相互操作的功能。</p>
+<ul>
+<li><p>获取Calendar实例的方法</p>
+<ul>
+<li>使用<code>Calendar.getInstance()</code>方法</li>
+<li>调用它的子类<code>GregorianCalendar</code>的构造器。</li>
+</ul>
+</li>
+<li><p>一个Calendar的实例是系统时间的抽象表示，通过<code>get(int field)</code>方法来取得想要的时间信息。比如YEAR、MONTH、DAY_OF_WEEK、HOUR_OF_DAY 、MINUTE、SECOND</p>
+<ul>
+<li><code>public void set(int field,int value)</code></li>
+<li><code>public void add(int field,int amount)</code></li>
+<li><code>public final Date getTime()</code></li>
+<li><code>public final void setTime(Date date)</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h1><p>java.lang.Math提供了一系列<strong>静态方法用于科学计算</strong>；其方法的参数和返回值类型一般为double型。</p>
+<ul>
+<li><strong>abs   绝对值</strong></li>
+<li>acos，asin，atan，cos，sin，tan 三角函数</li>
+<li><strong>sqrt   平方根</strong></li>
+<li><strong>pow(double a,doble b)   a的b次幂</strong></li>
+<li>log  自然对数</li>
+<li><strong>exp  e为底指数</strong></li>
+<li>max(double a,double b)</li>
+<li>min(double a,double b)</li>
+<li><strong>random()   返回0.0到1.0的随机数</strong></li>
+<li>long round(double a)   double型数据a转换为long型（四舍五入）</li>
+<li>toDegrees(double angrad)   弧度—&gt;角度</li>
+<li>toRadians(double angdeg)   角度—&gt;弧度</li>
+</ul>
+<h1 id="BigInteger类"><a href="#BigInteger类" class="headerlink" title="BigInteger类"></a>BigInteger类</h1><p>Integer类作为int的包装类，能存储的最大整型值为2^31-1，BigInteger类的数字范围较Integer类的数字范围要大得多，可以支持任意精度的整数。</p>
+<ul>
+<li><p>构造器</p>
+<ul>
+<li><code>BigInteger(String val)</code></li>
+</ul>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li><code>public BigInteger abs()</code></li>
+<li><code>public BigInteger add(BigInteger val)</code></li>
+<li><code>public BigInteger subtract(BigInteger val)</code></li>
+<li><code>public BigInteger multiply(BigInteger val)</code></li>
+<li><code>public BigInteger divide(BigInteger val)</code></li>
+<li><code>public BigInteger remainder(BigInteger val)</code></li>
+<li><code>public BigInteger pow(int exponent)</code></li>
+<li><code>public BigInteger[] divideAndRemainder(BigInteger val)</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="BigDecimal类"><a href="#BigDecimal类" class="headerlink" title="BigDecimal类"></a>BigDecimal类</h1><p>一般的Float类和Double类可以用来做科学计算或工程计算，但在商业计算中，要求数字精度比较高，故用到java.math.BigDecimal类。BigDecimal类支持任何精度的定点数。</p>
+<ul>
+<li><p>构造器</p>
+<ul>
+<li><code>public BigDecimal(double val)</code></li>
+<li><code>public BigDecimal(String val)</code></li>
+</ul>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li><code>public BigDecimal add(BigDecimal augend)</code></li>
+<li><code>public BigDecimal subtract(BigDecimal subtrahend)</code></li>
+<li><code>public BigDecimal multiply(BigDecimal multiplicand)</code></li>
+<li><code>public BigDecimal divide(BigDecimal divisor, int scale, int roundingMode)</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><ul>
+<li><strong>String s = new String(“xyz”); 创建了几个String Object</strong><br>答：两个，一个字符对象，一个字符对象引用对象</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Math.round(11.5)等于多少? Math.round(-11.5)等于多少</strong><br>答:  Math.round(11.5)==12；Math.round(-11.5)==-11；round方法返回与参数最接近的长整数，参数加1/2后求其floor</li>
+</ul>
+<hr>
+<ul>
+<li><strong>是否可以继承String类</strong><br>答：String类是final类，故不可以继承</li>
+</ul>
+<hr>
+<ul>
+<li><strong>String与StringBuffer的区别。</strong><br>答：String 的长度是不可变的，StringBuffer的长度是可变的。如果你对字符串中的内容经常进行操作，特别是内容要修改时，那么使用StringBuffer，如果最后需要String，那么使用StringBuffer的toString()方法。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2022/09/21/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L12-Java%E5%B8%B8%E7%94%A8%E7%B1%BB/">https://liuwqtech.github.io/2022/09/21/Java/Java基础详述/L12-Java常用类/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c0uncavoj20hg0egmy4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/20/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/Mysql%E8%8F%9C%E9%B8%9F%E5%88%B0%E5%A4%A7%E7%89%9B/%E5%9F%BA%E7%A1%80%E7%AF%87/L04-%E8%BF%90%E7%AE%97%E7%AC%A6/"><img class="prev-cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6d4afcmk6j208c08c74f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L04-运算符</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/21/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/Mysql%E8%8F%9C%E9%B8%9F%E5%88%B0%E5%A4%A7%E7%89%9B/%E5%9F%BA%E7%A1%80%E7%AF%87/L05-%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%88%86%E9%A1%B5/"><img class="next-cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6e74nlwm2j208c08caa6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">L05-排序与分页</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/17/Java/Java基础详述/L01-Java语言概述/" title="L01-Java语言概述"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2bhslinj3j20dw08074i.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">L01-Java语言概述</div></div></a></div><div><a href="/2022/07/02/Java/Java基础详述/L03-面向对象编程/" title="L03-面向对象编程"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3b1pzfmp5j20to0qi0v7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">L03-面向对象编程</div></div></a></div><div><a href="/2022/09/05/Java/Java基础详述/L05-高级类特性2/" title="L05-高级类特性2"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5s1es0rykj20mc0naab8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">L05-高级类特性2</div></div></a></div><div><a href="/2022/09/01/Java/Java基础详述/L04-高级类特性1/" title="L04-高级类特性1"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3spek2sh4j21700u078h.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-01</div><div class="title">L04-高级类特性1</div></div></a></div><div><a href="/2022/09/08/Java/Java基础详述/L06-异常处理/" title="L06-异常处理"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wnzqk9x5j20go08fwem.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">L06-异常处理</div></div></a></div><div><a href="/2022/09/12/Java/Java基础详述/L07-Java集合/" title="L07-Java集合"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5z71o1uxpj208c08cglk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">L07-Java集合</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">字符串相关类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E7%B1%BB"><span class="toc-number">1.1.</span> <span class="toc-text">String类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">字符串的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.3.</span> <span class="toc-text">字符串对象操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1%E4%BF%AE%E6%94%B9"><span class="toc-number">1.1.4.</span> <span class="toc-text">字符串对象修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.1.5.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="toc-number">1.1.6.</span> <span class="toc-text">字符串与基本数据类型相互转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%AD%97%E8%8A%82%E6%95%B0%E7%BB%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="toc-number">1.1.7.</span> <span class="toc-text">字符串与字节数组相互转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96"><span class="toc-number">1.1.8.</span> <span class="toc-text">字符串与字符数组相互转化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuffer%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">StringBuffer类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#StringBuilder%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">StringBuilder类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">日期类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#System%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">System类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Date%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">Date类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleDateFormat%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">SimpleDateFormat类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calendar-%E6%97%A5%E5%8E%86-%E7%B1%BB"><span class="toc-number">2.4.</span> <span class="toc-text">Calendar(日历)类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Math%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BigInteger%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">BigInteger类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BigDecimal%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">BigDecimal类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">面试题</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://tva1.sinaimg.cn/large/e6c9d24ely1h6c0uncavoj20hg0egmy4.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
