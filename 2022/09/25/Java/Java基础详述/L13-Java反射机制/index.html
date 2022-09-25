@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>L13-Java反射机制 | 小新's Blog</title><meta name="keywords" content="Java"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="概述 Java Reflection  ​       Reflection（反射）是被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。  Java反射机制提供的功能  在运行时判断任意一个对象所属的类 在运行时构造任意一个类的对象 在运行时判断任意一个类所具有的成员变量和方法 在运行时调用任意一个对象的成员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="L13-Java反射机制">
+<meta property="og:url" content="https://liuwqtech.github.io/2022/09/25/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L13-Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="概述 Java Reflection  ​       Reflection（反射）是被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。  Java反射机制提供的功能  在运行时判断任意一个对象所属的类 在运行时构造任意一个类的对象 在运行时判断任意一个类所具有的成员变量和方法 在运行时调用任意一个对象的成员">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6e5dtvq6ij20dw08mq3j.jpg">
+<meta property="article:published_time" content="2022-09-25T03:40:46.000Z">
+<meta property="article:modified_time" content="2022-09-25T03:40:25.918Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6e5dtvq6ij20dw08mq3j.jpg"><link rel="shortcut icon" href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2022/09/25/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L13-Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-25 11:40:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tva1.sinaimg.cn/large/e6c9d24ely1h6e5dtvq6ij20dw08mq3j.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">L13-Java反射机制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-25T03:40:46.000Z" title="发表于 2022-09-25 11:40:46">2022-09-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-25T03:40:25.918Z" title="更新于 2022-09-25 11:40:25">2022-09-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/">Java基础详述</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="L13-Java反射机制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li><strong>Java Reflection</strong></li>
+</ul>
+<p>​       Reflection（反射）是被视为<strong>动态语言的关键</strong>，反射机制允许程序在执行期借助于Reflection API取得任何类的内部信息，并能直接操作任意对象的内部属性及方法。</p>
+<ul>
+<li><p><strong>Java反射机制提供的功能</strong></p>
+<ul>
+<li>在运行时判断任意一个对象所属的类</li>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法</li>
+<li>在运行时调用任意一个对象的成员变量和方法</li>
+<li>生成动态代理</li>
+</ul>
+</li>
+<li><p><strong>反射相关的主要API</strong></p>
+<ul>
+<li>java.lang.Class：代表一个类</li>
+<li>java.lang.reflect.Method：代表类的方法</li>
+<li>java.lang.reflect.Field：代表类的成员变量</li>
+<li>java.lang.reflect.Constructor：代表类的构造方法</li>
+</ul>
+</li>
+</ul>
+<h1 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h1><h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><p>在Object类中定义了以下的方法，<strong>此方法将被所有子类继承</strong>：<code>public final Class getClass()</code>，返回值的类型是一个Class类，<strong>此类是Java反射的源头</strong>，实际上所谓反射从程序的运行结果来看也很好理解，<strong>即：可以通过对象反射求出类的名称。</strong></p>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6gjz7f4baj211o08qdh2.jpg" style="zoom:50%;" />
+
+<p>对照镜子后可以得到的信息：某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个类的有关信息。</p>
+<ul>
+<li>Class本身也是一个类</li>
+<li>Class 对象只能由系统建立对象</li>
+<li>一个类在 JVM 中只会有一个Class实例</li>
+<li><strong>一个Class对象对应的是一个加载到JVM中的一个.class文件</strong></li>
+<li>每个类的实例都会记得自己是由哪个 Class 实例所生成</li>
+<li><strong>通过Class可以完整地得到一个类中的完整结构</strong></li>
+</ul>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6gk3mf50mj211q0jywjq.jpg" style="zoom:50%;" />
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">&quot;Person&quot;</span>);</span><br><span class="line">Object obj = clazz.newInstance();</span><br><span class="line">Field field = clazz.getField(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">field.set(obj, <span class="string">&quot;Peter&quot;</span>);</span><br><span class="line">Object obj2 = field.get(obj);</span><br><span class="line">System.out.println(obj2);</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例化Class类对象"><a href="#实例化Class类对象" class="headerlink" title="实例化Class类对象"></a>实例化Class类对象</h2><ol>
+<li><p>调用运行时类本身的.class属性</p>
+<ul>
+<li>前提：若已知具体的类，通过类的class属性获取，该方法最为安全可靠，程序性能最高</li>
+<li>实例：<code>Class clazz = String.class;</code></li>
+</ul>
+</li>
+<li><p>通过运行时类的对象获取</p>
+<ul>
+<li>前提：已知某个类的实例，调用该实例的<code>getClass()</code>方法获取Class对象</li>
+<li>实例：<code>Class clazz = xxx.getClass();</code></li>
+</ul>
+</li>
+<li><p>通过Class的静态方法获取</p>
+<ul>
+<li>前提：已知一个类的全类名，且该类在类路径下，可通过Class类的静态方法<code>forName()</code>获取，可能抛出ClassNotFoundException</li>
+<li>实例：<code>Class clazz = Class.forName(“java.lang.String”);</code></li>
+</ul>
+</li>
+<li><p>通过类的加载器</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader cl = <span class="keyword">this</span>.getClass().getClassLoader();</span><br><span class="line">Class clazz4 = cl.loadClass(“类的全类名”);</span><br></pre></td></tr></table></figure>
+
+<h2 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h2><p>当程序主动使用某个类时，如果该类还未被加载到内存中，则系统会通过如下三个步骤来对该类进行初始化。</p>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6hggq8qztj21040heaci.jpg" style="zoom: 33%;" />
+
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6hgh6mdq3j210u0ge0t3.jpg" style="zoom:33%;" />
+
+<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p><strong>类加载器是用来把类(class)装载进内存的。</strong>JVM 规范定义了两种类型的类加载器：启动类加载器(bootstrap)和用户自定义加载器(user-defined class loader)。 JVM在运行时会产生3个类加载器，组成的初始化加载器层次结构 ，如下图所示：</p>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6hgizekr3j20ki0bqt9g.jpg" style="zoom:50%;" />
+
+<ul>
+<li><strong>引导类加载器</strong>：用C++编写的，是JVM自带的类加载器，负责Java平台核心库，用来加载核心类库。该加载器无法直接获取</li>
+<li><strong>扩展类加载器</strong>：负责jre/lib/ext目录下的jar包或 –D java.ext.dirs 指定目录下的jar包装入工作库</li>
+<li><strong>系统类加载器</strong>：负责java –classpath 或 –D java.class.path所指的目录下的类与jar包装入工作 ，是最常用的加载器</li>
+</ul>
+<h1 id="创建类对象并获取其完整结构"><a href="#创建类对象并获取其完整结构" class="headerlink" title="创建类对象并获取其完整结构"></a>创建类对象并获取其完整结构</h1><p>有了Class对象，能做什么？</p>
+<h2 id="创建类的对象"><a href="#创建类的对象" class="headerlink" title="创建类的对象"></a>创建类的对象</h2><p>调用Class对象的<code>newInstance()</code>方法。要求：</p>
+<ol>
+<li><strong>类必须有一个无参数的构造器。</strong></li>
+<li><strong>类的构造器的访问权限需要足够。</strong></li>
+</ol>
+<h2 id="调用类的完整结构"><a href="#调用类的完整结构" class="headerlink" title="调用类的完整结构"></a>调用类的完整结构</h2><p>Field、Method、Constructor、Superclass、Interface、Annotation</p>
+<ul>
+<li>实现的全部接口</li>
+<li>所继承的父类</li>
+<li>全部的构造器</li>
+<li>全部的方法</li>
+<li>全部的Field</li>
+</ul>
+<h3 id="实现的全部接口"><a href="#实现的全部接口" class="headerlink" title="实现的全部接口"></a>实现的全部接口</h3><ul>
+<li><code>public Class&lt;?&gt;[] getInterfaces()</code>：确定此对象所表示的类或接口实现的接口。 </li>
+</ul>
+<h3 id="所继承的父类"><a href="#所继承的父类" class="headerlink" title="所继承的父类"></a>所继承的父类</h3><ul>
+<li><code>public Class&lt;? Super T&gt; getSuperclass()</code>：返回表示此 Class 所表示的实体（类、接口、基本类型）的父类的 Class。</li>
+</ul>
+<h3 id="全部的构造器"><a href="#全部的构造器" class="headerlink" title="全部的构造器"></a>全部的构造器</h3><ul>
+<li><code>public Constructor&lt;T&gt;[] getConstructors()</code>：返回此 Class 对象所表示的类的所有public构造方法。</li>
+<li><code>public Constructor&lt;T&gt;[] getDeclaredConstructors()</code>：返回此 Class 对象表示的类声明的所有构造方法。</li>
+</ul>
+<p>Constructor类中：</p>
+<ul>
+<li>取得修饰符: <code>public int getModifiers();</code></li>
+<li>取得方法名称: <code>public String getName();</code></li>
+<li>取得参数的类型：<code>public Class&lt;?&gt;[] getParameterTypes();</code></li>
+</ul>
+<h3 id="全部的Field"><a href="#全部的Field" class="headerlink" title="全部的Field"></a>全部的Field</h3><ul>
+<li><code>public Field[] getFields()</code>：返回此Class对象所表示的类或接口的public的Field</li>
+<li><code>public Field[] getDeclaredFields()</code>：返回此Class对象所表示的类或接口的全部Field</li>
+</ul>
+<p>Field方法中：</p>
+<ul>
+<li><code>public int getModifiers()</code>：以整数形式返回此Field的修饰符</li>
+<li><code>public Class&lt;?&gt; getType()</code>：得到Field的属性类型</li>
+<li><code>public String getName()</code>：返回Field的名称</li>
+</ul>
+<h3 id="全部的方法"><a href="#全部的方法" class="headerlink" title="全部的方法"></a>全部的方法</h3><ul>
+<li><code>public Method[] getDeclaredMethods()</code>：返回此Class对象所表示的类或接口的全部方法</li>
+<li><code>public Method[] getMethods()</code>：返回此Class对象所表示的类或接口的public的方法</li>
+</ul>
+<p>Method类中：</p>
+<ul>
+<li><code>public Class&lt;?&gt; getReturnType()</code>：取得全部的返回值类型</li>
+<li><code>public Class&lt;?&gt;[] getParameterTypes()</code>：取得全部的参数</li>
+<li><code>public int getModifiers()</code>：取得修饰符</li>
+<li><code>public Class&lt;?&gt;[] getExceptionTypes()</code>：取得异常信息</li>
+</ul>
+<h3 id="Annotation相关"><a href="#Annotation相关" class="headerlink" title="Annotation相关"></a>Annotation相关</h3><ul>
+<li><code>get Annotation(Class&lt;T&gt; annotationClass)</code></li>
+<li><code>getDeclaredAnnotations() </code></li>
+</ul>
+<h3 id="泛型相关"><a href="#泛型相关" class="headerlink" title="泛型相关"></a>泛型相关</h3><ul>
+<li>获取父类泛型类型：<code>Type getGenericSuperclass()</code></li>
+<li>泛型类型：<code>ParameterizedType</code></li>
+<li>获取实际的泛型类型参数数组：<code>getActualTypeArguments()</code></li>
+</ul>
+<h3 id="类所在的包"><a href="#类所在的包" class="headerlink" title="类所在的包"></a>类所在的包</h3><ul>
+<li><code>Package getPackage()</code></li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>在实际的操作中，取得类的信息的操作代码，并不会经常开发。</li>
+<li>一定要熟悉java.lang.reflect包的作用，反射机制。</li>
+<li>如何取得属性、方法、构造器的名称，修饰符等。</li>
+</ol>
+<h2 id="调用指定方法、属性"><a href="#调用指定方法、属性" class="headerlink" title="调用指定方法、属性"></a>调用指定方法、属性</h2><h3 id="指定方法"><a href="#指定方法" class="headerlink" title="指定方法"></a>指定方法</h3><p>通过反射，调用类中的方法，通过Method类完成。步骤：</p>
+<ol>
+<li>通过Class类的<code>getMethod(String name,Class…parameterTypes)</code>方法取得一个Method对象，并设置此方法操作时所需要的参数类型。</li>
+<li>之后使用<code>Object invoke(Object obj, Object[] args)</code>进行调用，并向方法中传递要设置的obj对象的参数信息。</li>
+</ol>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6hj7fdhouj20y20a8myj.jpg" style="zoom:50%;" />
+
+<p><code>Object invoke(Object obj, Object … args)</code></p>
+<ul>
+<li>Object 对应原方法的返回值，若原方法无返回值，此时返回null</li>
+<li>若原方法若为静态方法，此时形参Object obj可为null</li>
+<li>若原方法形参列表为空，则<code>Object[] args</code>为null</li>
+<li>若原方法声明为private，则需要在调用此invoke()方法前，显式调用方法对象的<code>setAccessible(true)</code>方法，将可访问private的方法</li>
+</ul>
+<h3 id="指定属性"><a href="#指定属性" class="headerlink" title="指定属性"></a>指定属性</h3><p>在反射机制中，可以直接通过Field类操作类中的属性，通过Field类提供的<code>set()</code>和<code>get()</code>方法就可以完成设置和取得属性内容的操作。</p>
+<ul>
+<li><code>public Field getField(String name)</code>：返回此Class对象表示的类或接口的指定的public的Field</li>
+<li><code>public Field getDeclaredField(String name)</code>：返回此Class对象表示的类或接口的指定的Field</li>
+</ul>
+<p>在Field中：</p>
+<ul>
+<li><code>public Object get(Object obj)</code>：取得指定对象obj上此Field的属性内容</li>
+<li><code>public void set(Object obj,Object value)</code>：设置指定对象obj上此Field的属性内容</li>
+</ul>
+<p>注意：在类中属性都设置为private的前提下，在使用<code>set()</code>和<code>get()</code>方法时，首先要使用Field类中的<code>setAccessible(true)</code>方法将需要操作的属性设置为可以被外部访问。</p>
+<ul>
+<li><code>public void setAccessible(true)</code>：<strong>访问私有属性时，让这个属性可见。</strong> </li>
+</ul>
+<h1 id="Java动态代理"><a href="#Java动态代理" class="headerlink" title="Java动态代理"></a>Java动态代理</h1><h2 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h2><p>动态代理是指客户通过代理类来调用其它对象的方法，并且是在程序运行时根据需要<strong>动态创建目标类的代理对象</strong>。</p>
+<ul>
+<li><p>动态代理使用场合：</p>
+<ul>
+<li>调试</li>
+<li>远程方法调用</li>
+</ul>
+</li>
+<li><p><strong>代理设计模式的原理</strong>：</p>
+<p>   使用一个代理将对象包装起来, 然后用该代理对象取代原始对象。任何对原始对象的调用都要通过代理，代理对象决定是否以及何时将方法调用转到原始对象上。</p>
+</li>
+<li><p><strong>Proxy</strong> ：<strong>专门完成代理的操作类，是所有动态代理类的父类</strong>。通过此类为一个或多个接口动态地生成实现类。</p>
+<ul>
+<li>提供用于创建动态代理类和动态代理对象的静态方法</li>
+</ul>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6ilzv5hpyj20zs0dsn0z.jpg" style="zoom: 33%;" /></li>
+</ul>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ClotheFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">productClothe</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//被代理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NikeClotheFactory</span> <span class="keyword">implements</span> <span class="title">ClotheFactory</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">productClothe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Nike工厂生产一批衣服！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//代理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyFactory</span> <span class="keyword">implements</span> <span class="title">ClotheFactory</span></span>&#123;</span><br><span class="line">    ClotheFactory clotheFactory;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建代理类的对象时，实际上传入一个被代理类的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyFactory</span><span class="params">(ClotheFactory clotheFactory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.clotheFactory = clotheFactory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">productClothe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;代理类开始执行，收代理费¥1000&quot;</span>);</span><br><span class="line">        clotheFactory.productClothe();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStaticProxy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        NikeClotheFactory nikeClotheFactory = <span class="keyword">new</span> NikeClotheFactory();</span><br><span class="line">        ProxyFactory proxyFactory = <span class="keyword">new</span> ProxyFactory(nikeClotheFactory);</span><br><span class="line">        proxyFactory.productClothe();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个实现接口<strong>InvocationHandler</strong>的类，它必须实现invoke方法，以完成代理的具体操作。</li>
+</ol>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6imfk0n8tj211g0hstcr.jpg" style="zoom:33%;" />
+
+<ol start="2">
+<li>创建被代理的类以及接口</li>
+</ol>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6imga6k97j210e0d2755.jpg" style="zoom:33%;" />
+
+<ol start="3">
+<li><p>通过Proxy的静态方法<code>newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)</code>创建一个Subject接口代理</p>
+</li>
+<li><p>通过 Subject 代理调用RealSubject实现类的方法</p>
+</li>
+</ol>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//被代理类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RealSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是被代理类，记得要执行我哦～么么～～&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    Object object; <span class="comment">//实现了接口的被代理类的对象的声明</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//1、给被代理类的对象实例化 2、返回一个代理类的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">blind</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(object.getClass().getClassLoader(),object.getClass().getInterfaces(),<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当通过代理类的对象发起对被重写的方法的调用时，都会转换为对如下的invoke方法的调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="comment">// method方法的返回值是returnVal</span></span><br><span class="line">        Object returnVal = method.invoke(object,args);</span><br><span class="line">        <span class="keyword">return</span> returnVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDynamicProxy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1、被代理类的对象</span></span><br><span class="line">        RealSubject realSubject = <span class="keyword">new</span> RealSubject();</span><br><span class="line">        <span class="comment">// 2、创建一个实现InvocationHandler接口的类的对象</span></span><br><span class="line">        MyInvocationHandler myInvocationHandler = <span class="keyword">new</span> MyInvocationHandler();</span><br><span class="line">        <span class="comment">// 3、调用blind()方法，动态的返回一个同样实现了real所在类实现的接口Subject的代理类对象</span></span><br><span class="line">        Object obj = myInvocationHandler.blind(realSubject);</span><br><span class="line">        Subject subject = (Subject) obj;</span><br><span class="line">        <span class="comment">// 4、转到对InvocationHandler接口的实现类的invoke()方法的调用</span></span><br><span class="line">        subject.action();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态代理与AOP"><a href="#动态代理与AOP" class="headerlink" title="动态代理与AOP"></a>动态代理与AOP</h2><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>前面介绍的Proxy和InvocationHandler，很难看出这种动态代理的优势，下面介绍一种更实用的动态代理机制。</p>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6io2wywgnj20yy0jwmz3.jpg" style="zoom:33%;" />
+
+<p>可以这么进行转换：</p>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6io8vikotj20zi0isq4m.jpg" style="zoom:33%;" />
+
+<p>改进后的：代码段1、代码段2、代码段3和深色代码段分离开了，但代码段1、2、3又和一个特定的方法A耦合了！</p>
+<p>最理想的效果是：代码块1、2、3既可以执行方法A，又无须在程序中以硬编码的方式直接调用深色代码的方法</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Human</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">info</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperMan</span> <span class="keyword">implements</span> <span class="title">Human</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是超人！我怕谁！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I believe I can fly！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HumanUtil</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;======方法1======&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;======方法2======&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyINvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    Object obj; <span class="comment">// 被代理类对象的声明</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObj</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.obj = obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        HumanUtil humanUtil = <span class="keyword">new</span> HumanUtil();</span><br><span class="line">        humanUtil.method1();</span><br><span class="line">        Object returnVal = method.invoke(obj,args);</span><br><span class="line">        humanUtil.method2();</span><br><span class="line">        <span class="keyword">return</span> returnVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态的创建一个代理类对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProxy</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getProxyInstance</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        MyINvocationHandler handler = <span class="keyword">new</span> MyINvocationHandler();</span><br><span class="line">        handler.setObj(obj);</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(obj.getClass().getClassLoader(),obj.getClass().getInterfaces(),handler);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAOP</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SuperMan superMan = <span class="keyword">new</span> SuperMan();</span><br><span class="line">        Object obj = MyProxy.getProxyInstance(superMan);</span><br><span class="line">        Human human = (Human) obj;</span><br><span class="line">        human.info();</span><br><span class="line">        System.out.println();</span><br><span class="line">        human.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><ul>
+<li>使用Proxy生成一个动态代理时，往往并不会凭空产生一个动态代理，这样没有太大的意义。通常都是为指定的目标对象生成动态代理。</li>
+<li>这种动态代理在AOP中被称为<strong>AOP代理</strong>，AOP代理可代替目标对象，AOP代理包含了目标对象的全部方法。但AOP代理中的方法与目标对象的方法存在差异：AOP代理里的方法可以在执行目标方法之前、之后插入一些通用处理。</li>
+</ul>
+<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6ip4gkt5jj20l60gsdgw.jpg" style="zoom:50%;" />
+
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><ul>
+<li><strong>描述一下JVM加载class文件的原理机制?</strong><br>答：JVM中类的装载是由ClassLoader和它的子类来实现的，Java ClassLoader，是一个重要的Java运行时系统组件。它负责在运行时查找和装入类文件的类。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2022/09/25/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L13-Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/">https://liuwqtech.github.io/2022/09/25/Java/Java基础详述/L13-Java反射机制/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://tva1.sinaimg.cn/large/e6c9d24ely1h6e5dtvq6ij20dw08mq3j.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/09/21/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/Mysql%E8%8F%9C%E9%B8%9F%E5%88%B0%E5%A4%A7%E7%89%9B/%E5%9F%BA%E7%A1%80%E7%AF%87/L05-%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%88%86%E9%A1%B5/"><img class="prev-cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6e74nlwm2j208c08caa6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L05-排序与分页</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/17/Java/Java基础详述/L01-Java语言概述/" title="L01-Java语言概述"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2bhslinj3j20dw08074i.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">L01-Java语言概述</div></div></a></div><div><a href="/2022/07/02/Java/Java基础详述/L03-面向对象编程/" title="L03-面向对象编程"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3b1pzfmp5j20to0qi0v7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">L03-面向对象编程</div></div></a></div><div><a href="/2022/09/08/Java/Java基础详述/L06-异常处理/" title="L06-异常处理"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wnzqk9x5j20go08fwem.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-08</div><div class="title">L06-异常处理</div></div></a></div><div><a href="/2022/09/05/Java/Java基础详述/L05-高级类特性2/" title="L05-高级类特性2"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5s1es0rykj20mc0naab8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">L05-高级类特性2</div></div></a></div><div><a href="/2022/09/13/Java/Java基础详述/L08-泛型/" title="L08-泛型"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h63u5p7sylj214u0u0acy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-13</div><div class="title">L08-泛型</div></div></a></div><div><a href="/2022/09/12/Java/Java基础详述/L07-Java集合/" title="L07-Java集合"><img class="cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5z71o1uxpj208c08cglk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">L07-Java集合</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Class%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">Class类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="toc-number">2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96Class%E7%B1%BB%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.4.</span> <span class="toc-text">实例化Class类对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">2.5.</span> <span class="toc-text">类的加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ClassLoader"><span class="toc-number">2.6.</span> <span class="toc-text">ClassLoader</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B1%BB%E5%AF%B9%E8%B1%A1%E5%B9%B6%E8%8E%B7%E5%8F%96%E5%85%B6%E5%AE%8C%E6%95%B4%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">创建类对象并获取其完整结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%B1%BB%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">创建类的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E7%B1%BB%E7%9A%84%E5%AE%8C%E6%95%B4%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">调用类的完整结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%85%A8%E9%83%A8%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.2.1.</span> <span class="toc-text">实现的全部接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%80%E7%BB%A7%E6%89%BF%E7%9A%84%E7%88%B6%E7%B1%BB"><span class="toc-number">3.2.2.</span> <span class="toc-text">所继承的父类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">3.2.3.</span> <span class="toc-text">全部的构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E7%9A%84Field"><span class="toc-number">3.2.4.</span> <span class="toc-text">全部的Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.5.</span> <span class="toc-text">全部的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Annotation%E7%9B%B8%E5%85%B3"><span class="toc-number">3.2.6.</span> <span class="toc-text">Annotation相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3"><span class="toc-number">3.2.7.</span> <span class="toc-text">泛型相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E6%89%80%E5%9C%A8%E7%9A%84%E5%8C%85"><span class="toc-number">3.2.8.</span> <span class="toc-text">类所在的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.2.9.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%8C%87%E5%AE%9A%E6%96%B9%E6%B3%95%E3%80%81%E5%B1%9E%E6%80%A7"><span class="toc-number">3.3.</span> <span class="toc-text">调用指定方法、属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.1.</span> <span class="toc-text">指定方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%B1%9E%E6%80%A7"><span class="toc-number">3.3.2.</span> <span class="toc-text">指定属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">Java动态代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="toc-number">4.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">静态代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">4.3.</span> <span class="toc-text">动态代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.3.1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">4.3.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP"><span class="toc-number">4.4.</span> <span class="toc-text">动态代理与AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">4.4.1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">4.4.2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0"><span class="toc-number">4.4.3.</span> <span class="toc-text">简述</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">面试题</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://tva1.sinaimg.cn/large/e6c9d24ely1h6e5dtvq6ij20dw08mq3j.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
