@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>机器学习评价指标 | 小新's Blog</title><meta name="keywords" content="机器学习"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="评价指标的引出为什么要引出这么多评价指标，它是基于什么样的需求？ 在生活中，最常用的就是准确率，因为它定义简单而且比较通用，但在机器学习中，它往往不是评估模型的最佳工具，特别是在数据分布不平衡的时候，请看一个例子： 比如我们训练了一个预测地震的模型，预测类别只有两个：0：不发生地震、1：发生地震，当前有100个测试集，如果模型无脑把每一个测试用例都预测为0，那么它就达到99%的准确率，但实际上它并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习评价指标">
+<meta property="og:url" content="https://liuwqtech.github.io/2022/10/02/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="评价指标的引出为什么要引出这么多评价指标，它是基于什么样的需求？ 在生活中，最常用的就是准确率，因为它定义简单而且比较通用，但在机器学习中，它往往不是评估模型的最佳工具，特别是在数据分布不平衡的时候，请看一个例子： 比如我们训练了一个预测地震的模型，预测类别只有两个：0：不发生地震、1：发生地震，当前有100个测试集，如果模型无脑把每一个测试用例都预测为0，那么它就达到99%的准确率，但实际上它并">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7b5s0k8j30dv089aah.jpg">
+<meta property="article:published_time" content="2022-10-02T12:08:46.000Z">
+<meta property="article:modified_time" content="2022-10-02T12:10:00.370Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7b5s0k8j30dv089aah.jpg"><link rel="shortcut icon" href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2022/10/02/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-02 20:10:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">67</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7b5s0k8j30dv089aah.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">机器学习评价指标</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-02T12:08:46.000Z" title="发表于 2022-10-02 20:08:46">2022-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-02T12:10:00.370Z" title="更新于 2022-10-02 20:10:00">2022-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="机器学习评价指标"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="评价指标的引出"><a href="#评价指标的引出" class="headerlink" title="评价指标的引出"></a>评价指标的引出</h1><p>为什么要引出这么多评价指标，它是基于什么样的需求？</p>
+<p>在生活中，最常用的就是准确率，因为它定义简单而且比较通用，但在机器学习中，它往往不是评估模型的最佳工具，特别是在数据分布不平衡的时候，请看一个例子：</p>
+<p>比如我们训练了一个预测地震的模型，预测类别只有两个：0：不发生地震、1：发生地震，当前有100个测试集，如果模型无脑把每一个测试用例都预测为0，那么它就达到99%的准确率，但实际上它并不具有预测的能力，为什么会出现这种情况？因为这里数据分布不平衡，类别为1的数据太少，完全分错类别1，依然可以达到很高的准确率，因此在正负样本不平衡的情况下，准确率这个评价指标就有很大的缺陷。（这里的正负是相对于任务来说的，对于预测地震这个任务而言，目标是预测出地震，所以地震就是正例）</p>
+<p><strong>准确率是关注了所有分类正确的</strong>，当正负样例分布不平衡时，负例占据了绝大多数，而正例得不到体现，因此会造成分数高的情况，那么一个很自然解决的办法就是我们聚焦于关注正例的识别，于是就引出了精确率（精度）、召回率等指标。</p>
+<h1 id="一级指标"><a href="#一级指标" class="headerlink" title="一级指标"></a>一级指标</h1><p><strong>准确率、精确率、召回率等这些评价指标都是基于底层的统计指标（一级指标）计算出来的。</strong></p>
+<p>对于一个二分类问题，模型的预测结果有四类：</p>
+<ol>
+<li>真正例，模型预测为正例，结果是真的，所以实际是正例（True Positive=TP）</li>
+<li>假正例，模型预测为正例，结果是假的，所以实际是负例（False Positive=FP）</li>
+<li>真负例，模型预测为负例，结果是真的，所以实际是负例（True Negative=TN）</li>
+<li>假负例，模型预测为负例，结果是假的，所以实际是正例（False Negative=FN）</li>
+</ol>
+<p>缩写可能比较容易搞混，注意前面的真假是修饰后面模型预测的正负，是对模型的预测结果的描述，比如第2个，假正例，表示模型预测的是正例，但是结果是假的，意思是实际它是负例，好好体会（手动狗头）</p>
+<p>将这四个指标放在表格里就能得到如下这样一个矩阵，称它为<strong>混淆矩阵</strong>（Confusion Matrix）：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r1afw1l0j311i0e6jss.jpg" style="zoom: 33%;" />
+
+<h1 id="二级指标"><a href="#二级指标" class="headerlink" title="二级指标"></a>二级指标</h1><p>有了混淆矩阵，就可以进一步计算准确率、精确率（精度）、召回率了，这些属于二级指标，计算方式如下：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r1yu0k4bj313w0e0gnp.jpg" style="zoom:50%;" />
+
+<p><strong>可以看到，相比准确率的全局关注，精确率和召回率更多的关注了正例的内容</strong></p>
+<h1 id="三级指标"><a href="#三级指标" class="headerlink" title="三级指标"></a>三级指标</h1><h2 id="F1值"><a href="#F1值" class="headerlink" title="F1值"></a>F1值</h2><p>有了精确率和召回率，为什么还要引入F1值指标呢？</p>
+<p>在实际应用中，模型的精确率和召回率是矛盾的，一个高一个就低，以预测地震为例，测试集中1000天中有10天地震，假如模型不轻易预测为地震，但一个预测一个准，1000天就预测了一天为地震（预测对），那么它的精确率就为1，但召回率只有10%，假如模型随便就预测为地震，预测了100天地震（预测出了全部），那召回率为1，但精确率就只有10%。</p>
+<p>所以需要综合的考虑两者的分数，于是就引入了F1值，它<strong>是精确率和召回率的调和平均</strong>，计算方式为：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r29uxepzj317k06ut99.jpg" style="zoom:33%;" />
+
+<p>F1-Score 的取值范围从0到1的，1代表模型的输出最好，0代表模型的输出结果最差，很多常见的任务，比如命名实体识别就拿它作为评价指标。</p>
+<h2 id="ROC和AUC"><a href="#ROC和AUC" class="headerlink" title="ROC和AUC"></a>ROC和AUC</h2><p>在二分类问题中还有一个经常使用的评价指标AUC(Area Under roc Curve)，而计算AUC依赖于ROC(Receiver Operating Characteristic)曲线。为什么需要这样一个指标？</p>
+<p>我们都知道准确率，精确率，召回率，F1-Score等这些指标只能反映模型在某一状态下的性能，而我们给模型不同的分类阈值，模型是是会有不同的性能表现的，那么<strong>AUC就是一种能够反映模型全局性能的指标</strong>。</p>
+<p>首先介绍一下ROC曲线，ROC曲线使用<strong>真正率</strong>（TPR） = TP/(TP+FN)，也就是<strong>召回率作为纵坐标</strong>，使用<strong>假正率</strong>（FPR）= FP/(FP+TN)<strong>作为横坐标</strong>，然后不断调整这个分类器的分类阈值，我们就可以得到一个经过(0, 0)，(1, 1)的曲线，这就是此分类器的ROC曲线。一般情况下，这个曲线都应该处于(0, 0)和(1, 1)连线的上方。因为(0, 0)和(1, 1)连线形成的ROC曲线实际上代表的是一个随机分类器。如下图所示：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r5y5c8gpj30bl0a4t8x.jpg" style="zoom: 67%;" />
+
+<p>对于这个图，我们当然希望系统TPR越高（覆盖的越多越好），同时FPR越低（虚报的越少越好），反映<strong>在图中即ROC曲线越陡，那么模型的性能就越好</strong>，于是AUC(Area Under roc Curve)就出现了，AUC的值就是处于ROC 曲线下方的那部分面积的大小。通常，AUC的值介于0.5到1.0之间，较大的AUC代表了较好的性能。因此，<strong>AUC是一种用来度量分类模型好坏的一个标准</strong>，我们可以通过计算AUC值来对比不同模型性能。</p>
+<p>AUC和ROC有一个特点，即可以<strong>无视样本的不平衡问题</strong>，因为涉及的真正率（TPR）和假正率（FPR）两个指标是分别在实际的正样本和负样本中来进行考察的，所以无论样本是否平衡，都不会被影响。比如总样本中，90%是正样本，10%是负样本。我们知道用准确率是有水分的，但是用TPR和FPR不一样。这里，TPR只关注90%正样本中有多少是被真正覆盖的，而与那10%毫无关系，同理，FPR只关注10%负样本中有多少是被错误覆盖的，也与那90%毫无关系，这样就可以避免样本不平衡的问题了。</p>
+<h1 id="检索-搜索系统中的评价指标"><a href="#检索-搜索系统中的评价指标" class="headerlink" title="检索/搜索系统中的评价指标"></a>检索/搜索系统中的评价指标</h1><p>在检索/搜索系统中，通常会给定一个query，然后通过对系统返回的top k个结果进行统计来评价系统的性能，对返回结果的判定可以是相关和不相关两种，也可以是更细粒度的相关性，这里我们主要考虑前者。</p>
+<h2 id="AP-MAP"><a href="#AP-MAP" class="headerlink" title="AP/MAP"></a>AP/MAP</h2><p>检索系统中也经常使用准确率（Precision，其实就是分类问题中的精确率，不过检索系统里面大家都叫准确率） = 相关文档总数 / 返回的结果总数 = TP / (TP + FP)和召回率（Recall）= 相关文档总数 / 所有文档总数 = TP / (TP + FN) 来评价系统。</p>
+<p>我们都知道检索系统还关心的另外一个事是文档的“位置”，<strong>相关文档排序的位置越靠前肯定越好</strong>，而Precision和Recall只是去评价检索结果“多大比例”这件事，对位置排序是不敏感的，所以就有了AP（Average Precision）。</p>
+<p>在介绍AP之前，先引入Precision-recall曲线概念。Precision-recall曲线（PR曲线）与ROC曲线的区别是横轴和纵轴不同，PR曲线的横轴Recall也就是TPR，反映了分类器对正例的覆盖能力。而纵轴Precision的分母是识别为正例的数目，而不是实际正例数目。Precision反映了分类器预测正例的准确程度。那么，<strong>Precision-recall曲线反映了分类器对正例的识别准确程度和对正例的覆盖能力之间的权衡</strong>。对于随机分类器而言，其Precision固定的等于样本中正例的比例，不随recall的变化而变化。</p>
+<p>与AUC相似，AP就是PR曲线与X轴围成的图形面积。</p>
+<p>此外，对于网页排序场景，还需要引入MAP（Mean Average Precision），MAP是所有查询结果排序的AP平均。mAP（Mean Average Precision，平均精度均值），是把每个类别的AP都单独拿出来，然后计算所有类别AP的平均值，代表着对检测到的目标平均精度的一个综合度量。</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r6d334efj30cq08sq30.jpg" style="zoom:33%;" />
+
+<p><strong>AP是一个query的查询结果，MAP就是多个query查询的平均正确率（AP）的均值，从整体上反映模型的检索性能。</strong></p>
+<h2 id="RR-MR-MRR"><a href="#RR-MR-MRR" class="headerlink" title="RR/MR/MRR"></a>RR/MR/MRR</h2><p><strong>RR（reciprocal rank）倒数排名，指检索结果中第一个相关文档的排名的倒数。</strong></p>
+<p><strong>MR（Mean Rank）平均排名。</strong></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r706aq1uj307u046web.jpg" style="zoom: 50%;" />
+
+<p><strong>MRR（mean reciprocal rank）是指多个查询语句的排名倒数的均值</strong>，是一个国际上通用的对搜索算法进行评价的机制，即第一个结果匹配，分数为1，第二个匹配分数为0.5，第n个匹配分数为1/n，如果没有匹配的句子分数为0。最终的分数为所有得分之和。其计算公式如下所示：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r70ig8lwj309a04ca9w.jpg" style="zoom:50%;" />
+
+<h1 id="Hits-n"><a href="#Hits-n" class="headerlink" title="Hits@n"></a>Hits@n</h1><p> 该指标是指在链接预测中排名小于n的三元组的平均占比。具体的计算方法如下：</p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7504qptj30f603ggli.jpg" style="zoom:50%;" />
+
+<p>其中，上述公式涉及的符号和MRR计算公式中涉及的符号一样，另外<code>II(·)</code>是indicator函数（若条件真则函数值为1，否则为0)。一般地，取n等于1、3或者10。该指标越大越好。</p>
+<h1 id="KGE最常用的评价指标"><a href="#KGE最常用的评价指标" class="headerlink" title="KGE最常用的评价指标"></a>KGE最常用的评价指标</h1><p><strong>知识图谱嵌入</strong>（Knowledge Graph Embedding，KGE）模型性能中最常用的几个指标：MRR，MR，HITS@1，HITS@3，HITS@10。</p>
+<p>MRR和HITS@10是两个重要指标，不可缺少。MR则不被认为是一个好的指标。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2022/10/02/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87/">https://liuwqtech.github.io/2022/10/02/人工智能/机器学习评价指标/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><div class="post_share"><div class="social-share" data-image="https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7b5s0k8j30dv089aah.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="https://tva1.sinaimg.cn/large/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/27/Java/Java%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%BF%B0/L14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><img class="prev-cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6iu8hv48nj20b306kt8u.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L14-网络编程</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/04/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF/JDBC/JDBC%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><img class="next-cover" src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6b3fpsctgj21n30u0jt8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JDBC核心技术</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87%E7%9A%84%E5%BC%95%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">评价指标的引出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E6%8C%87%E6%A0%87"><span class="toc-number">2.</span> <span class="toc-text">一级指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E6%8C%87%E6%A0%87"><span class="toc-number">3.</span> <span class="toc-text">二级指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E7%BA%A7%E6%8C%87%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">三级指标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#F1%E5%80%BC"><span class="toc-number">4.1.</span> <span class="toc-text">F1值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROC%E5%92%8CAUC"><span class="toc-number">4.2.</span> <span class="toc-text">ROC和AUC</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2-%E6%90%9C%E7%B4%A2%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">5.</span> <span class="toc-text">检索&#x2F;搜索系统中的评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AP-MAP"><span class="toc-number">5.1.</span> <span class="toc-text">AP&#x2F;MAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RR-MR-MRR"><span class="toc-number">5.2.</span> <span class="toc-text">RR&#x2F;MR&#x2F;MRR</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hits-n"><span class="toc-number">6.</span> <span class="toc-text">Hits@n</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KGE%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">7.</span> <span class="toc-text">KGE最常用的评价指标</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://tva1.sinaimg.cn/large/006y8mN6ly1h6r7b5s0k8j30dv089aah.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
