@@ -1,0 +1,836 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java面试题第一季 | 小新's Blog</title><meta name="keywords" content="面试"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="自增变量如下代码的运行结果： 123456789public static void main(String[] args) &amp;#123;           int i &#x3D; 1;           i &#x3D; i++;           int j &#x3D; i++;           int k &#x3D; i + ++i * i++;           System.out.println(&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题第一季">
+<meta property="og:url" content="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AC%AC%E4%B8%80%E5%AD%A3/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="自增变量如下代码的运行结果： 123456789public static void main(String[] args) &amp;#123;           int i &#x3D; 1;           i &#x3D; i++;           int j &#x3D; i++;           int k &#x3D; i + ++i * i++;           System.out.println(&amp;quot">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png">
+<meta property="article:published_time" content="2023-04-02T03:16:46.000Z">
+<meta property="article:modified_time" content="2023-04-02T03:13:29.574Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png"><link rel="shortcut icon" href="http://qn.liuwqtech.top/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AC%AC%E4%B8%80%E5%AD%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-02 11:13:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">79</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java面试题第一季</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-02T03:16:46.000Z" title="发表于 2023-04-02 11:16:46">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-02T03:13:29.574Z" title="更新于 2023-04-02 11:13:29">2023-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java面试题第一季"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="自增变量"><a href="#自增变量" class="headerlink" title="自增变量"></a>自增变量</h1><p>如下代码的运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">           i = i++;</span><br><span class="line">           <span class="keyword">int</span> j = i++;</span><br><span class="line">           <span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">           System.out.println(<span class="string">&quot;i=&quot;</span> + i);</span><br><span class="line">           System.out.println(<span class="string">&quot;j=&quot;</span> + j);</span><br><span class="line">           System.out.println(<span class="string">&quot;k=&quot;</span> + k);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>小结：</p>
+<ul>
+<li>赋值=，最后计算</li>
+<li>=右边的从左到右加载值依次压入操作数栈</li>
+<li>实际先算哪个，看运算符优先级</li>
+<li><strong>自增、自减操作都是直接修改变量的值，不经过操作数栈</strong></li>
+<li>最后的赋值之前，临时结果也是存储在操作数栈中</li>
+</ul>
+<h1 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h1><h2 id="什么是Singleton"><a href="#什么是Singleton" class="headerlink" title="什么是Singleton"></a>什么是Singleton</h2><p>Singleton：在Java中即指<strong>单例设计模式</strong>，它是软件开发中最常用的设计模式之一。</p>
+<ul>
+<li>单：唯一</li>
+<li>例：实例</li>
+</ul>
+<p>单例设计模式，即某个类在整个系统中<strong>只能有一个实例对象</strong>可被获取和使用的代码模式。</p>
+<ul>
+<li>例如：<strong>代表JVM运行环境的Runtime类</strong></li>
+</ul>
+<h2 id="设计要点"><a href="#设计要点" class="headerlink" title="设计要点"></a>设计要点</h2><ol>
+<li><p>某个类只能有一个实例；</p>
+<ul>
+<li>构造器私有化</li>
+</ul>
+</li>
+<li><p>它必须自行创建这个实例；</p>
+<ul>
+<li>含有一个该类的静态变量来保存这个唯一的实例</li>
+</ul>
+</li>
+<li><p>它必须自行向整个系统提供这个实例;</p>
+<ul>
+<li>对外提供获取该实例对象的方式：<ul>
+<li>直接暴露</li>
+<li>用静态变量的get方法获取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见形式"><a href="#常见形式" class="headerlink" title="常见形式"></a>常见形式</h2><ol>
+<li><p><strong>饿汉式：直接创建对象，不存在线程安全问题</strong></p>
+<ul>
+<li><strong>直接实例化</strong>饿汉式（简洁直观）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饿汉式：直接创建对象，不管你是否需要这个对象</span></span><br><span class="line"><span class="comment"> * （1）构造器私有化</span></span><br><span class="line"><span class="comment"> * （2）自行创建，并且用静态变量保存</span></span><br><span class="line"><span class="comment"> * （3）向外提供这个实例</span></span><br><span class="line"><span class="comment"> * （4）强调这是一个单例，我们可以用final修饰</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton1 INSTANCE = <span class="keyword">new</span> Singleton1();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton1</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>枚举式</strong>（最简洁）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 枚举类型：表示该类型的对象是有限的几个</span></span><br><span class="line"><span class="comment"> * 我们可以限定为一个，就成了单例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Singleton2</span> </span>&#123;</span><br><span class="line">    INSTANCE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>静态代码块</strong>饿汉式（适合复杂实例化）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton3</span> </span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton3 INSTANCE;</span><br><span class="line">   <span class="keyword">private</span> String info;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">static</span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">         Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">        pro.load(Singleton3.class.getClassLoader().getResourceAsStream(<span class="string">&quot;single.properties&quot;</span>));</span><br><span class="line">         </span><br><span class="line">         INSTANCE = <span class="keyword">new</span> Singleton3(pro.getProperty(<span class="string">&quot;info&quot;</span>));</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton3</span><span class="params">(String info)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.info = info;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> info;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInfo</span><span class="params">(String info)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.info = info;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;Singleton3 [info=&quot;</span> + info + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>懒汉式：延迟创建对象</strong></p>
+<ul>
+<li>线程不安全（适用于单线程）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 懒汉式：延迟创建对象</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * (1)构造器私有化</span></span><br><span class="line"><span class="comment"> * (2)用一个静态变量保存这个唯一的实例</span></span><br><span class="line"><span class="comment"> * (3)提供一个静态方法，获取这个实例对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton4</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Singleton4 instance;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton4</span><span class="params">()</span></span>&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton4 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">         &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">         &#125;</span><br><span class="line">         instance = <span class="keyword">new</span> Singleton4();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> instance;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>线程安全（适用于多线程）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 懒汉式：延迟创建对象</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * (1)构造器私有化</span></span><br><span class="line"><span class="comment"> * (2)用一个静态变量保存这个唯一的实例</span></span><br><span class="line"><span class="comment"> * (3)提供一个静态方法，获取这个实例对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton5</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Singleton5 instance;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Singleton5</span><span class="params">()</span></span>&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton5 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton5.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                      Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                      e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton5();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>静态内部类形式（适用于多线程）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">在内部类被加载和初始化时，才创建INSTANCE实例对象</span></span><br><span class="line"><span class="comment">静态内部类不会自动随着外部类的加载和初始化而初始化，它要单独去加载和初始化的</span></span><br><span class="line"><span class="comment">因为是在内部类加载和初始化时创建的，因此是线程安全的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton6</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">private</span> <span class="title">Singleton6</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton6 INSTANCE = <span class="keyword">new</span> Singleton6();</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton6 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Inner.INSTANCE;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>如果是饿汉式，枚举形式最简单</li>
+<li>如果是懒汉式，静态内部类形式最简单</li>
+</ul>
+<h1 id="类初始化和实例初始化"><a href="#类初始化和实例初始化" class="headerlink" title="类初始化和实例初始化"></a>类初始化和实例初始化</h1><h2 id="考点"><a href="#考点" class="headerlink" title="考点"></a>考点</h2><ul>
+<li>类初始化过程</li>
+<li>实例初始化过程</li>
+<li>方法的重写</li>
+</ul>
+<h2 id="类初始化过程"><a href="#类初始化过程" class="headerlink" title="类初始化过程"></a>类初始化过程</h2><ol>
+<li><p>一个类要创建实例需要先加载并初始化该类</p>
+<ul>
+<li><strong>main方法所在的类需要先加载和初始化</strong></li>
+</ul>
+</li>
+<li><p>一个<strong>子类要初始化需要先初始化父类</strong></p>
+</li>
+<li><p>一个类初始化就是执行<code>&lt;clinit&gt;()</code>方法</p>
+<ul>
+<li><code>&lt;clinit&gt;()</code>方法由<strong>静态类变量显示赋值代码和静态代码块</strong>组成</li>
+<li>类变量显示赋值代码和静态代码块代码从上到下顺序执行</li>
+<li><code>&lt;clinit&gt;()</code>方法只执行一次</li>
+</ul>
+</li>
+</ol>
+<h2 id="实例初始化过程"><a href="#实例初始化过程" class="headerlink" title="实例初始化过程"></a>实例初始化过程</h2><p>实例初始化就是执行<code>&lt;init&gt;()</code>方法</p>
+<ul>
+<li><code>&lt;init&gt;()</code>方法可能重载有多个，有几个构造器就有几个<code>&lt;init&gt;</code>方法</li>
+<li><code>&lt;init&gt;()</code>方法由<strong>非静态实例变量显示赋值代码和非静态代码块、对应构造器代码</strong>组成</li>
+<li>非静态实例变量显示赋值代码和非静态代码块代码从上到下顺序执行，而对应构造器的代码最后执行</li>
+<li>每次创建实例对象，调用对应构造器，执行的就是对应的<code>&lt;init&gt;</code>方法</li>
+<li><code>&lt;init&gt;</code>方法的首行是<code>super()</code>或<code>super(实参列表)</code>，即对应父类的<code>&lt;init&gt;</code>方法</li>
+</ul>
+<h2 id="方法的重写Override"><a href="#方法的重写Override" class="headerlink" title="方法的重写Override"></a>方法的重写Override</h2><ol>
+<li><p>哪些方法不可以被重写</p>
+<ul>
+<li>final方法</li>
+<li>静态方法</li>
+<li>private等子类中不可见方法</li>
+</ul>
+</li>
+<li><p>对象的多态性</p>
+<ul>
+<li>子类如果重写了父类的方法，通过子类对象调用的一定是子类重写过的代码</li>
+<li>非静态方法默认的调用对象是this</li>
+<li>this对象在构造器或者说<code>&lt;init&gt;</code>方法中就是正在创建的对象</li>
+</ul>
+</li>
+</ol>
+<h2 id="进阶要求"><a href="#进阶要求" class="headerlink" title="进阶要求"></a>进阶要求</h2><ul>
+<li>Override和Overload的区别？</li>
+<li>Override重写的要求？<ul>
+<li>方法名</li>
+<li>形参列表</li>
+<li>返回值类型</li>
+<li>抛出的异常列表</li>
+<li>修饰符</li>
+</ul>
+</li>
+</ul>
+<h1 id="方法的参数传递机制"><a href="#方法的参数传递机制" class="headerlink" title="方法的参数传递机制"></a>方法的参数传递机制</h1><h2 id="考点-1"><a href="#考点-1" class="headerlink" title="考点"></a>考点</h2><ul>
+<li>方法的参数传递机制</li>
+<li><strong>String、包装类等对象的不可变性</strong></li>
+</ul>
+<h2 id="方法的参数传递机制-1"><a href="#方法的参数传递机制-1" class="headerlink" title="方法的参数传递机制"></a>方法的参数传递机制</h2><ol>
+<li><p>形参是基本数据类型</p>
+<ul>
+<li>传递数据值</li>
+</ul>
+</li>
+<li><p>实参是引用数据类型</p>
+<ul>
+<li>传递地址值</li>
+<li>特殊的类型：String、包装类等对象不可变性</li>
+</ul>
+</li>
+</ol>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6.png"></p>
+<h1 id="递归与迭代"><a href="#递归与迭代" class="headerlink" title="递归与迭代"></a>递归与迭代</h1><h2 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h2><p>有n步台阶，一次只能上1步或2步，共有多少种走法？</p>
+<ul>
+<li><strong>递归</strong></li>
+</ul>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E8%BF%AD%E4%BB%A3.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现f(n)：有n步台阶，一次只能上1步或2步，共有多少种走法？</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">1</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(n + <span class="string">&quot;不能小于1&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f(n-<span class="number">2</span>) + f(n-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>循环迭代</li>
+</ul>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%BE%AA%E7%8E%AF%E8%BF%AD%E4%BB%A3.png" alt="截屏2023-03-27 14.05.25"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现f(n)：有n步台阶，一次只能上1步或2步，共有多少种走法？</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loop</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">1</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(n + <span class="string">&quot;不能小于1&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> one = <span class="number">2</span>; <span class="comment">//初始化为走到第二级台阶的走法</span></span><br><span class="line">    <span class="keyword">int</span> two = <span class="number">1</span>; <span class="comment">//初始化为走到第一级台阶的走法</span></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        sum = two + one;</span><br><span class="line">        two = one;</span><br><span class="line">        one = sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><p><strong>方法调用自身称为递归，利用变量的原值推出新值称为迭代。</strong></p>
+<ol>
+<li>递归</li>
+</ol>
+<ul>
+<li>优点：大问题转化为小问题，可以减少代码量，同时代码精简，可读性好；</li>
+<li>缺点：<strong>递归调用浪费了空间，而且递归太深容易造成堆栈的溢出</strong>。</li>
+</ul>
+<ol start="2">
+<li>迭代</li>
+</ol>
+<ul>
+<li>优点：<strong>代码运行效率好</strong>，因为时间只因循环次数增加而增加，而且没有额外的空间开销；</li>
+<li>缺点：代码不如递归简洁，可读性好。</li>
+</ul>
+<h1 id="成员变量与局部变量"><a href="#成员变量与局部变量" class="headerlink" title="成员变量与局部变量"></a>成员变量与局部变量</h1><h2 id="考点-2"><a href="#考点-2" class="headerlink" title="考点"></a>考点</h2><ul>
+<li><p>就近原则</p>
+</li>
+<li><p>变量的分类</p>
+<ul>
+<li>成员变量：类变量、实例变量</li>
+<li>局部变量</li>
+</ul>
+</li>
+<li><p>非静态代码块的执行：每次创建实例对象都会执行</p>
+</li>
+<li><p>方法的调用规则：调用一次执行一次</p>
+</li>
+</ul>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li><strong>声明的位置</strong></li>
+</ol>
+<ul>
+<li>局部变量：方法体{ }中，形参，代码块{ }中</li>
+<li>成员变量：类中方法外<ul>
+<li>类变量：有static修饰</li>
+<li>实例变量：没有static修饰</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>修饰符</strong></li>
+</ol>
+<ul>
+<li>局部变量：final</li>
+<li>成员变量：public、protected、private、final、static、volatile、transient</li>
+</ul>
+<ol start="3">
+<li><strong>值存储的位置</strong></li>
+</ol>
+<ul>
+<li>局部变量：栈</li>
+<li>实例变量：堆</li>
+<li>类变量：方法区</li>
+</ul>
+<ol start="4">
+<li><strong>作用域</strong></li>
+</ol>
+<ul>
+<li>局部变量：从声明处开始，到所属的}结束</li>
+<li>实例变量：在当前类中“this.”(有时this.可以缺省)，在其他类中“对象名.”访问</li>
+<li>类变量：在当前类中“类名.”(有时类名.可以省略)，在其他类中“类名.”或“对象名.”访问</li>
+</ul>
+<ol start="5">
+<li><strong>生命周期</strong></li>
+</ol>
+<ul>
+<li>局部变量：每一个线程，每一次调用执行都是新的生命周期</li>
+<li>实例变量：随着对象的创建而初始化，随着对象的被回收而消亡，每一个对象的实例变量是独立的</li>
+<li>类变量：随着类的初始化而初始化，随着类的卸载而消亡，该类的所有对象的类变量是共享的</li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E4%BB%A3%E7%A0%81.png" alt="截屏2023-03-28 09.57.20"></p>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E4%B8%8D%E5%90%8C%E5%8F%98%E9%87%8F%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png" alt="不同变量的内存图"></p>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>，<span class="number">1</span>，<span class="number">5</span></span><br><span class="line"><span class="number">1</span>，<span class="number">1</span>，<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="区分局部变量与xx变量重名"><a href="#区分局部变量与xx变量重名" class="headerlink" title="区分局部变量与xx变量重名"></a>区分局部变量与xx变量重名</h2><ol>
+<li><strong>局部变量与实例变量重名</strong></li>
+</ol>
+<ul>
+<li>在实例变量前面加“this.”</li>
+</ul>
+<ol start="2">
+<li><strong>局部变量与类变量重名</strong></li>
+</ol>
+<ul>
+<li>在类变量前面加“类名.”</li>
+</ul>
+<h1 id="Spring-Bean作用域间的区别"><a href="#Spring-Bean作用域间的区别" class="headerlink" title="Spring Bean作用域间的区别"></a>Spring Bean作用域间的区别</h1><p>在Spring中，可以在<bean>元素的scope属性里设置bean的作用域，以决定这个bean是单例的还是多例的。</p>
+<p>默认情况下，Spring只为每个在IOC容器的声明的bean创建唯一一个实例，整个IOC容器范围内都能共享该示例：所有后续的<code>getBean()</code>调用和bean引用都将返回这个唯一的bean实例。该作用域被称为singleton，它是所有bean的默认作用域。</p>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/Spring%20bean%E4%BD%9C%E7%94%A8%E5%9F%9F.png" alt="截屏2023-03-30 10.36.27"></p>
+<h1 id="Spring支持的常用数据库事务传播属性和事务隔离级别"><a href="#Spring支持的常用数据库事务传播属性和事务隔离级别" class="headerlink" title="Spring支持的常用数据库事务传播属性和事务隔离级别"></a>Spring支持的常用数据库事务传播属性和事务隔离级别</h1><h2 id="事务的传播行为"><a href="#事务的传播行为" class="headerlink" title="事务的传播行为"></a>事务的传播行为</h2><p>当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如，方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。</p>
+<p>事务的传播行为可以由传播属性指定。Spring定义了7种类传播行为。</p>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA.png" alt="截屏2023-03-30 10.49.23"></p>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><h3 id="数据库事务并发问题"><a href="#数据库事务并发问题" class="headerlink" title="数据库事务并发问题"></a>数据库事务并发问题</h3><ol>
+<li><strong>脏读</strong>：读到了别人更新但没有提交的数据</li>
+<li><strong>不可重复读</strong>：第一次与第二次读到的值不一致</li>
+<li><strong>幻读</strong>：第一次读完，第二次读，多了很多行</li>
+</ol>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><p>一个事务与其他事务隔离的程度称为隔离级别。隔离级别越高，数据一致性就越好，但并发性就越差。</p>
+<ol>
+<li><strong>读未提交</strong></li>
+<li><strong>读已提交（常用）</strong></li>
+<li><strong>可重复读</strong></li>
+<li><strong>串行化（级别最高）</strong></li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB.png" alt="截屏2023-03-30 14.00.53" style="zoom: 50%;" />
+
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%90%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%94%AF%E6%8C%81%E7%A8%8B%E5%BA%A6.png" alt="截屏2023-03-30 14.04.08" style="zoom:50%;" />
+
+<h1 id="SpringMVC如何解决POST请求中文乱码问题"><a href="#SpringMVC如何解决POST请求中文乱码问题" class="headerlink" title="SpringMVC如何解决POST请求中文乱码问题"></a>SpringMVC如何解决POST请求中文乱码问题</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是GET请求呢？</p>
+<ul>
+<li>打开server.xml，找到Connector标签，加入属性<code>URIEncoding=UTF-8</code></li>
+</ul>
+<h1 id="Spring-MVC工作流程"><a href="#Spring-MVC工作流程" class="headerlink" title="Spring MVC工作流程"></a>Spring MVC工作流程</h1><h2 id="处理模型数据"><a href="#处理模型数据" class="headerlink" title="处理模型数据"></a>处理模型数据</h2><ul>
+<li>将方法的返回值设置为ModelAndView</li>
+<li>方法的返回值仍是String类型，在方法的入参中传入Map、Model或者ModelMap</li>
+</ul>
+<p><strong>处理模型数据，不管是以上哪一种方式，Spring MVC都会转换成一个ModelAndView对象</strong></p>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/Spring%20MVC%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt="截屏2023-03-31 16.30.38"></p>
+<h1 id="MyBatis中实体类属性名和表中字段名不一致怎么办"><a href="#MyBatis中实体类属性名和表中字段名不一致怎么办" class="headerlink" title="MyBatis中实体类属性名和表中字段名不一致怎么办"></a>MyBatis中实体类属性名和表中字段名不一致怎么办</h1><ol>
+<li>解决方法1<ul>
+<li>sql查询语句中起别名</li>
+</ul>
+</li>
+<li>解决方法2<ul>
+<li>在MyBatis全局配置文件中开启驼峰命名规则</li>
+</ul>
+</li>
+<li>解决方法3<ul>
+<li>在Mapper映射文件中使用resultMap自定义映射规则</li>
+</ul>
+</li>
+</ol>
+<h1 id="Linux常用服务类相关命令"><a href="#Linux常用服务类相关命令" class="headerlink" title="Linux常用服务类相关命令"></a>Linux常用服务类相关命令</h1><p><strong>注意centos6和centos7的区别：</strong></p>
+<h2 id="Centos6"><a href="#Centos6" class="headerlink" title="Centos6"></a>Centos6</h2><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/centos6%E8%BF%9B%E7%A8%8B%E7%B1%BB%E5%91%BD%E4%BB%A4.png" alt="截屏2023-04-01 09.20.13" style="zoom: 50%;" />
+
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/centos6%E8%BF%9B%E7%A8%8B%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB.png" alt="截屏2023-04-01 09.24.11" style="zoom: 33%;" />
+
+<h2 id="Centos7"><a href="#Centos7" class="headerlink" title="Centos7"></a>Centos7</h2><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/centos7%E8%BF%9B%E7%A8%8B%E7%B1%BB%E5%91%BD%E4%BB%A4.png" alt="截屏2023-04-01 09.22.40" style="zoom:50%;" />
+
+<h1 id="git分支相关命令"><a href="#git分支相关命令" class="headerlink" title="git分支相关命令"></a>git分支相关命令</h1><ol>
+<li>创建分支<ul>
+<li><code>git branch &lt;分支名&gt;</code></li>
+<li><code>git branch -v 查看分支</code></li>
+</ul>
+</li>
+<li>切换分支<ul>
+<li><code>git checkout &lt;分支名&gt;</code></li>
+<li><code>一步完成：git checkout -b &lt;分支名&gt;</code></li>
+</ul>
+</li>
+<li>合并分支<ul>
+<li>先切换到主干，<code>git checkout master</code></li>
+<li><code>git merge &lt;分支名&gt;</code></li>
+</ul>
+</li>
+<li>删除分支<ul>
+<li>先切换到主干，<code>git checkout master</code></li>
+<li><code>git branch -D &lt;分支名&gt;</code></li>
+</ul>
+</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/git%E5%B7%A5%E4%BD%9C%E6%B5%81.png" alt="截屏2023-04-01 09.37.31" style="zoom:67%;" />
+
+<h1 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h1><h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>在指定时间间隔内将内存中的数据集快照写入磁盘，也就是<strong>Snapshot快照</strong>，恢复的时候直接将快照文件读到内存里。</p>
+<p>单独创建（fork）一个子进程来进行持久化，会将数据写入到一个临时文件，待持久化过程都结束后，再用这个临时文件替换上次持久化好的文件。整个过程中，主进程是不需要进行任何IO操作的，这就确保了<strong>极高的性能</strong>。</p>
+<p>如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是很敏感，那RDB方式要比AOF方式更加的高效。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><strong>节省磁盘空间、恢复速度快</strong></li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>虽然在fork使用了写时拷贝技术，但如果数据庞大，还是比较消耗性能</strong></li>
+<li><strong>最后一次持久化后的数据可能丢失</strong></li>
+</ul>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p><strong>以日志的形式来记录每个写操作</strong>，将Redis执行过的所有写指令记录下来，<strong>只许追加文件，不许改写文件</strong>，Redis启动之初会读取该文件，重新构建数据。（Redis重启，会根据日志文件的内容，将所有写指令从前到后全部执行一次来恢复数据）</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><strong>备份机制更加稳健，丢失数据概率更低</strong></li>
+<li><strong>可读的日志文本，通过操作AOF，可以处理误操作</strong></li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>比RDB更占用磁盘空间</strong></li>
+<li><strong>恢复备份速度更慢</strong></li>
+<li><strong>每次读写都同步的话，有一定性能压力</strong></li>
+<li><strong>存在个别bug，造成恢复不能</strong></li>
+</ul>
+<h1 id="Mysql什么时候建索引"><a href="#Mysql什么时候建索引" class="headerlink" title="Mysql什么时候建索引"></a>Mysql什么时候建索引</h1><p>索引（Index）是帮助Mysql高效获取数据的<strong>数据结构</strong>。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>提高数据<strong>检索</strong>效率，降低数据库的IO成本</li>
+<li>通过索引对数据进行<strong>排序</strong>，降低数据排序成本，降低了CPU的消耗</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>降低更新表的速度</strong>（insert、update、delete）</li>
+<li><strong>占用磁盘空间</strong></li>
+</ul>
+<h2 id="需要创建索引"><a href="#需要创建索引" class="headerlink" title="需要创建索引"></a>需要创建索引</h2><ul>
+<li><strong>主键</strong>自动建立唯一索引</li>
+<li><strong>频繁作为查询条件的字段</strong>应该创建索引</li>
+<li>查询中与其他表关联的字段，<strong>外键</strong>建立索引</li>
+<li>单键/组合索引的选择问题，<strong>组合索引性价比更高</strong></li>
+<li><strong>查询中排序的字段</strong>，排序字段若通过索引去访问将会大大提高排序速度</li>
+<li><strong>查询中统计或者分组字段</strong></li>
+</ul>
+<h2 id="不需要创建索引"><a href="#不需要创建索引" class="headerlink" title="不需要创建索引"></a>不需要创建索引</h2><ul>
+<li><strong>表记录太少</strong></li>
+<li><strong>经常增删改的表或者字段</strong></li>
+<li><strong>where条件里用不到的字段</strong></li>
+<li><strong>过滤性不好的字段</strong></li>
+</ul>
+<h1 id="JVM垃圾回收机制"><a href="#JVM垃圾回收机制" class="headerlink" title="JVM垃圾回收机制"></a>JVM垃圾回收机制</h1><h2 id="GC发生在JVM哪部分"><a href="#GC发生在JVM哪部分" class="headerlink" title="GC发生在JVM哪部分"></a>GC发生在JVM哪部分</h2><p><strong>发生在堆部分。</strong></p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88.png" alt="截屏2023-04-01 10.24.07" style="zoom:50%;" />
+
+<h2 id="有几种GC"><a href="#有几种GC" class="headerlink" title="有几种GC"></a>有几种GC</h2><p>GC（分代收集算法）</p>
+<ul>
+<li><strong>次数上频繁收集Young区（Minor GC）</strong></li>
+<li><strong>次数上较少收集Old区（Full GC）</strong></li>
+<li><strong>基本不动Perm区</strong></li>
+</ul>
+<h2 id="它们的算法是什么"><a href="#它们的算法是什么" class="headerlink" title="它们的算法是什么"></a>它们的算法是什么</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95.png" alt="截屏2023-04-01 10.28.41" style="zoom:67%;" />
+
+<h3 id="复制算法（Copying）"><a href="#复制算法（Copying）" class="headerlink" title="复制算法（Copying）"></a>复制算法（Copying）</h3><p>年轻代中使用的<strong>Minor GC</strong>采用的就是复制算法。</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png" alt="截屏2023-04-01 10.34.16" style="zoom:67%;" />
+
+<h3 id="标记清除（Mark-Sweep）"><a href="#标记清除（Mark-Sweep）" class="headerlink" title="标记清除（Mark-Sweep）"></a>标记清除（Mark-Sweep）</h3><p><strong>老年代</strong>一般由标记清除或者是标记清除与标记整理的混合实现</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png" alt="截屏2023-04-01 10.36.30" style="zoom:67%;" />
+
+<h3 id="标记压缩（Mark-Compact）"><a href="#标记压缩（Mark-Compact）" class="headerlink" title="标记压缩（Mark-Compact）"></a>标记压缩（Mark-Compact）</h3><p><strong>老年代</strong>一般由标记清除或者是标记清除与标记整理的混合实现</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%A0%87%E8%AE%B0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.png" alt="截屏2023-04-01 10.39.02" style="zoom:67%;" />
+
+<h3 id="标记清除压缩（Mark-Sweep-Compact）"><a href="#标记清除压缩（Mark-Sweep-Compact）" class="headerlink" title="标记清除压缩（Mark-Sweep-Compact）"></a>标记清除压缩（Mark-Sweep-Compact）</h3><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.png" alt="截屏2023-04-01 10.40.06" style="zoom:67%;" />
+
+<h1 id="Redis在项目中的使用场景"><a href="#Redis在项目中的使用场景" class="headerlink" title="Redis在项目中的使用场景"></a>Redis在项目中的使用场景</h1><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="left">使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">String</td>
+<td align="left">比如说 ，我想知道<strong>什么时候封锁一个IP地址</strong>。Incrby命令</td>
+</tr>
+<tr>
+<td align="center">Hash</td>
+<td align="left"><strong>存储用户信息</strong>【id, name, age】<br><code>Hset(key,field,value)</code> <br><code>Hset(userKey,id,101)</code><br><code>Hset(userKey,name,admin)</code><br>—-修改案例—-<br><code>Hget(userKey,id)</code><br><code>Hset(userKey,id,102)</code><br>为什么不使用String 类型来存储<br><code>Set(userKey,用户信息的字符串)</code><br><code>Get(userKey)</code><br>不建议使用String 类型</td>
+</tr>
+<tr>
+<td align="center">List</td>
+<td align="left"><strong>实现最新消息的排行</strong>，还可以利用List的push命令，将任务存在list集合中，同时使用另一个命令，将任务从集合中取出(pop)。<br>Redis—list数据类型来<strong>模拟消息队列</strong>。<br>【电商中的秒杀就可以采用这种方式来完成一个<strong>秒杀活动</strong>】</td>
+</tr>
+<tr>
+<td align="center">Set</td>
+<td align="left">特殊之处：可以<strong>自动排重</strong>。<br>比如说微博中将每个人的好友存在集合(Set)中，这样求两个人的共通好友的操作。我们只需要求交集即可。</td>
+</tr>
+<tr>
+<td align="center">Zset</td>
+<td align="left">以某一个条件为权重，进行<strong>排序</strong>。<br>京东：商品详情的时候，都会有一个综合排名，还可以按照价格进行排名。</td>
+</tr>
+</tbody></table>
+<h1 id="Elasticsearch和solr的区别"><a href="#Elasticsearch和solr的区别" class="headerlink" title="Elasticsearch和solr的区别"></a>Elasticsearch和solr的区别</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>背景：它们都是基于Lucene搜索服务器基础之上开发，一款优秀的，<strong>高性能</strong>的企业级搜索服务器。【是因为他们都是基于分词技术构建的<strong>倒排索引</strong>的方式进行查询】</li>
+<li>开发语言：java语言开发</li>
+<li>诞生时间：<ul>
+<li>Solr ：2004年诞生。</li>
+<li>ES：2010年诞生。</li>
+</ul>
+</li>
+</ul>
+<p>Es 更新【功能越强大】</p>
+<h2 id="区别-1"><a href="#区别-1" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>当实时建立索引的时候，Solr会产生IO阻塞，而ES则不会，ES查询性能要高于Solr。</li>
+<li>在不断动态添加数据的时候，Solr的检索效率会变的低下，而ES则没有什么变化。</li>
+<li>Solr利用Zookeeper进行分布式管理，而ES自身带有分布式系统管理功能。Solr一般都要部署到web服务器上，比如tomcat。启动tomcat的时候需要配置tomcat与Solr的关联。【<strong>Solr的本质是一个动态web项目</strong>】</li>
+<li>Solr支持更多的格式数据[xml,json,csv等]，而ES仅支持json文件格式。</li>
+<li>Solr是传统搜索应用的有力解决方案，但是ES更适用于新兴的实时搜索应用。<ul>
+<li>单纯的对已有数据进行检索的时候，Solr效率更好，高于ES。</li>
+</ul>
+</li>
+<li>Solr官网提供的功能更多，而ES本身更注重于核心功能，高级功能多需要第三方插件。</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/Solr%E9%9B%86%E7%BE%A4.png" alt="image-20230402103519489" style="zoom:50%;" />
+
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/SolrCloud.png" alt="image-20230402103604111"></p>
+<p>ES集群图：</p>
+<p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/ES%E9%9B%86%E7%BE%A4.png" alt="image-20230402103631622"></p>
+<h1 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h1><p>单点登录：<strong>一处登录多处使用</strong>！</p>
+<p><strong>前提：单点登录多使用在分布式系统中</strong>。</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.png" alt="image-20230402104435902" style="zoom:67%;" />
+
+<p>案例：</p>
+<p>参观动物园流程：</p>
+<p>检票员=认证中心模块</p>
+<ol>
+<li><p>我直接带着大家进动物园，则会被检票员拦住【看我们是否有门票】，没有【售票处买票】</p>
+<ul>
+<li>登录=买票</li>
+</ul>
+</li>
+<li><p>我去买票【带着票，带着大家一起准备进入动物园】检票员check【有票】</p>
+<ul>
+<li>Token=piao</li>
+</ul>
+</li>
+<li><p>我们手中有票就可以任意观赏动物的每处景点。</p>
+</li>
+</ol>
+<p>京东：单点登录，是将token放入到cookie中的。</p>
+<p>案例：将浏览器的cookie禁用，则在登录京东则失败！无论如何登录不了！</p>
+<h1 id="购物车的实现"><a href="#购物车的实现" class="headerlink" title="购物车的实现"></a>购物车的实现</h1><ol>
+<li><p>购物车跟用户的关系?</p>
+<ul>
+<li>一个用户必须对应一个购物车【一个用户不管买多少商品，都会存在属于自己的购物车中】</li>
+<li><strong>单点登录一定在购物车之前</strong></li>
+</ul>
+</li>
+<li><p>跟购物车有关的操作有哪些?</p>
+<p>（1）添加购物车</p>
+<ul>
+<li>用户未登录状态<ul>
+<li>添加到什么地方？未登录将数据保存到什么地方?<ul>
+<li>Redis? — 京东</li>
+<li>Cookie? — 自己开发项目的时候【如果浏览器禁用cookie】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用户登录状态<ul>
+<li>Redis 缓存中 【读写速度快】<ul>
+<li>Hash：<code>hset(key,field,value)</code><ul>
+<li>Key：<code>user:userId:cart</code></li>
+<li><code>Hset(key,skuId,value);</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>存在数据库中【oracle，mysql】</li>
+</ul>
+</li>
+</ul>
+<p>（2）展示购物车</p>
+<ul>
+<li>未登录状态展示<ul>
+<li>直接从 cookie 中取得数据展示即可</li>
+</ul>
+</li>
+<li>登录状态<ul>
+<li>用户一旦登录：必须显示数据库【redis】+ cookie 中的购物车的数据<ul>
+<li>Cookie 中有3条记录</li>
+<li>Redis中有5条记录</li>
+<li>真正展示的时候应该是8条记录 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="消息队列在项目中的使用"><a href="#消息队列在项目中的使用" class="headerlink" title="消息队列在项目中的使用"></a>消息队列在项目中的使用</h1><p>背景：<strong>在分布式系统中是如何处理高并发的</strong>。</p>
+<p>由于在高并发的环境下，来不及同步处理用户发送的请求，则会导致请求发生阻塞。比如说，大量的insert，update之类的请求同时到达数据库MYSQL，直接导致无数的行锁表锁，甚至会导致请求堆积很多。从而触发 too many connections 错误。使用消息队列可以解决【<strong>异步通信</strong>】</p>
+<ol>
+<li>异步</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E5%BC%82%E6%AD%A5.png" alt="image-20230402110445608" style="zoom:67%;" />
+
+<ol start="2">
+<li>并行</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E5%B9%B6%E8%A1%8C.png" alt="image-20230402110518324" style="zoom:67%;" />
+
+<ol start="3">
+<li>排队</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E6%8E%92%E9%98%9F.png" alt="image-20230402110711913" style="zoom:67%;" />
+
+<p>消息队列电商使用场景：</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-%E7%94%B5%E5%95%86%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png" alt="image-20230402110748394" style="zoom:67%;" />
+
+<p><strong>消息队列的弊端：</strong></p>
+<p>消息的不确定性：延迟队列，轮询技术来解决该问题即可！</p>
+<p>推荐大家使用activemq！环境都是java。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AC%AC%E4%B8%80%E5%AD%A3/">https://liuwqtech.github.io/2023/04/02/面试/Java面试题第一季/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/03/23/%E7%AE%97%E6%B3%95/%E6%A0%A1%E6%8B%9B%E5%86%B2%E5%88%BA%E9%9B%86%E8%AE%AD/L02-%E8%AF%BE%E5%89%8D%E6%B5%8B%E8%AF%84/"><img class="prev-cover" src="http://qn.liuwqtech.top/e6c9d24ely1h5shh4d6uuj20l00dwq4s.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L02-课前测评</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">自增变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">单例设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSingleton"><span class="toc-number">2.1.</span> <span class="toc-text">什么是Singleton</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">设计要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">常见形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">类初始化和实例初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9"><span class="toc-number">3.1.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">类初始化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">实例初始化过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99Override"><span class="toc-number">3.4.</span> <span class="toc-text">方法的重写Override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E8%A6%81%E6%B1%82"><span class="toc-number">3.5.</span> <span class="toc-text">进阶要求</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">方法的参数传递机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9-1"><span class="toc-number">4.1.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6-1"><span class="toc-number">4.2.</span> <span class="toc-text">方法的参数传递机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number">5.</span> <span class="toc-text">递归与迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text">编程题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="toc-number">5.2.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-number">6.</span> <span class="toc-text">成员变量与局部变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9-2"><span class="toc-number">6.1.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">6.2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">6.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E4%B8%8Exx%E5%8F%98%E9%87%8F%E9%87%8D%E5%90%8D"><span class="toc-number">6.4.</span> <span class="toc-text">区分局部变量与xx变量重名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Bean%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.</span> <span class="toc-text">Spring Bean作用域间的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E6%94%AF%E6%8C%81%E7%9A%84%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">8.</span> <span class="toc-text">Spring支持的常用数据库事务传播属性和事务隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA"><span class="toc-number">8.1.</span> <span class="toc-text">事务的传播行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">8.2.</span> <span class="toc-text">事务隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98"><span class="toc-number">8.2.1.</span> <span class="toc-text">数据库事务并发问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">8.2.2.</span> <span class="toc-text">隔离级别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringMVC%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3POST%E8%AF%B7%E6%B1%82%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">SpringMVC如何解决POST请求中文乱码问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-MVC%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">10.</span> <span class="toc-text">Spring MVC工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE"><span class="toc-number">10.1.</span> <span class="toc-text">处理模型数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">10.2.</span> <span class="toc-text">工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyBatis%E4%B8%AD%E5%AE%9E%E4%BD%93%E7%B1%BB%E5%B1%9E%E6%80%A7%E5%90%8D%E5%92%8C%E8%A1%A8%E4%B8%AD%E5%AD%97%E6%AE%B5%E5%90%8D%E4%B8%8D%E4%B8%80%E8%87%B4%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-number">11.</span> <span class="toc-text">MyBatis中实体类属性名和表中字段名不一致怎么办</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%B8%B8%E7%94%A8%E6%9C%8D%E5%8A%A1%E7%B1%BB%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">12.</span> <span class="toc-text">Linux常用服务类相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos6"><span class="toc-number">12.1.</span> <span class="toc-text">Centos6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7"><span class="toc-number">12.2.</span> <span class="toc-text">Centos7</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git%E5%88%86%E6%94%AF%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">13.</span> <span class="toc-text">git分支相关命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">14.</span> <span class="toc-text">Redis持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDB"><span class="toc-number">14.1.</span> <span class="toc-text">RDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF"><span class="toc-number">14.2.</span> <span class="toc-text">AOF</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">15.</span> <span class="toc-text">Mysql什么时候建索引</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">15.1.</span> <span class="toc-text">需要创建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E5%88%9B%E5%BB%BA%E7%B4%A2%E5%BC%95"><span class="toc-number">15.2.</span> <span class="toc-text">不需要创建索引</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-number">16.</span> <span class="toc-text">JVM垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GC%E5%8F%91%E7%94%9F%E5%9C%A8JVM%E5%93%AA%E9%83%A8%E5%88%86"><span class="toc-number">16.1.</span> <span class="toc-text">GC发生在JVM哪部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%87%A0%E7%A7%8DGC"><span class="toc-number">16.2.</span> <span class="toc-text">有几种GC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%83%E4%BB%AC%E7%9A%84%E7%AE%97%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">16.3.</span> <span class="toc-text">它们的算法是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">16.3.1.</span> <span class="toc-text">引用计数法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%EF%BC%88Copying%EF%BC%89"><span class="toc-number">16.3.2.</span> <span class="toc-text">复制算法（Copying）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%EF%BC%88Mark-Sweep%EF%BC%89"><span class="toc-number">16.3.3.</span> <span class="toc-text">标记清除（Mark-Sweep）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E5%8E%8B%E7%BC%A9%EF%BC%88Mark-Compact%EF%BC%89"><span class="toc-number">16.3.4.</span> <span class="toc-text">标记压缩（Mark-Compact）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E5%8E%8B%E7%BC%A9%EF%BC%88Mark-Sweep-Compact%EF%BC%89"><span class="toc-number">16.3.5.</span> <span class="toc-text">标记清除压缩（Mark-Sweep-Compact）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">17.</span> <span class="toc-text">Redis在项目中的使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Elasticsearch%E5%92%8Csolr%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">18.</span> <span class="toc-text">Elasticsearch和solr的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">18.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-1"><span class="toc-number">18.2.</span> <span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95"><span class="toc-number">19.</span> <span class="toc-text">单点登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AD%E7%89%A9%E8%BD%A6%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">20.</span> <span class="toc-text">购物车的实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">21.</span> <span class="toc-text">消息队列在项目中的使用</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
