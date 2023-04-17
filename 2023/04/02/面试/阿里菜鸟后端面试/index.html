@@ -1,0 +1,1348 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>阿里菜鸟后端面试 | 小新's Blog</title><meta name="keywords" content="面试"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数组和链表的区别 长度的初始化：数组在创建时就已经确定了长度，需要手动初始化；而链表则需要在创建时指定节点的数量，也可以在运行时动态增加节点。 内存占用：数组的内存占用是一个固定的大小，取决于数组元素的类型和长度；而链表的内存占用则是由节点的数量决定的，每个节点都需要分配内存。 访问速度：数组的访问速度比链表快，因为数组可以直接访问对应的元素；而链表则需要遍历整个链表才能访问到目标元素。 应用场景">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里菜鸟后端面试">
+<meta property="og:url" content="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E9%98%BF%E9%87%8C%E8%8F%9C%E9%B8%9F%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="数组和链表的区别 长度的初始化：数组在创建时就已经确定了长度，需要手动初始化；而链表则需要在创建时指定节点的数量，也可以在运行时动态增加节点。 内存占用：数组的内存占用是一个固定的大小，取决于数组元素的类型和长度；而链表的内存占用则是由节点的数量决定的，每个节点都需要分配内存。 访问速度：数组的访问速度比链表快，因为数组可以直接访问对应的元素；而链表则需要遍历整个链表才能访问到目标元素。 应用场景">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png">
+<meta property="article:published_time" content="2023-04-02T03:16:46.000Z">
+<meta property="article:modified_time" content="2023-04-17T16:10:09.460Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png"><link rel="shortcut icon" href="http://qn.liuwqtech.top/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E9%98%BF%E9%87%8C%E8%8F%9C%E9%B8%9F%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-18 00:10:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">82</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">阿里菜鸟后端面试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-02T03:16:46.000Z" title="发表于 2023-04-02 11:16:46">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-17T16:10:09.460Z" title="更新于 2023-04-18 00:10:09">2023-04-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">31.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>96分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="阿里菜鸟后端面试"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数组和链表的区别"><a href="#数组和链表的区别" class="headerlink" title="数组和链表的区别"></a>数组和链表的区别</h1><ol>
+<li><strong>长度的初始化</strong>：数组在创建时就已经确定了长度，需要手动初始化；而链表则需要在创建时指定节点的数量，也可以在运行时动态增加节点。</li>
+<li><strong>内存占用</strong>：数组的内存占用是一个固定的大小，取决于数组元素的类型和长度；而链表的内存占用则是由节点的数量决定的，每个节点都需要分配内存。</li>
+<li><strong>访问速度</strong>：数组的访问速度比链表快，因为数组可以直接访问对应的元素；而链表则需要遍历整个链表才能访问到目标元素。</li>
+<li><strong>应用场景</strong>：数组通常用于需要连续存储元素的场景，例如数组元素是用户输入的数据，需要按照某种规则进行存储和排序；而链表则通常用于需要动态增加元素的场景，例如需要增加页面滚动条或者动态显示数据。</li>
+</ol>
+<p>总之，数组和链表都有各自的优点和适用场景，需要根据具体的需求选择合适的数据结构。</p>
+<h1 id="集合接口继承"><a href="#集合接口继承" class="headerlink" title="集合接口继承"></a>集合接口继承</h1><p>Java 集合可分为 Collection 和 Map 两种体系。</p>
+<ul>
+<li>Collection接口：<ul>
+<li>Set：元素无序、不可重复的集合 — 类似高中的“集合”</li>
+<li>List：元素有序，可重复的集合 — “动态”数组</li>
+</ul>
+</li>
+<li>Map接口：具有映射关系“key-value对”的集合 — 类似于高中的“函数”</li>
+</ul>
+<h2 id="Collection接口继承树"><a href="#Collection接口继承树" class="headerlink" title="Collection接口继承树"></a>Collection接口继承树</h2><img src="http://qn.liuwqtech.top/e6c9d24ely1h605ow023yj211k0oaae1.jpg" style="zoom: 33%;" />
+
+<h2 id="Map接口继承树"><a href="#Map接口继承树" class="headerlink" title="Map接口继承树"></a>Map接口继承树</h2><img src="http://qn.liuwqtech.top/e6c9d24ely1h605pe6dwoj20xw0jeta9.jpg" style="zoom:33%;" />
+
+<h1 id="Set和List的区别"><a href="#Set和List的区别" class="headerlink" title="Set和List的区别"></a>Set和List的区别</h1><ol>
+<li><strong>元素的唯一性</strong>:<code>Set</code> 接口表示一组唯一的元素，而 <code>List</code> 接口表示一组有序元素。</li>
+<li><strong>元素的访问速度</strong>:<code>List</code> 接口支持有序访问元素，而 <code>Set</code> 接口不支持有序访问元素。</li>
+<li><strong>内存占用</strong>：由于 <code>Set</code> 接口要求每个元素都是唯一的，因此它的内存占用比 <code>List</code> 接口小。</li>
+<li><strong>应用场景</strong>:<code>Set</code> 接口主要用于去重、唯一性校验等场景，例如缓存、消息队列等;而 <code>List</code> 接口主要用于存储有序元素，例如列表、向量等。</li>
+<li><strong>方法实现</strong>:<code>List</code> 接口提供了许多方法来实现列表的操作，例如添加、删除、遍历等;而 <code>Set</code> 接口只提供了添加、删除、遍历等方法。</li>
+</ol>
+<p>综上所述，<code>Set</code> 和 <code>List</code> 接口都有自己的优点和适用场景，需要根据具体需求选择合适的接口来实现集合操作。</p>
+<h1 id="ArrayList和LinkedList区别"><a href="#ArrayList和LinkedList区别" class="headerlink" title="ArrayList和LinkedList区别"></a>ArrayList和LinkedList区别</h1><p>ArrayList使用数组方式存储数据，此数组元素数大于实际存储的数据以便增加和插入元素，它们都允许直接按序号索引元素，但是插入元素要涉及数组元素移动等内存操作，所以索引数据快而插入数据慢，</p>
+<p>而LinkedList使用双向链表实现存储，按序号索引数据需要进行前向或后向遍历，但是插入数据时只需要记录本项的前后项即可，所以插入速度较快。</p>
+<ul>
+<li><p>ArrayList 是 List 接口的典型实现类</p>
+<ul>
+<li>本质上，ArrayList是<strong>对象引用的一个变长数组</strong></li>
+<li>ArrayList 是<strong>线程不安全的</strong>，而 <strong>Vector 是线程安全的</strong>，即使为保证 List 集合线程安全，也不推荐使用Vector</li>
+</ul>
+</li>
+<li><p>对于<strong>频繁的插入或删除元素的操作，建议使用LinkedList类，效率较高</strong></p>
+</li>
+</ul>
+<h1 id="Set哪个是有序的"><a href="#Set哪个是有序的" class="headerlink" title="Set哪个是有序的"></a>Set哪个是有序的</h1><ul>
+<li><p>HashSet：按 Hash 算法来存储集合中的元素，因此具有很好的存取和查找性能。</p>
+<ul>
+<li>不能保证元素的排列顺序</li>
+<li><strong>HashSet 不是线程安全的</strong></li>
+<li>集合元素可以是 null</li>
+</ul>
+</li>
+<li><p>LinkedHashSet：HashSet 的子类</p>
+<ul>
+<li>LinkedHashSet 根据元素的 hashCode 值来决定元素的存储位置，但它同时<strong>使用链表维护元素的次序</strong>，这使得元素看起来是以插入顺序保存的</li>
+<li>LinkedHashSet插入性能略低于 HashSet，但在迭代访问 Set 里的全部元素时有很好的性能</li>
+<li>LinkedHashSet <strong>不允许集合元素重复</strong></li>
+</ul>
+</li>
+<li><p>TreeSet</p>
+<ul>
+<li>向TreeSet中添加的元素必须是同一类型的</li>
+<li><strong>不允许元素重复</strong></li>
+<li>可以按照添加进集合中的元素的指定<strong>顺序遍历</strong>，例如String、包装类等默认按照从小到大的顺序遍历</li>
+<li>当自定义类没有实现Comparable接口时，向TreeSet中添加自定义类对象时，会报ClassCastException异</li>
+<li>TreeSet 是 SortedSet 接口的实现类，TreeSet 可以确保集合元素处于排序状态</li>
+</ul>
+</li>
+</ul>
+<h1 id="HashMap底层实现"><a href="#HashMap底层实现" class="headerlink" title="HashMap底层实现"></a>HashMap底层实现</h1><p>HashMap 是 Java 中常用的<strong>哈希表数据结构</strong>，<strong>它的底层实现是基于哈希函数和位运算的</strong>。</p>
+<p>HashMap 内部使用一个数组来存储元素，数组中的每个元素都是一个 Key 对象和一个 Value 对象。当插入元素时，HashMap 会根据 Key 对象的 hashcode() 方法计算 Key 对象的哈希值，然后根据哈希值将 Key 对象映射到数组中的某个位置。同样地，当取出元素时，HashMap 会根据 Key 对象的 hashcode() 方法计算 Key 对象的哈希值，然后通过索引来取出对应的数组位置，从而取出对应的 Value 对象。</p>
+<p>为了支持快速查找和插入操作，HashMap 还使用了位运算。在 HashMap 中，每个元素都有一个标记位，用于表示该元素是否已经被使用过。当插入元素时，HashMap 会将该元素的标记位设置为 1，表示该元素已经被使用过。当取出元素时，HashMap 会将该元素的标记位设置为 0，表示该元素没有被使用过。通过控制标记位的值，HashMap 可以实现快速查找和插入操作。</p>
+<p>总的来说，HashMap 的底层实现是基于哈希函数和位运算的，它通过哈希函数将元素映射到数组位置，并通过位运算支持快速查找和插入操作。这种底层实现方式可以提高 HashMap 的效率和灵活性。</p>
+<h1 id="HashMap-1-7和1-8的区别"><a href="#HashMap-1-7和1-8的区别" class="headerlink" title="HashMap 1.7和1.8的区别"></a>HashMap 1.7和1.8的区别</h1><p>HashMap 是 Java 中非常常用的一种数据结构，用于存储键值对。在 Java 1.7 和 1.8 中，HashMap 的实现方式有所不同，主要区别如下：</p>
+<ol>
+<li><p><strong>数据结构</strong>：Java 1.7 中的 HashMap 底层实现采用的是<strong>数组+链表</strong>的方式，而 Java 1.8 中则采用了<strong>数组+链表+红黑树的方式。当链表长度超过阈值 8 时，会将链表转化为红黑树，以提高查询性能</strong>。</p>
+</li>
+<li><p><strong>并发性</strong>：Java 1.7 中的 HashMap 是<strong>非线程安全</strong>的，多线程操作可能会导致数据不一致的情况。Java 1.8 中的 HashMap 改进了并发问题，通过<strong>使用 CAS 操作和 synchronized 来保证线程安全性</strong>。</p>
+</li>
+<li><p><strong>扩容策略</strong>：Java 1.7 中的 HashMap 在扩容时，需要将原有的元素重新计算 hash 值并重新分配位置，这个过程比较耗时。Java 1.8 中的 HashMap 使用了一种新的扩容方式，称为“<strong>红黑树分裂”，可以更加高效地进行扩容</strong>。</p>
+</li>
+<li><p><strong>计算 hash 值</strong>：Java 1.7 中的 HashMap 通过对 key 的 hashcode 进行位运算来计算 hash 值，容易出现 hash 冲突。Java 1.8 中的 HashMap 引入了一种新的计算 hash 值的方式，可以减少 hash 冲突的概率。</p>
+</li>
+</ol>
+<p>总的来说，Java 1.8 中的 HashMap 在性能和并发性方面都有了很大的提升，相比 Java 1.7 中的 HashMap 更加高效、稳定和可靠。</p>
+<h1 id="为什么链表转红黑树的阈值是8"><a href="#为什么链表转红黑树的阈值是8" class="headerlink" title="为什么链表转红黑树的阈值是8"></a>为什么链表转红黑树的阈值是8</h1><p>在 Java 1.8 中的 HashMap 中，当链表长度大于等于 8 时，会将链表转化为红黑树。这个阈值取 8 的原因是经过大量实验得出的结果。</p>
+<p><strong>链表长度大于等于 8 时，查询链表的时间复杂度就会达到 O(n)，而红黑树的查询时间复杂度是 O(log n)，因此当链表长度达到阈值时，将其转化为红黑树可以提高查询性能。</strong></p>
+<p><strong>但是，如果阈值过小，将链表转化为红黑树的开销就会很大，因为需要进行节点的旋转和平衡等操作。反之，如果阈值过大，链表的查询性能就会受到影响。因此，需要通过实验找到一个适当的阈值，以达到最优的性能。</strong></p>
+<p>值得注意的是，这个阈值并不是一个固定的值，取决于具体的硬件和软件环境。在不同的 JVM 版本和不同的硬件平台上，这个阈值可能会有所不同。</p>
+<h1 id="为什么使用红黑树而不是其他的树？比如说二叉树"><a href="#为什么使用红黑树而不是其他的树？比如说二叉树" class="headerlink" title="为什么使用红黑树而不是其他的树？比如说二叉树"></a>为什么使用红黑树而不是其他的树？比如说二叉树</h1><p>在 Java 1.8 中的 HashMap 中，当链表长度大于等于 8 时，会将链表转化为红黑树，这是因为红黑树具有以下优点：</p>
+<ol>
+<li><p><strong>查询性能稳定</strong>：红黑树的查询性能是稳定的，它的查询时间复杂度是 O(log n)，而二叉树的查询性能是不稳定的，取决于树的形态，最坏情况下查询时间复杂度可以退化为 O(n)，这是不可接受的。</p>
+</li>
+<li><p><strong>插入和删除效率高</strong>：红黑树的插入和删除操作的时间复杂度也是 O(log n)，而二叉树的插入和删除操作的时间复杂度是不稳定的，最坏情况下也会退化为 O(n)。</p>
+</li>
+<li><p><strong>平衡性好</strong>：红黑树的平衡性比较好，可以保证树的高度始终在 O(log n) 的范围内，而二叉树的平衡性比红黑树要差很多，可能会退化成一个链表，导致查询效率极低。</p>
+</li>
+</ol>
+<p>综上所述，红黑树相对于二叉树来说具有更好的查询性能、插入删除效率和平衡性，因此在 Java 1.8 中的 HashMap 中选择采用红黑树作为链表的替代结构。</p>
+<h1 id="HashMap线程安全吗"><a href="#HashMap线程安全吗" class="headerlink" title="HashMap线程安全吗"></a>HashMap线程安全吗</h1><p><strong>不安全</strong></p>
+<h2 id="故障现象"><a href="#故障现象" class="headerlink" title="故障现象"></a>故障现象</h2><p><strong>java.util.ConcurrentModificationException</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,String&gt; map = Collections.synchronizedMap(<span class="keyword">new</span> HashMap&lt;&gt;());</span><br></pre></td></tr></table></figure>
+
+<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,String&gt; map = <span class="keyword">new</span> ConcurrentHashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<h1 id="有哪些线程安全的集合，怎么实现的？"><a href="#有哪些线程安全的集合，怎么实现的？" class="headerlink" title="有哪些线程安全的集合，怎么实现的？"></a>有哪些线程安全的集合，怎么实现的？</h1><p>线程安全的集合是指多个线程可以同时访问并修改其中的元素，而不会导致数据不一致或者其他线程安全问题。这些线程安全的集合一般都是通过在代码中添加同步机制来实现的。下面是一些常见的线程安全的集合和它们的实现方式：</p>
+<ol>
+<li>ConcurrentHashMap：ConcurrentHashMap是Java中线程安全的哈希表实现，它通过使用分段锁来实现并发修改。它将哈希表分成多个段，每个段都有一个锁来保护其中的元素。这样，不同的线程可以同时访问哈希表的不同段，从而提高并发性能。</li>
+<li>ConcurrentLinkedQueue：ConcurrentLinkedQueue是Java中线程安全的队列实现，它通过使用无锁算法来实现并发修改。它的内部结构是一个基于链表的队列，每个节点包含一个元素和一个指向下一个节点的引用。它通过使用CAS（比较并交换）操作来保证节点的原子性操作，从而实现线程安全。</li>
+<li>CopyOnWriteArrayList：CopyOnWriteArrayList是Java中线程安全的动态数组实现，它通过使用写时复制技术来实现并发修改。它的内部结构是一个数组，当需要修改数组时，它会先复制一个新的数组，然后修改新数组中的元素，最后将新数组替换旧数组。这样可以保证读操作的并发性，而写操作只会对新数组进行修改，不会影响旧数组，从而避免了线程安全问题。</li>
+<li>ConcurrentSkipListMap：ConcurrentSkipListMap是Java中线程安全的有序映射表实现，它通过使用跳表来实现并发修改。跳表是一种高效的数据结构，可以支持高并发的插入、删除和查找操作。ConcurrentSkipListMap使用CAS操作来保证多线程并发修改的线程安全性。</li>
+<li>BlockingQueue：BlockingQueue是Java中线程安全的阻塞队列实现，它支持多个生产者和消费者线程同时访问。当队列为空时，消费者线程会被阻塞，直到有元素被放入队列；当队列满时，生产者线程会被阻塞，直到有元素被取出队列。BlockingQueue的实现方式可以使用锁、信号量等同步机制来实现线程安全。</li>
+</ol>
+<h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><p>红黑树是一种<strong>自平衡的二叉搜索树</strong>，它在保持二叉搜索树的基本性质 (即所有左子树节点的值小于当前节点的值，所有右子树节点的值大于当前节点的值) 的同时，使用颜色标记节点以保持平衡。</p>
+<p>红黑树的每个节点都被标记为红色或黑色。根据红黑树的性质，<strong>根节点必须是黑色的，而且每个叶子节点都是黑色的空节点。如果一个节点是红色的，那么它的子节点必须是黑色的。每个节点，从该节点到其后代叶子节点的所有路径上包含相同数目的黑色节点</strong>。这些限制确保红黑树的平衡，使得最长路径不超过最短路径的两倍。</p>
+<p>红黑树支持插入、删除和查找操作。在插入或删除节点时，必须保持红黑树的性质。这可以通过重新着色和旋转节点来实现。</p>
+<p><strong>红黑树的时间复杂度为 O(log n)</strong>,其中 n 是树中节点的数量。由于其高效的查找、插入和删除操作，红黑树被广泛应用于数据结构和算法中。</p>
+<h1 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h1><h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><p>进程调度算法是操作系统中用于决定进程执行时间的算法。它负责决定将哪个进程应该在何时执行，以便最大化系统的吞吐量和响应能力。以下是几种常见的进程调度算法：</p>
+<ol>
+<li><strong>时间片轮转算法</strong>：时间片轮转算法是一种分时调度算法，它将 CPU 时间分成一系列小的时间片段，每个进程在获得一个时间片后被暂停，并被放回到就绪队列的末尾，让其他进程执行。这个过程会一直重复，直到所有进程都完成。</li>
+<li><strong>优先级调度算法</strong>：优先级调度算法根据进程的优先级来确定哪个进程先执行。高优先级的进程将在 CPU 时间片内优先执行，而低优先级的进程将被推迟执行。</li>
+<li>最短进程优先算法：最短进程优先算法是一种响应时间优化的调度算法。它根据进程的响应时间来确定哪个进程先执行，响应时间最短的进程将优先执行。</li>
+<li>负载均衡调度算法：负载均衡调度算法是一种将 CPU 时间分配给就绪进程的算法。它的目标是确保所有进程都能获得公平的 CPU 时间，以避免某个进程过度占用 CPU 资源。</li>
+<li>动态优先级调度算法：动态优先级调度算法可以根据进程的负载和就绪队列的长度来动态调整进程的优先级。这种算法能够提高系统的响应能力和负载能力。</li>
+</ol>
+<p>以上是几种常见的进程调度算法，不同的算法有不同的优点和适用范围，操作系统会根据具体的需求和场景选择适合的调度算法。</p>
+<h2 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h2><p>磁盘调度算法是操作系统中用于决定数据如何被存储在磁盘上的算法。它负责决定将哪些数据应该存储在哪些磁盘上，以便最大化系统的存储能力和效率。以下是几种常见的磁盘调度算法:</p>
+<ol>
+<li>顺序存储算法：顺序存储算法是将数据按照顺序存储在磁盘上，每个数据都被存储在它的唯一扇区中。这种算法的存储效率高，但磁盘空间利用率低。</li>
+<li>随机存储算法：随机存储算法是将数据随机存储在磁盘上，每个数据都被存储在多个扇区中，以便最大化磁盘空间利用率。这种算法的存储效率低，但磁盘空间利用率高。</li>
+<li>动态分配算法：动态分配算法是在数据写入磁盘时，动态地分配扇区来存储数据，以便最大化磁盘空间利用率。这种算法需要操作系统定期扫描磁盘，重新分配扇区。</li>
+<li>优先级调度算法：优先级调度算法是根据数据的重要性和优先级来确定哪些数据应该被存储在哪些磁盘上。高优先级的数据将被存储在高速磁盘上，低优先级的数据将被存储在低速磁盘上。</li>
+<li>负载均衡调度算法：负载均衡调度算法是将数据随机存储在多个磁盘上，以便确保所有磁盘都能承担相等的负载。这种算法能够提高系统的存储能力和负载能力。</li>
+</ol>
+<p>以上是几种常见的磁盘调度算法，不同的算法有不同的优点和适用范围，操作系统会根据具体的需求和场景选择适合的调度算法。</p>
+<h1 id="MySQL锁"><a href="#MySQL锁" class="headerlink" title="MySQL锁"></a>MySQL锁</h1><p>MySQL 中的锁是一种机制，用于确保在多个用户同时访问数据库时，不会出现数据不一致的情况。在 MySQL 中，有两种类型的锁：<strong>读写锁和写锁</strong>。</p>
+<ol>
+<li>读写锁：读写锁是一种共享锁，它允许多个用户同时读取数据，但只有一个用户可以写入数据。当用户读取数据时，会获得读写锁，直到读取完成或读取失败为止。如果读取失败，则读写锁将被释放。</li>
+<li>写锁：写锁是一种独占锁，它允许一个用户写入数据，直到写入完成或写入失败为止。当用户试图写入数据时，会获得写锁，直到写入完成或写锁被释放为止。</li>
+</ol>
+<p>在 MySQL 中，使用锁来提高数据库的<strong>并发性能和安全性</strong>。当多个用户同时访问数据库时，使用锁可以确保数据不会发生冲突，从而<strong>保证数据的一致性</strong>。同时，在并发访问时，使用锁还可以减少资源的占用，<strong>提高数据库的并发处理能力</strong>。</p>
+<h1 id="MySQL范式"><a href="#MySQL范式" class="headerlink" title="MySQL范式"></a>MySQL范式</h1><p>在数据库设计中，范式是一种<strong>数据模型</strong>，<strong>用于确保数据的一致性、完整性和可维护性</strong>。MySQL 中的数据模型是基于关系型的，而关系型数据模型中常用的范式有 2 种：第一范式 (1NF) 和第二范式 (2NF)。</p>
+<ol>
+<li>第一范式 (1NF):第一范式是最基本的范式，它要求<strong>每个列都是原子性的</strong>，即每个列都不能由其他列组成。同时，每个列都必须是独立的，即不存在多个列的组合。在 MySQL 中，第一范式通常被称为基本范式。</li>
+<li>第二范式 (2NF):第二范式是对第一范式的提高，它要求<strong>每个列都必须是可数的</strong>，即每个列都必须可以表示为集合的形式。同时，<strong>每个列都必须是原子性的</strong>，即不存在多个列的组合。在 MySQL 中，第二范式通常被称为扩展范式。</li>
+</ol>
+<p>在 MySQL 中，如果数据模型符合第一范式和第二范式，就可以被认为是高度规范化的。<strong>规范化可以提高数据的一致性、完整性和可维护性，从而提高数据库的性能和可靠性</strong>。</p>
+<h1 id="介绍索引，为什么需要索引"><a href="#介绍索引，为什么需要索引" class="headerlink" title="介绍索引，为什么需要索引"></a>介绍索引，为什么需要索引</h1><p>MySQL索引是一种用于<strong>提高数据库查询效率的数据结构</strong>，它可以加速数据库查询的速度，并且减少查询所需的CPU和I/O资源。索引在MySQL中是非常重要的，因为它们可以帮助提高数据库应用程序的性能和可伸缩性。</p>
+<p>索引的作用是将数据库表中的数据按照一定的顺序排列，以便于快速查找和访问。MySQL中主要支持以下几种类型的索引：</p>
+<ol>
+<li>B-tree索引：B-tree索引是MySQL中<strong>最常用的索引类型</strong>，它是一种平衡树结构，可以支持范围查询和排序操作。</li>
+<li>Hash索引：Hash索引是一种<strong>基于哈希表的索引类型</strong>，适用于等值查询，但不支持范围查询。</li>
+<li>Full-text索引：Full-text索引是一种<strong>全文索引类型</strong>，可以用于全文搜索和关键字查询。</li>
+</ol>
+<p>为什么需要索引？</p>
+<ol>
+<li><strong>提高查询效率</strong>：索引可以加速数据库表的查询操作，减少查询所需的时间和资源。</li>
+<li><strong>优化数据库性能</strong>：索引可以减少数据库表的扫描次数，降低数据库的I/O操作和CPU占用，从而提高数据库的性能和可伸缩性。</li>
+<li><strong>约束数据唯一性</strong>：索引可以限制某些列的唯一性，避免重复数据的插入和更新。</li>
+<li><strong>支持排序和分组</strong>：索引可以支持排序和分组操作，提高排序和分组的效率。</li>
+<li><strong>加快表连接</strong>：索引可以加速表之间的连接操作，提高多表查询的效率。</li>
+</ol>
+<h1 id="使用索引一定会变快吗"><a href="#使用索引一定会变快吗" class="headerlink" title="使用索引一定会变快吗"></a>使用索引一定会变快吗</h1><p>使用MySQL索引并不一定会使查询变得更快。虽然索引可以加速查询，但它们也可能会导致一些性能问题，特别是在以下情况下：</p>
+<ol>
+<li><strong>数据量较小</strong>：当数据库表中数据量较小时，使用索引的效果并不明显，甚至会使查询变慢，因为索引需要占用额外的存储空间和CPU资源。</li>
+<li><strong>查询条件不恰当</strong>：当查询条件不恰当时，使用索引可能会导致查询变慢。例如，如果查询条件中包含了函数、计算或其他操作，索引可能无法发挥作用，反而会导致查询变慢。</li>
+<li><strong>索引选择不当</strong>：当选择索引不当时，索引可能会变得无效，甚至会使查询变慢。例如，如果使用了不适合查询条件的索引类型，或者索引覆盖不够，都可能导致查询变慢。</li>
+<li><strong>数据分布不均匀</strong>：当数据库表中的数据分布不均匀时，使用索引可能会导致查询变慢。例如，如果某些值的分布比较密集，而其他值的分布比较稀疏，使用索引可能会导致查询的效率降低。</li>
+</ol>
+<p>因此，使用MySQL索引并不是一定会使查询变快的，需要在实际应用中根据具体情况选择合适的索引类型和优化方案。同时，也需要注意索引的维护和管理，避免索引过多或过少，以及索引过时或失效。</p>
+<h1 id="慢索引怎么排查，怎么调优"><a href="#慢索引怎么排查，怎么调优" class="headerlink" title="慢索引怎么排查，怎么调优"></a>慢索引怎么排查，怎么调优</h1><p>慢索引通常是<strong>由于索引设计不当、数据分布不均、索引过多或过少等原因引起的</strong>，下面是一些可能的排查和调优方法：</p>
+<ol>
+<li><strong>使用EXPLAIN来分析查询计划</strong>：使用MySQL的EXPLAIN命令可以分析查询的执行计划，了解查询是如何执行的，以及使用了哪些索引。通过分析执行计划，可以判断是否有慢查询和慢索引的问题，并找出原因。</li>
+<li><strong>检查索引是否覆盖查询</strong>：覆盖查询指的是使用索引来完成查询操作，而无需访问表中的实际数据。如果索引无法覆盖查询，会导致额外的I/O操作和CPU占用，从而降低查询效率。可以通过查询计划或使用FORCE INDEX来检查是否存在覆盖查询的问题。</li>
+<li><strong>检查索引选择是否合适</strong>：索引选择不当可能会导致慢索引的问题。例如，选择了不适合查询条件的索引类型，或者索引覆盖不够，都可能导致查询变慢。可以通过查询计划或使用FORCE INDEX来检查索引选择是否合适。</li>
+<li><strong>检查数据分布是否均匀</strong>：数据分布不均匀可能会导致慢索引的问题。例如，某些值的分布比较密集，而其他值的分布比较稀疏，使用索引可能会导致查询的效率降低。可以使用统计函数和分析工具来检查数据分布是否均匀。</li>
+<li><strong>优化索引设计</strong>：优化索引设计是解决慢索引问题的关键。可以通过增加索引、删除冗余索引、优化索引字段、调整索引顺序等方式来优化索引设计，提高查询效率。</li>
+</ol>
+<p>总之，排查和调优慢索引需要综合考虑多个因素，包括索引设计、查询计划、数据分布等。需要进行定期的性能测试和优化，以保证数据库的高效和可靠性。</p>
+<h1 id="MySQL-select-xxx-from-xx-where-a-a-100-会走索引吗，怎么改会走索引"><a href="#MySQL-select-xxx-from-xx-where-a-a-100-会走索引吗，怎么改会走索引" class="headerlink" title="MySQL select xxx from xx where a*a = 100 会走索引吗，怎么改会走索引"></a>MySQL select xxx from xx where a*a = 100 会走索引吗，怎么改会走索引</h1><p>如果对于这个查询条件 <code>a*a = 100</code>，如果表中存在 a 列的索引，MySQL 可以使用索引加速查询。但是由于这个查询条件不是一个简单的列名或者列名与常量的比较，而是一个<strong>表达式</strong>，所以 MySQL 的优化器可能无法使用索引来加速查询。</p>
+<p>为了让 MySQL 使用索引加速这个查询，可以<strong>考虑对查询条件进行优化</strong>。例如，可以将查询条件改写为 <code>a = sqrt(100)</code>，这样就可以直接使用 a 列的索引了。</p>
+<p>另外，如果表中不存在 a 列的索引，可以通过创建索引来优化查询性能。可以使用如下语句创建一个 a 列的索引：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX idx_a ON table_name(a);</span><br></pre></td></tr></table></figure>
+
+<p>创建索引后，MySQL 将会使用该索引来加速查询。需要注意的是，索引并不是越多越好，过多的索引会占用大量的磁盘空间，并且会影响写操作的性能。因此，需要根据具体的业务场景和查询需求来选择合适的索引策略。</p>
+<h1 id="4G大小的文本，统计单词的个数"><a href="#4G大小的文本，统计单词的个数" class="headerlink" title="4G大小的文本，统计单词的个数"></a>4G大小的文本，统计单词的个数</h1><p>对于 4G 大小的文本文件，要统计单词的个数，可以使用 Java 中的自然语言处理库，如 NLTK、spaCy 和 Stanford CoreNLP。下面是一个简单的 Java 程序，它可以对给定的文本文件进行分析，并统计单词的个数。</p>
+<p>首先，需要安装必要的自然语言处理库，如 NLTK、spaCy 和 Stanford CoreNLP。可以使用以下命令来安装这些库:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install nltk  </span><br><span class="line">pip install spacy  </span><br><span class="line">pip install Stanford CoreNLP  </span><br></pre></td></tr></table></figure>
+
+<p>然后，可以使用 Java 中的 File 类和 IOException 类来读取文本文件。以下是一个简单的示例代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;  </span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;  </span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.nltk.api.APILoader;  </span><br><span class="line"><span class="keyword">import</span> org.nltk.api.nltk.NetGraph;  </span><br><span class="line"><span class="keyword">import</span> org.nltk.api.nltk.tokenize.JNK;  </span><br><span class="line"><span class="keyword">import</span> org.nltk.data.FileHandler;  </span><br><span class="line"><span class="keyword">import</span> org.nltk.data.Loader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;  </span><br><span class="line">       <span class="comment">// 加载自然语言处理库  </span></span><br><span class="line">       APILoader.load();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 读取文本文件  </span></span><br><span class="line">       FileReader reader = <span class="keyword">new</span> FileReader(<span class="string">&quot;text.txt&quot;</span>);  </span><br><span class="line">       BufferedReader br = <span class="keyword">new</span> BufferedReader(reader);  </span><br><span class="line">       String line;  </span><br><span class="line">       <span class="keyword">int</span> numWords = <span class="number">0</span>;  </span><br><span class="line">       <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;  </span><br><span class="line">           String[] tokens = JNK.tokenize(line);  </span><br><span class="line">           numWords += tokens.length;  </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 关闭资源  </span></span><br><span class="line">       br.close();  </span><br><span class="line">       reader.close();  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序使用 NLTK、spaCy 和 Stanford CoreNLP 库来读取文本文件，并使用 JNK 库来分词。它首先加载自然语言处理库，然后使用 FileReader 类和 BufferedReader 类来读取文本文件。在循环中，它使用 JNK 库来对每个单词进行分词，并计算单词的数量。最后，它关闭资源并打印结果。</p>
+<p>需要注意的是，使用这些自然语言处理库可能会耗费大量的计算资源和时间。因此，对于较小的文本文件，可以简化程序逻辑，仅计算文本中单词的个数，而不必使用自然语言处理技术。</p>
+<h1 id="Redis数据结构"><a href="#Redis数据结构" class="headerlink" title="Redis数据结构"></a>Redis数据结构</h1><p>Redis是一种<strong>高性能的键值存储数据库</strong>，支持多种数据结构，包括：</p>
+<ol>
+<li><strong>字符串（String）</strong>：字符串是Redis最基本的数据结构之一，可以存储任何类型的数据，包括数字、文本、二进制数据等。字符串可以进行多种操作，如读写、追加、递增递减、查找等。</li>
+<li><strong>列表（List）</strong>：列表是Redis中的一个有序集合，可以存储多个元素，每个元素都可以是字符串。列表可以进行多种操作，如插入、删除、获取、修剪、查询等。</li>
+<li><strong>集合（Set）</strong>：集合是一个无序的、不允许重复元素的数据结构，可以存储多个元素，每个元素都是唯一的。集合可以进行多种操作，如添加、删除、获取、随机选择、求交集、求并集、求差集等。</li>
+<li><strong>散列表（Hash）</strong>：散列表是一个键值对的无序集合，可以存储多个键值对，每个键值对都是一个字符串。散列表可以进行多种操作，如添加、删除、获取、查询、批量操作等。</li>
+<li><strong>有序集合（Sorted Set）</strong>：有序集合是一个元素带有分数的集合，可以存储多个元素，每个元素都有一个唯一的分数，可以根据分数进行排序。有序集合可以进行多种操作，如添加、删除、获取、查询、排序、范围查询等。</li>
+</ol>
+<p>除了以上常见的数据结构，Redis还支持一些特殊的数据结构，如：</p>
+<ol>
+<li><strong>地理位置（Geo）</strong>：用于存储地理位置数据，可以进行地理位置计算和查询。</li>
+<li><strong>位图（Bitmap）</strong>：用于存储位数据，可以进行位运算和位图计算。</li>
+<li><strong>布隆过滤器（Bloom Filter）</strong>：用于快速判断一个元素是否存在于集合中，可以减少查询数据库的次数。</li>
+</ol>
+<p>以上是Redis支持的常见数据结构，每种数据结构都有其特定的用途和优势，在实际应用中需要根据具体情况选择合适的数据结构。</p>
+<h1 id="Redis持久化机制"><a href="#Redis持久化机制" class="headerlink" title="Redis持久化机制"></a>Redis持久化机制</h1><p>Redis提供了两种持久化机制：RDB和AOF。</p>
+<ol>
+<li><strong>RDB持久化机制</strong></li>
+</ol>
+<p>RDB持久化机制是Redis<strong>默认的持久化方式</strong>，它将Redis的数据<strong>以快照的方式保存到硬盘中</strong>。RDB持久化机制可以手动执行，也可以配置自动执行的时间。</p>
+<p>RDB持久化机制的优点是<strong>快速和节省存储空间</strong>，因为它将Redis的数据以二进制格式保存到硬盘中，占用的存储空间相对较小。此外，RDB持久化机制在<strong>恢复大量数据时速度很快</strong>。</p>
+<p>RDB持久化机制的缺点是，如果<strong>Redis崩溃或出现故障，最后一次快照之后的所有数据都将丢失</strong>，因为在最后一次快照之后，Redis没有将所有的修改操作写入硬盘。</p>
+<ol start="2">
+<li><strong>AOF持久化机制</strong></li>
+</ol>
+<p>AOF持久化机制是<strong>将Redis的所有写操作都保存在一个文件中</strong>。当Redis重启时，它会重新执行保存在AOF文件中的所有写操作，以恢复数据。AOF持久化机制可以配置自动执行的时间，也可以手动执行。</p>
+<p>AOF持久化机制的优点是<strong>数据的安全性更高</strong>，因为它会记录所有的写操作，即使Redis发生崩溃，也可以通过AOF文件来恢复数据。此外，AOF持久化机制也可以通过配置自动重写机制来重新生成AOF文件，以减小AOF文件的大小。</p>
+<p>AOF持久化机制的缺点是相对于RDB持久化机制，它的<strong>写入速度较慢，同时也占用更多的存储空间</strong>。</p>
+<p>综上所述，<strong>RDB持久化机制适用于对数据完整性要求不高的场景，而AOF持久化机制适用于对数据完整性要求较高的场景</strong>。在实际应用中，可以根据业务需求和数据特性选择合适的持久化机制。</p>
+<h1 id="Redis缓存雪崩-击穿-穿透分别是什么，如何避免"><a href="#Redis缓存雪崩-击穿-穿透分别是什么，如何避免" class="headerlink" title="Redis缓存雪崩/击穿/穿透分别是什么，如何避免"></a>Redis缓存雪崩/击穿/穿透分别是什么，如何避免</h1><p>Redis缓存雪崩、缓存击穿和缓存穿透是常见的缓存问题，它们具体含义和解决方法如下：</p>
+<ol>
+<li><strong>缓存雪崩</strong></li>
+</ol>
+<p>缓存雪崩是指缓存中的大量数据在同一时间失效或者缓存服务器宕机，导致所有请求都落到数据库上，从而导致数据库压力骤增，甚至引起宕机。</p>
+<p>避免方法：</p>
+<ul>
+<li>设置不同的过期时间，避免同时大量缓存数据失效；</li>
+<li>使用分布式锁或者队列等机制，避免在缓存失效的同时大量请求直接落到数据库上；</li>
+<li>设置热点数据永不过期或者定时刷新，避免在同一时间大量请求同时落到数据库上。</li>
+</ul>
+<ol start="2">
+<li><strong>缓存击穿</strong></li>
+</ol>
+<p>缓存击穿是指一个不存在于缓存中的数据，被大量并发请求查询，导致请求直接落到数据库上，从而导致数据库压力骤增，甚至引起宕机。</p>
+<p>避免方法：</p>
+<ul>
+<li>使用布隆过滤器等技术，快速过滤掉不存在的数据请求；</li>
+<li>在查询数据库之前，先查询缓存，如果缓存没有数据，使用互斥锁或者分布式锁等机制，防止并发请求同时查询数据库；</li>
+<li>设置热点数据永不过期或者定时刷新，避免在同一时间大量请求同时落到数据库上。</li>
+</ul>
+<ol start="3">
+<li><strong>缓存穿透</strong></li>
+</ol>
+<p>缓存穿透是指查询一个不存在的数据，由于缓存中没有该数据，所以每次请求都会直接查询数据库，导致数据库压力骤增，甚至引起宕机。</p>
+<p>避免方法：</p>
+<ul>
+<li>使用布隆过滤器等技术，快速过滤掉不存在的数据请求；</li>
+<li>对于不存在的数据，可以将其缓存为空值，避免在短时间内重复查询数据库；</li>
+<li>使用缓存预热技术，提前将热门数据缓存到Redis中，避免缓存穿透。</li>
+</ul>
+<p>总之，避免Redis缓存雪崩、缓存击穿、缓存穿透，需要对缓存进行合理的设计和优化，采用多种技术手段，如分布式锁、缓存预热、布隆过滤器等，以提高缓存的命中率和稳定性。</p>
+<h1 id="项目如何优化提升效率"><a href="#项目如何优化提升效率" class="headerlink" title="项目如何优化提升效率"></a>项目如何优化提升效率</h1><ol>
+<li><strong>缓存数据</strong>：使用缓存技术，例如 Redis、Memcached 等，来减少数据库的访问次数。缓存可以帮助减少对数据库的访问，从而提高系统的响应速度。</li>
+<li><strong>数据库优化</strong>：优化数据库查询，使用索引、缓存等技术手段，减少数据库查询次数，提高查询效率。</li>
+<li><strong>分库分表</strong>：如果数据量过大，可以考虑使用分库分表的方式，将数据分散到多个数据库或表中，以提高系统的并发能力和负载能力。</li>
+<li><strong>异步处理</strong>：使用异步处理技术，例如线程池、async/await 等，来减少线程创建和销毁的开销，提高系统的并发能力。</li>
+<li><strong>性能测试</strong>：在项目开发过程中，定期进行性能测试，评估系统的性能瓶颈和瓶颈部位，从而针对性地进行优化。</li>
+<li><strong>代码优化</strong>：对代码进行优化，例如使用缓存、减少内存分配、减少 IO 操作等，以提高代码的性能和效率。</li>
+<li><strong>分布式架构</strong>：如果系统规模不断扩大，可以考虑使用分布式架构，例如微服务架构、分布式缓存等，以提高系统的可扩展性和可靠性。</li>
+</ol>
+<p>以上是一些可能的优化提升效率的建议，具体优化方案需要根据实际情况进行选择。</p>
+<h1 id="SpringBoot-SpringCloud"><a href="#SpringBoot-SpringCloud" class="headerlink" title="SpringBoot/SpringCloud"></a>SpringBoot/SpringCloud</h1><p>SpringBoot 和 SpringCloud 是 Spring 框架的两个<strong>子框架</strong>，它们都用于构建企业级应用程序。</p>
+<p>SpringBoot 是一个基于 Spring Boot 框架的快速开发应用程序的工具，它提供了一组库和工具，用于简化 Spring 应用程序的开发过程。它支持在 Java 语言中开发 RESTful API 和 Web 应用程序，并且<strong>可以轻松地集成其他 Spring 框架</strong>，例如 Spring Data、Spring Security 和 Thymeleaf 模板引擎等。SpringBoot 还提供了一些额外的功能，如<strong>自动化配置和应用程序日志记录</strong>等。</p>
+<p>SpringCloud 是 Spring 框架的子框架之一，它<strong>提供了一组用于构建微服务架构和分布式应用程序的工具和库</strong>。它支持在 Java 语言中开发 RESTful API、Web 应用程序和微服务，并且可以轻松地集成其他 Spring 框架和第三方库，例如 Spring Data、Spring Security、Zookeeper 和 Redis 等。SpringCloud 提供了广泛的配置和自动化功能，例如<strong>服务发现、配置中心、负载均衡、断路器等，以简化分布式应用程序的开发和部署</strong>。</p>
+<p>总的来说，SpringBoot 和 SpringCloud 都是用于构建企业级应用程序的工具，它们提供了一些简化开发过程的功能，以帮助开发人员更快速地构建和部署应用程序。对于开发人员来说，了解这两个框架的基本概念和使用方法是非常重要的。</p>
+<h1 id="ioc怎么实现的"><a href="#ioc怎么实现的" class="headerlink" title="ioc怎么实现的"></a>ioc怎么实现的</h1><p>IOC（Inversion of Control，控制反转）是一种设计思想，它的核心思想是<strong>将对象的创建、依赖关系的管理、调用等控制权交给IOC容器</strong>，以减少代码耦合度，提高代码的可重用性和可维护性。在Java中，Spring框架是一种常用的IOC容器。</p>
+<p>在Spring中，IOC的实现主要依靠以下两种方式：</p>
+<ol>
+<li><p><strong>依赖注入</strong>（Dependency Injection，DI）：依赖注入是IOC的核心技术之一，它通过IOC容器自动将依赖的对象注入到需要它的对象中。在Spring中，依赖注入可以通过构造函数注入、Setter方法注入、接口注入等方式实现。</p>
+</li>
+<li><p><strong>控制反转</strong>（Inversion of Control，IOC）：控制反转是IOC容器的核心概念，它将对象的创建、依赖关系的管理、调用等控制权交给IOC容器，由IOC容器负责管理对象的生命周期和调用对象的方法。</p>
+</li>
+</ol>
+<p>具体实现过程如下：</p>
+<ol>
+<li><p><strong>声明Bean</strong>：在Spring配置文件中声明Bean，包括Bean的类型、名称、属性等信息。</p>
+</li>
+<li><p><strong>加载Bean</strong>：在应用程序启动时，IOC容器会读取Spring配置文件，加载Bean的定义信息，并创建Bean的实例。</p>
+</li>
+<li><p><strong>注入依赖</strong>：当IOC容器创建Bean的实例时，会自动将Bean所依赖的其他Bean注入到该实例中，以满足Bean的运行需要。</p>
+</li>
+<li><p><strong>控制对象的生命周期</strong>：IOC容器负责管理Bean的生命周期，包括Bean的创建、初始化、运行和销毁等过程。</p>
+</li>
+<li><p><strong>提供访问接口</strong>：IOC容器提供访问Bean的接口，以便应用程序可以通过IOC容器来获取所需要的Bean实例。</p>
+</li>
+</ol>
+<p>总之，IOC是一种设计思想，它通过依赖注入和控制反转等技术实现了对象的解耦和依赖关系的管理，提高了代码的可重用性和可维护性。在Java中，Spring框架是一种常用的IOC容器，它通过Bean的声明、加载、依赖注入和生命周期管理等实现了IOC的核心功能。</p>
+<h1 id="bean是单例还是多例，是线程安全的吗"><a href="#bean是单例还是多例，是线程安全的吗" class="headerlink" title="bean是单例还是多例，是线程安全的吗"></a>bean是单例还是多例，是线程安全的吗</h1><p>在Spring中，Bean的作用域可以通过配置来指定，常见的作用域有单例（Singleton）和多例（Prototype）两种。</p>
+<ol>
+<li><p><strong>单例（Singleton）</strong>：在默认情况下，Spring的Bean是单例的，即每个Bean在容器中只有一个实例。这意味着每次调用该Bean时，都会返回同一个实例。单例Bean的优点是可以减少内存占用和提高性能，缺点是如果Bean的属性不是线程安全的，可能会出现并发问题。</p>
+</li>
+<li><p><strong>多例（Prototype）</strong>：多例Bean每次在容器中被请求时都会创建一个新的实例。多例Bean的优点是每次请求都会返回一个新的实例，避免了线程安全问题，缺点是会增加内存占用和降低性能。</p>
+</li>
+</ol>
+<p>需要注意的是，Spring还提供了其他一些作用域，如请求作用域（Request）、会话作用域（Session）和全局作用域（Global Session）等，它们的作用域范围更加具体。</p>
+<p>在多线程环境下，Bean的线程安全性取决于Bean的实现方式和属性的访问方式。<strong>如果Bean的属性是线程安全的，那么即使是单例模式，也不会出现并发问题。如果Bean的属性不是线程安全的，那么在多线程环境下，需要采取相应的措施来保证线程安全，例如使用同步块或者使用ThreadLocal等技术。</strong></p>
+<h1 id="SpringBoot的特点"><a href="#SpringBoot的特点" class="headerlink" title="SpringBoot的特点"></a>SpringBoot的特点</h1><p>以下是 Spring Boot 的特点：</p>
+<ol>
+<li><p><strong>简化配置</strong>：Spring Boot 通过自动配置，可以让开发者不需要进行大量的配置工作，而是通过默认配置来实现项目的快速建立和运行。</p>
+</li>
+<li><p><strong>自动化配置</strong>：Spring Boot 通过自动化配置，可以自动配置大量的第三方依赖，让开发者专注于业务逻辑的实现。</p>
+</li>
+<li><p><strong>微服务支持</strong>：Spring Boot 提供了丰富的支持微服务的特性，例如服务注册和发现、负载均衡、断路器等，方便开发者构建分布式系统。</p>
+</li>
+<li><p><strong>内嵌服务器</strong>：Spring Boot 可以嵌入多种 Web 服务器，例如 Tomcat、Jetty、Undertow 等，无需部署到外部服务器上。</p>
+</li>
+<li><p><strong>统一依赖管理</strong>：Spring Boot 通过统一依赖管理，可以避免依赖冲突和版本不一致的问题，同时也能够方便地升级依赖版本。</p>
+</li>
+<li><p><strong>健康检查</strong>：Spring Boot 提供了健康检查的功能，可以方便地检查应用程序是否正常运行。</p>
+</li>
+<li><p><strong>监控和管理</strong>：Spring Boot 提供了多种监控和管理工具，例如 Actuator，可以方便地监控和管理应用程序。</p>
+</li>
+<li><p><strong>高度可配置</strong>：Spring Boot 提供了大量的配置选项，可以根据实际需求进行灵活的配置。</p>
+</li>
+<li><p><strong>易于集成</strong>：Spring Boot 可以轻松地集成其他 Spring 生态系统中的框架和组件，例如 Spring Data、Spring Security 等。</p>
+</li>
+<li><p><strong>开发效率高</strong>：Spring Boot 提供了丰富的快速开发工具，例如 Spring Initializr、Spring Boot DevTools 等，可以提高开发效率。</p>
+</li>
+</ol>
+<h1 id="Spring-Boot-自动配置的注解呢？"><a href="#Spring-Boot-自动配置的注解呢？" class="headerlink" title="Spring Boot 自动配置的注解呢？"></a>Spring Boot 自动配置的注解呢？</h1><p>Spring Boot 中常用的自动配置注解有：</p>
+<ol>
+<li><p>@SpringBootApplication：该注解是 Spring Boot 应用程序的主注解，包含了 @Configuration、@EnableAutoConfiguration 和 @ComponentScan 注解。</p>
+</li>
+<li><p>@EnableAutoConfiguration：该注解<strong>启用 Spring Boot 的自动配置机制</strong>，根据项目中的依赖和配置，自动配置 Spring 框架和第三方库。</p>
+</li>
+<li><p>@ConfigurationProperties：该注解<strong>用于绑定配置文件中的属性值到 JavaBean 中</strong>，可以通过 @Value 注解完成单个属性的注入。</p>
+</li>
+<li><p>@ComponentScan：该注解<strong>用于扫描指定包及其子包下的所有 Spring 组件</strong>（包括 @Component、@Service、@Controller、@Repository 等注解标注的类）。</p>
+</li>
+<li><p>@ConditionalOnClass：该注解用于根据指定类是否存在来决定是否启用自动配置。</p>
+</li>
+<li><p>@ConditionalOnBean：该注解用于根据指定 Bean 是否存在来决定是否启用自动配置。</p>
+</li>
+<li><p>@ConditionalOnProperty：该注解用于根据指定属性是否存在来决定是否启用自动配置。</p>
+</li>
+<li><p>@ConditionalOnMissingBean：该注解用于根据指定 Bean 是否缺失来决定是否启用自动配置。</p>
+</li>
+<li><p>@AutoConfigureAfter：该注解用于指定自动配置类的加载顺序，可以在该注解中指定其他自动配置类。</p>
+</li>
+<li><p>@AutoConfigureBefore：该注解用于指定自动配置类的加载顺序，可以在该注解中指定其他自动配置类。</p>
+</li>
+</ol>
+<h1 id="超卖问题"><a href="#超卖问题" class="headerlink" title="超卖问题"></a>超卖问题</h1><p>设计挂号的数据结构（12点结束，10:50有四十个人一起抢，医生看不完，15分钟一个区间划分粒度）</p>
+<p>针对超卖问题，一种可行的解决方案是使用数据结构来实现挂号系统。以下是一种可能的设计方案:</p>
+<ol>
+<li><p>使用一个数组来记录当前已经挂号的人数，用一个数组来记录当前还剩下多少个挂号机会。</p>
+</li>
+<li><p>使用一个定时器，每隔 15 分钟更新一次当前已经挂号的人数和剩余挂号机会的数量。</p>
+</li>
+<li><p>当 12 点结束时，如果还有 40 个人同时挂号，则立即开始处理。</p>
+</li>
+<li><p>处理过程如下:</p>
+<p>a. 将所有挂号请求放入一个队列中。</p>
+<p>b. 从队列中取出第一个挂号请求，判断该请求是否可以被处理。如果该请求已经被处理过，或者已经超过了处理时间，则将其放回队列中。</p>
+<p>c. 如果该请求还没有被处理，且当前已经挂号的人数已经超过了医生的能力范围，则将当前已经挂号的人数减 1，并将该请求放入一个等待队列中，等待下一轮处理。</p>
+<p>d. 如果当前已经挂号的人数还没有超过医生的能力范围，则将该请求进行处理，并更新当前已经挂号的人数和剩余挂号机会的数量。</p>
+<p>e. 将队列中所有已经处理过的挂号请求重新放入队列中，以便下一轮处理。</p>
+</li>
+<li><p>在定时器到期时，重新进行一次挂号处理。</p>
+</li>
+</ol>
+<p>通过以上设计方案，可以保证在医生看不完的情况下，尽可能多地给挂号的患者提供诊疗服务。同时，通过使用队列来处理挂号请求，可以保证系统的稳定性和可靠性，避免超卖问题导致的系统崩溃和其他不良影响。</p>
+<h1 id="介绍线程池"><a href="#介绍线程池" class="headerlink" title="介绍线程池"></a>介绍线程池</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>线程池做的工作主要是控制运行的线程的数量，<strong>处理过程中将任务放入队列</strong>，然后在线程创建后启动这些任务，<strong>如果线程数量超过了最大数量，超出数量的线程排队等候</strong>，等其他线程执行完毕后，再从队列中取出任务来执行。</p>
+<p>主要特点：</p>
+<ul>
+<li>线程复用</li>
+<li>控制最大并发数</li>
+<li>管理线程</li>
+</ul>
+<ol>
+<li><strong>降低资源消耗。</strong>通过重复利用已创建的线程降低线程创建和销毁造成的消耗</li>
+<li><strong>提高响应速度。</strong>当任务到达时，任务可以不需要等到线程创建就能立即执行</li>
+<li><strong>提高线程的可管理性。</strong>线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</li>
+</ol>
+<h2 id="线程池3个常用方式"><a href="#线程池3个常用方式" class="headerlink" title="线程池3个常用方式"></a>线程池3个常用方式</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>Java中的线程池是通过Executor框架实现的，该框架中用到了Executor、Executors、ExecutorService、<strong>ThredPoolExecutor</strong>这几个类。</p>
+<h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><ol>
+<li><code>Executors.newScheduledThreadPool()</code>：带调度的</li>
+<li>Java8新出：<code>Executors.newWorkStealingPool(int)</code>——Java8，使用目前机器上可用的处理器作为它的并行级别</li>
+</ol>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><ol>
+<li>Executors.newFixedThreadPool(int)</li>
+</ol>
+<p>主要特点如下：</p>
+<ul>
+<li><strong>执行长期的任务，性能好很多</strong></li>
+<li>创建一个<strong>定长线程池</strong>，可控制线程最大并发数，超出的线程会在队列中等待</li>
+<li>newFixedThreadPool创建的线程池corePoolSize和maximumPoolSize值是相等的，它使用的是LinkedBlockingQueue</li>
+</ul>
+<ol start="2">
+<li>Executors.newSingleThreadExecutor()</li>
+</ol>
+<p>主要特点如下：</p>
+<ul>
+<li><strong>一个任务一个任务执行的场景</strong></li>
+<li>创建一个<strong>单线程化</strong>的线程池，它只会用唯一的工作线程来执行任务，保证所有的任务按照指定顺序执</li>
+<li>newSingleThreadExecutor将corePoolSize和maximumPoolSize都设置为1，使用LinkedBlockingQueue</li>
+</ul>
+<ol start="3">
+<li>Executors.newCachedThreadPool()</li>
+</ol>
+<p>主要特点如下：</p>
+<ul>
+<li><strong>适用：执行很多短期异步的小程序或者负载较轻的服务器</strong></li>
+<li>创建一个<strong>可缓存线程池</strong>，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程</li>
+<li>newCachedThreadPool将corePoolSize设置为0，将maximumPoolSize设置为Integer.MAX_VALUE，使用SynchronousQueue，也就说，来了任务就创建线程运行，当线程空闲超过60s，就销毁线程。</li>
+</ul>
+<h2 id="任务提交后，什么流程？"><a href="#任务提交后，什么流程？" class="headerlink" title="任务提交后，什么流程？"></a>任务提交后，什么流程？</h2><p><img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%95%E5%B1%82%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png"></p>
+<ol>
+<li>在创建了线程池后，等待提交过来的任务请求</li>
+<li>当调用<code>execute()</code>方法，添加一个请求任务时，线程池会做以下判断：<ol>
+<li>如果正在运行的线程数量小于corePoolSize，那么马上创建线程运行这个任务</li>
+<li>如果正在运行的线程数量大于等于corePoolSize，那么将这个任务<strong>放入队列</strong></li>
+<li>如果队列满了，且正在运行的线程数量还小于maximumPoolSize，那么还是要创建非核心线程立刻运行这个任务</li>
+<li>如果队列满了，且正在运行的线程数量大于等于maximumPoolSize，那么线程池会<strong>启动饱和拒绝策略</strong></li>
+</ol>
+</li>
+<li>当一个线程完成任务时，它会从队列中取下一个任务来执行</li>
+<li>当一个线程无事可做超过一定的时间（keepAliveTime）时，线程池会做以下判断：<ol>
+<li>如果当前运行的线程数大于corePoolSize，那么这个线程就会被停掉</li>
+<li>所有线程池的任务都完成后，会<strong>最终收缩到corePoolSize大小</strong></li>
+</ol>
+</li>
+</ol>
+<h1 id="线程的状态，状态转化"><a href="#线程的状态，状态转化" class="headerlink" title="线程的状态，状态转化"></a>线程的状态，状态转化</h1><p>线程的状态及其转化如下:</p>
+<ol>
+<li>新建状态(New)：新创建了一个线程对象。</li>
+<li>就绪状态(Runnable)：线程对象创建后，其它线程调用了该对象的start()方法。该状态的线程位于可执行线程池中，变得可执行，等待获取CPU的使用权。</li>
+<li>执行状态(Running)：就绪状态的线程获取了CPU。执行程序代码。</li>
+<li>堵塞状态(Blocked)：堵塞状态是线程由于某种原因放弃CPU使用权。临时停止执行。直到线程进入就绪状态，才有机会转到执行状态。</li>
+<li>死亡状态(Dead)：线程运行完了或者因异常退出了run()方法，该线程结束生命周期。</li>
+</ol>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2.png" style="zoom:50%;" />
+
+<p>线程的状态转换是操作系统对线程进行管理的一种手段，它可以帮助程序员更好地控制线程的执行过程，并且提高程序的可维护性和可扩展性。</p>
+<h1 id="如何保证线程安全"><a href="#如何保证线程安全" class="headerlink" title="如何保证线程安全"></a>如何保证线程安全</h1><p>保证线程安全的方法有很多种，以下是几种常用的方法:</p>
+<ol>
+<li><strong>使用互斥锁</strong>：互斥锁可以帮助线程控制对共享资源的访问，避免多个线程同时访问共享资源而导致数据的不一致或者死锁等问题。在使用互斥锁时，需要确保每个线程都对锁进行正确的释放，否则会导致锁被永久占用，造成资源浪费。</li>
+<li><strong>使用信号量</strong>：信号量是一种计数器，用于控制多个线程对共享资源的并发访问。当一个线程需要访问共享资源时，可以先加 1，表示已经占有该资源，当访问完成后，再将计数器减 1。这样其他线程就可以根据计数器的变化来判断是否可以继续访问共享资源。</li>
+<li><strong>使用条件变量</strong>：条件变量用于线程间的协调和同步，当一个线程需要等待某个条件满足时，可以等待条件变量，而其他线程则可以唤醒该条件变量。在使用条件变量时，需要确保线程正确地处理等待和唤醒的过程，避免死锁等问题。</li>
+<li><strong>避免多个线程同时访问共享资源</strong>：如果多个线程同时访问共享资源，就容易导致数据的不一致或者死锁等问题。因此，应该尽量避免多个线程同时访问共享资源，可以通过加入等待队列等方式来控制多个线程的并发访问。</li>
+<li><strong>使用线程池</strong>：线程池可以帮助程序员管理线程，避免手动创建和管理线程，从而提高程序的性能和可维护性。在使用线程池时，需要确保线程池正确地处理线程的死亡和唤醒过程，避免线程的无限期等待等问题。</li>
+</ol>
+<p>以上是几种常用的保证线程安全的方法，程序员在编写线程安全的程序时，需要根据实际情况选择合适的方法，并且正确地处理可能出现的异常情况，以确保程序的正确性和稳定性。</p>
+<h1 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h1><p>进程和线程是操作系统中的两个基本概念，它们是多任务处理的两种不同方式。</p>
+<ol>
+<li><p>进程（Process）是程序的一次执行过程，是<strong>操作系统资源分配的基本单位</strong>。每个进程都有自己独立的内存空间、代码、数据和系统资源等，进程之间相互独立，互相之间不能直接访问。操作系统通过进程调度算法来控制进程之间的切换，以实现多任务处理。</p>
+</li>
+<li><p>线程（Thread）是进程中的一个执行单元，是<strong>操作系统资源调度的基本单位</strong>。一个进程可以包含多个线程，它们共享进程的内存空间和系统资源，可以直接访问进程中的数据。不同的线程可以并发执行，提高了程序的并发性和响应性。</p>
+</li>
+</ol>
+<p>进程和线程之间的区别主要体现在以下几个方面：</p>
+<ol>
+<li><p><strong>资源管理</strong>：进程拥有独立的内存空间和系统资源，线程共享进程的内存空间和系统资源。</p>
+</li>
+<li><p><strong>调度</strong>：进程之间的切换需要保存和恢复进程的上下文信息，开销较大；线程之间的切换只需要保存和恢复线程的上下文信息，开销较小。</p>
+</li>
+<li><p><strong>并发性</strong>：进程之间相互独立，不能直接访问，需要使用进程间通信机制来实现数据共享；线程之间共享进程的内存空间和系统资源，可以直接访问进程中的数据，因此通信开销较小，提高了程序的并发性和响应性。</p>
+</li>
+<li><p><strong>安全性</strong>：不同的进程之间相互独立，互相之间不能直接访问，可以提高系统的安全性；线程之间共享进程的内存空间和系统资源，需要加锁或使用其他同步机制来保证线程之间的安全性。</p>
+</li>
+</ol>
+<p>总之，进程和线程是操作系统中的两个基本概念，它们之间的区别主要体现在资源管理、调度、并发性和安全性等方面，选择合适的多任务处理方式可以提高程序的并发性、响应性和安全性。</p>
+<h1 id="CAS是什么，有什么问题"><a href="#CAS是什么，有什么问题" class="headerlink" title="CAS是什么，有什么问题"></a>CAS是什么，有什么问题</h1><h2 id="CAS-Demo"><a href="#CAS-Demo" class="headerlink" title="CAS Demo"></a>CAS Demo</h2><p>CompareAndSwap，<strong>比较并交换</strong>。</p>
+<p><strong>与期望值相同，才可以进行修改</strong>，返回布尔值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CAS</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AtomicInteger atomicInteger = <span class="keyword">new</span> AtomicInteger(<span class="number">5</span>);</span><br><span class="line">        System.out.println(atomicInteger.compareAndSet(<span class="number">5</span>, <span class="number">2023</span>) + <span class="string">&quot;\t current data: &quot;</span> + atomicInteger.get());</span><br><span class="line">        System.out.println(atomicInteger.compareAndSet(<span class="number">5</span>, <span class="number">1029</span>) + <span class="string">&quot;\t current data: &quot;</span> + atomicInteger.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">true	 current data: 2023</span><br><span class="line">false	 current data: 2023</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><h3 id="Unsafe"><a href="#Unsafe" class="headerlink" title="Unsafe"></a>Unsafe</h3><p>Unsafe是CAS的核心类，由于Java方法无法直接访问底层系统，需要通过本地（native）方法来访问，Unsafe相当于一个后门，基于该类可以直接操作特定内存的数据。<strong>Unsafe类存在于sun.misc包中</strong>，其内部方法操作可以向C的指针一样直接操作内存，因为Java中的CAS操作的执行依赖于Unsafe类的方法。</p>
+<p>注意：<strong>Unsafe类中所有的方法都是native修饰的，也就是说Unsafe类中的方法都直接调用操作系统底层资源执行相应任务。</strong></p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/Unsafe%E6%BA%90%E7%A0%81.png" style="zoom:50%;" />
+
+<p>变量valueOffset，表示<strong>该变量在内存中的偏移地址</strong>，因为Unsafe就是根据内存偏移地址获取数据的。</p>
+<p>变量value用volatile修饰，保证了多线程之间的内存可见性。</p>
+<h3 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h3><p>CAS，全称Compare-And-Swap，是<strong>一条CPU并发原语</strong>。</p>
+<p>功能：判断内存某个位置的值是否为预期值，如果是，则更改为新的值，<strong>这个过程是原子的</strong>。</p>
+<p>CAS并发原语体现在Java语言中就是sun.misc.Unsafe类中的各个方法。调用Unsafe类中的CAS方法，JVM会帮我们实现出CAS汇编指令。这是一种完全依赖于硬件的功能，通过它实现了原子操作。再次强调，由于CAS是一种系统原语，原语属于操作系统用语范畴，是由若干条指令组成的，用于完成某个功能的一个过程，并且<strong>原语的执行必须是连续的，在执行过程中不允许被中断，也就是说CAS是一条CPU的原子指令，不会造成所谓的数据不一致问题。</strong></p>
+<p><code>atomicInteger.getAndIncrement()</code>源码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndIncrement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> unsafe.getAndAddInt(<span class="keyword">this</span>, valueOffset, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getAndAddInt</span><span class="params">(Object o, <span class="keyword">long</span> offset, <span class="keyword">int</span> delta)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        v = getIntVolatile(o, offset);</span><br><span class="line">    &#125; <span class="keyword">while</span> (!compareAndSwapInt(o, offset, v, v + delta));</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>o</code>：AtomicInteger对象本身</li>
+<li><code>offset</code>：该对象值的引用地址</li>
+<li><code>delta</code>：需要变动的数量</li>
+<li><code>v</code>：通过<code>o</code>和<code>offset</code>找出的主内存中真实的值</li>
+</ul>
+<p>用该对象当前的值与v进行比较：</p>
+<ul>
+<li>相同：更新<code>v + delta</code>并返回true</li>
+<li>不同：继续取值，然后再比较，知道更新完成</li>
+</ul>
+<p>过程示例：</p>
+<p>假设线程A和线程B两个线程同时执行getAndAddInt操作（分别跑在不同的CPU上）</p>
+<ol>
+<li>AtomicInteger里面的value原始值为5，即主内存中AtomicInteger的value为5，根据JMM模型，线程A和线程B各自持有一份值为5的value的副本到各自的工作内存中。</li>
+<li>线程A通过<code>getIntVolatile(o, offset)</code>方法，拿到value值5，这时线程A被挂起。</li>
+<li>此时线程B也通过<code>getIntVolatile(o, offset)</code>方法，拿到value值5，此时刚好线程B<strong>没有被挂起，并执行</strong><code>compareAndSwapInt(o, offset, v, v + delta)</code>方法比较内存值也为5，成功修改内存值为6，线程B打完收工，一切OK。</li>
+<li>这时线程A恢复，执行<code>compareAndSwapInt(o, offset, v, v + delta)</code>方法比较，发现自己手里的值5和主内存值6不一致，说明该值已经被其他线程抢先一步修改过了，<strong>那A线程本次修改失败，智能重新读取重新再来一遍</strong>。</li>
+<li>线程A重新获取value值，因为变量value被volatile修饰，满足可见性，所以其他线程对它的修改，线程A总是能够看到，线程A继续执行<code>compareAndSwapInt(o, offset, v, v + delta)</code>进行比较替换，直到成功。</li>
+</ol>
+<h2 id="CAS缺点"><a href="#CAS缺点" class="headerlink" title="CAS缺点"></a>CAS缺点</h2><ol>
+<li><strong>循环时间长，开销大</strong><ul>
+<li>如果CAS失败，会一直进行尝试。如果CAS长时间一直不成功，可能会给CPU带来很大的开销。</li>
+</ul>
+</li>
+<li><strong>只能保证一个共享变量的原子操作</strong><ul>
+<li>对多个共享变量，只能通过加锁来保证原子性</li>
+</ul>
+</li>
+<li><strong>引出ABA问题</strong></li>
+</ol>
+<h2 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h2><h3 id="如何引发"><a href="#如何引发" class="headerlink" title="如何引发"></a>如何引发</h3><p><strong>狸猫换太子～</strong></p>
+<p>CAS会导致“ABA问题”。CAS算法实现一个重要前提需要取出内存中某时刻的数据，并在当下时刻进行比较并替换，那么在这个时间差里可能会导致数据的变化。</p>
+<p>比如说，一个线程T1从内存位置V中取出A，这时候另一个线程T2也从内存中取出A，并且线程T2进行了一些操作将值变为了B，然后线程T2又将V位置的数据变成A，这时候线程T1进行CAS操作发现内存中仍然是A，然后T1操作成功。<strong>尽管T1线程CAS操作成功，但并不代表这个过程就是没有问题的。</strong></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h4 id="原子引用"><a href="#原子引用" class="headerlink" title="原子引用"></a>原子引用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    String username;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String username, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;username=&#x27;&quot;</span> + username + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicReferenceDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        User zhangsan = <span class="keyword">new</span> User(<span class="string">&quot;zhangsan&quot;</span>,<span class="number">22</span>);</span><br><span class="line">        User lisi = <span class="keyword">new</span> User(<span class="string">&quot;lisi&quot;</span>,<span class="number">22</span>);</span><br><span class="line">        AtomicReference&lt;User&gt; atomicReference = <span class="keyword">new</span> AtomicReference&lt;&gt;();</span><br><span class="line">        atomicReference.set(zhangsan);</span><br><span class="line">        System.out.println(atomicReference.compareAndSet(zhangsan, lisi) + <span class="string">&quot;\t&quot;</span> + atomicReference.get().toString());</span><br><span class="line">        System.out.println(atomicReference.compareAndSet(zhangsan, lisi) + <span class="string">&quot;\t&quot;</span> + atomicReference.get().toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="时间戳原子引用"><a href="#时间戳原子引用" class="headerlink" title="时间戳原子引用"></a>时间戳原子引用</h4><p>新增一种机制，那就是<strong>修改版本号（类似于时间戳）</strong>——AtomicStampedReference</p>
+<p><strong>ABA问题演示：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ABA</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> AtomicReference&lt;Integer&gt; atomicReference = <span class="keyword">new</span> AtomicReference&lt;&gt;(<span class="number">100</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;========以下是ABA问题的产生========&quot;</span>);</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            atomicReference.compareAndSet(<span class="number">100</span>,<span class="number">101</span>);</span><br><span class="line">            atomicReference.compareAndSet(<span class="number">101</span>,<span class="number">100</span>);</span><br><span class="line">        &#125;,<span class="string">&quot;T1&quot;</span>).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="comment">//暂停1秒钟，保证上面T1线程完成了一次ABA操作</span></span><br><span class="line">            <span class="keyword">try</span>&#123; TimeUnit.SECONDS.sleep(<span class="number">1</span>); &#125;<span class="keyword">catch</span> (InterruptedException e)&#123; e.printStackTrace(); &#125;</span><br><span class="line">            System.out.println(atomicReference.compareAndSet(<span class="number">100</span>, <span class="number">2019</span>) + <span class="string">&quot;\t&quot;</span> + atomicReference.get());</span><br><span class="line">        &#125;,<span class="string">&quot;T2&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">========以下是ABA问题的产生========</span><br><span class="line">true	2019</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<p><strong>ABA问题的解决：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicStampedReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ABA</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> AtomicStampedReference&lt;Integer&gt; atomicStampedReference = <span class="keyword">new</span> AtomicStampedReference&lt;&gt;(<span class="number">100</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;========以下是ABA问题的解决========&quot;</span>);</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">int</span> stamp = atomicStampedReference.getStamp();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t第1次版本号：&quot;</span> + stamp);</span><br><span class="line">            <span class="comment">//暂停1秒钟T3线程</span></span><br><span class="line">            <span class="keyword">try</span>&#123;TimeUnit.SECONDS.sleep(<span class="number">1</span>);&#125;<span class="keyword">catch</span> (InterruptedException e)&#123;e.printStackTrace();&#125;</span><br><span class="line">            atomicStampedReference.compareAndSet(<span class="number">100</span>,<span class="number">101</span>,atomicStampedReference.getStamp(),atomicStampedReference.getStamp()+<span class="number">1</span>);</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t第2次版本号：&quot;</span> + atomicStampedReference.getStamp());</span><br><span class="line">            atomicStampedReference.compareAndSet(<span class="number">101</span>,<span class="number">100</span>,atomicStampedReference.getStamp(),atomicStampedReference.getStamp()+<span class="number">1</span>);</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t第3次版本号：&quot;</span> + atomicStampedReference.getStamp());</span><br><span class="line">        &#125;,<span class="string">&quot;T3&quot;</span>).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">int</span> stamp = atomicStampedReference.getStamp();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t第1次版本号：&quot;</span> + stamp);</span><br><span class="line">            <span class="comment">//暂停3秒钟T4线程</span></span><br><span class="line">            <span class="keyword">try</span>&#123;TimeUnit.SECONDS.sleep(<span class="number">3</span>);&#125;<span class="keyword">catch</span> (InterruptedException e)&#123;e.printStackTrace();&#125;</span><br><span class="line">            <span class="keyword">boolean</span> result = atomicStampedReference.compareAndSet(<span class="number">100</span>, <span class="number">2023</span>, stamp, stamp + <span class="number">1</span>);</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t修改成功否：&quot;</span> + result + <span class="string">&quot;\t当前最新实际版本号：&quot;</span> + atomicStampedReference.getStamp());</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t当前实际最新值：&quot;</span> + atomicStampedReference.getReference());</span><br><span class="line">        &#125;,<span class="string">&quot;T4&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">========以下是ABA问题的解决========</span><br><span class="line">T3	第1次版本号：1</span><br><span class="line">T4	第1次版本号：1</span><br><span class="line">T3	第2次版本号：2</span><br><span class="line">T3	第3次版本号：3</span><br><span class="line">T4	修改成功否：false	当前最新实际版本号：3</span><br><span class="line">T4	当前实际最新值：100</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h1 id="JVM内存模型"><a href="#JVM内存模型" class="headerlink" title="JVM内存模型"></a>JVM内存模型</h1><p>JVM内存模型可以分为两个部分，如下图所示，堆和方法区是所有线程共有的，而虚拟机栈，本地方法栈和程序计数器则是线程私有的。</p>
+<img src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png" style="zoom:50%;" />
+
+<p>JVM内存模型是Java虚拟机（JVM）对内存的抽象，它规定了Java程序在内存中的组织方式和访问方式。JVM内存模型分为线程私有部分和线程共享部分。</p>
+<p>线程私有部分包括：</p>
+<ol>
+<li>程序计数器：每个线程都有一个程序计数器，用于记录当前线程执行的字节码指令地址，是线程私有的内存区域。</li>
+<li>Java虚拟机栈：Java虚拟机栈用于存储Java方法调用的状态，包括局部变量、操作数栈、返回值等，在方法调用结束后会被销毁，是线程私有的内存区域。</li>
+<li>本地方法栈：本地方法栈与Java虚拟机栈类似，只不过是为本地方法服务的。</li>
+</ol>
+<p>线程共享部分包括：</p>
+<ol>
+<li>方法区：方法区用于存储已加载的类信息、常量、静态变量等数据，是所有线程共享的内存区域。</li>
+<li>运行时常量池：运行时常量池是方法区的一部分，用于存储编译期间生成的字面量和符号引用，是所有线程共享的内存区域。</li>
+<li>直接内存：直接内存是JVM使用的一种堆外内存，它不受Java堆大小的限制，因此可以用来存储大量的数据。</li>
+<li>堆：堆是Java虚拟机中最大的一块内存区域，用于存储对象实例。所有线程共享堆，但每个对象实例都是线程私有的。</li>
+</ol>
+<p>JVM内存模型的设计旨在提高Java程序的可移植性和安全性，同时也能够支持高并发的多线程操作。在多线程环境下，JVM内存模型通过使用内存屏障等机制来保证数据的可见性、有序性和原子性，从而避免线程安全问题。</p>
+<h1 id="什么时候触发垃圾回收"><a href="#什么时候触发垃圾回收" class="headerlink" title="什么时候触发垃圾回收"></a>什么时候触发垃圾回收</h1><p><strong>GC Roots 枚举根节点可达性分析</strong></p>
+<p>Java中的垃圾回收是由JVM在后台自动管理的，当JVM检测到某个对象不再被任何活动对象引用时，就会将其标记为垃圾对象，并在适当的时候将其回收。垃圾回收的具体触发时机取决于JVM的实现方式和配置参数，一般有以下几种情况：</p>
+<ol>
+<li>空间分配：当JVM需要为新的对象分配内存时，如果堆空间不足以满足分配请求，就会触发垃圾回收，以释放一些已经不再使用的对象占用的空间，从而为新的对象分配足够的空间。</li>
+<li>System.gc()方法：调用该方法会显式触发垃圾回收，但JVM并不保证会立即执行垃圾回收，具体时间取决于JVM的实现方式和配置参数。</li>
+<li>Full GC：Full GC指的是对整个堆空间进行垃圾回收，一般发生在老年代空间不足或者永久代空间不足时，或者由于一些特殊的配置参数或者情况导致JVM强制进行Full GC。</li>
+<li>Minor GC：Minor GC指的是对年轻代空间进行垃圾回收，一般发生在年轻代空间不足时。年轻代空间一般比较小，所以Minor GC的频率比Full GC要高。</li>
+</ol>
+<p>需要注意的是，垃圾回收的触发时机和具体实现方式可能会因JVM版本、垃圾回收器、应用程序特性等因素而有所不同。因此，程序员应该根据具体情况来调整应用程序的内存使用和垃圾回收参数，以获得更好的性能和稳定性。</p>
+<h1 id="创建一个对象的过程"><a href="#创建一个对象的过程" class="headerlink" title="创建一个对象的过程"></a>创建一个对象的过程</h1><p>创建一个对象的过程如下：</p>
+<ol>
+<li><p><strong>声明对象</strong>：在代码中声明对象时，会先定义对象的类型和名称，以便在程序中使用和引用。</p>
+</li>
+<li><p><strong>分配内存空间</strong>：在声明对象后，需要为对象分配内存空间，以便存储对象的属性和方法。</p>
+</li>
+<li><p><strong>初始化对象</strong>：在分配内存空间后，需要初始化对象，包括初始化对象的属性和方法。对象的属性可以在声明时初始化，也可以在后续的代码中初始化。</p>
+</li>
+<li><p><strong>调用构造函数</strong>：如果对象有构造函数，会在初始化对象时调用构造函数，以便完成对象的初始化过程。构造函数可以用来设置对象的默认值、初始化对象的属性和方法等。</p>
+</li>
+<li><p><strong>返回对象</strong>：在对象创建完成后，会返回对象的引用，以便在程序中使用和引用对象。</p>
+</li>
+</ol>
+<p>需要注意的是，对象的创建过程可能会涉及到多个步骤，具体步骤和顺序也可能因编程语言和对象类型的不同而有所不同。但是，以上这些步骤是对象创建过程中的基本步骤，需要在对象创建时完成。</p>
+<h1 id="ClassLoader是什么"><a href="#ClassLoader是什么" class="headerlink" title="ClassLoader是什么"></a>ClassLoader是什么</h1><p>ClassLoader（类加载器）是Java虚拟机（JVM）的一个重要组成部分，它<strong>用于将Java字节码文件加载到JVM中</strong>，<strong>并将其转换为可以在JVM上执行的Java类</strong>。ClassLoader负责在运行时动态加载Java类，以实现Java程序的动态性和灵活性。</p>
+<p>ClassLoader的主要作用如下：</p>
+<ol>
+<li><p><strong>加载Java类文件</strong>：ClassLoader用于将Java类文件加载到JVM内存中，以便在程序运行时可以使用这些类。</p>
+</li>
+<li><p><strong>类隔离</strong>：ClassLoader可以实现类隔离，即在不同的ClassLoader中加载同名的类，从而实现不同版本的类之间的隔离。</p>
+</li>
+<li><p><strong>动态加载</strong>：ClassLoader可以在程序运行时动态加载Java类，从而实现程序的动态性和灵活性。</p>
+</li>
+<li><p><strong>安全管理</strong>：ClassLoader可以通过实现安全管理策略，对类的加载和访问进行限制和控制。</p>
+</li>
+</ol>
+<p>在Java中，ClassLoader是一个抽象类，其具体实现由不同的子类完成，如Bootstrap ClassLoader、Extension ClassLoader和System ClassLoader等。其中，Bootstrap ClassLoader是JVM自带的ClassLoader，<strong>用于加载Java核心类库</strong>，Extension ClassLoader<strong>用于加载扩展类库</strong>，System ClassLoader<strong>用于加载应用程序的类库</strong>。</p>
+<p>总之，ClassLoader是Java虚拟机的一个重要组成部分，它实现了Java程序的动态性和灵活性，是Java语言的重要特性之一。</p>
+<h1 id="双亲委派机制的作用"><a href="#双亲委派机制的作用" class="headerlink" title="双亲委派机制的作用"></a>双亲委派机制的作用</h1><p>双亲委派机制是<strong>Java类加载器的一种工作机制</strong>，它的作用是保证Java类的安全性和稳定性。</p>
+<p>在Java中，类加载器的主要任务是加载Java类，并将其加载到JVM中。为了避免类的重复加载和保证类的安全性，Java类加载器采用了双亲委派机制。该机制的基本思想是：当一个类加载器需要加载一个类时，它首先将该请求委托给其父类加载器去完成。如果父类加载器无法完成该加载请求，子类加载器才会尝试加载该类。这样，在整个类加载器层次结构中，每个类加载器都有一个确定的父类加载器，最终所有的加载请求都会传递到顶层的类加载器中进行处理。</p>
+<p>双亲委派机制的作用主要有以下几个方面：</p>
+<ol>
+<li><strong>避免重复加载</strong>：由于所有的类加载请求最终都会传递到顶层的类加载器中进行处理，因此可以避免同一个类被多次加载，从而避免类的重复定义和冲突。</li>
+<li><strong>加载安全性</strong>：通过双亲委派机制，可以确保Java核心类库中的类只由顶层的类加载器加载，而应用程序中的类只由应用程序类加载器加载，从而保证Java类的安全性。</li>
+<li><strong>稳定性</strong>：使用双亲委派机制可以确保Java类的加载顺序，从而避免类的依赖关系出现问题，保证Java程序的稳定性。</li>
+</ol>
+<p>总之，双亲委派机制是Java中非常重要的一个机制，它保证了Java类的安全性和稳定性，同时也方便了Java类的重用和共享。</p>
+<h1 id="Java线程和操作系统线程有啥关系，不一样的地方"><a href="#Java线程和操作系统线程有啥关系，不一样的地方" class="headerlink" title="Java线程和操作系统线程有啥关系，不一样的地方"></a>Java线程和操作系统线程有啥关系，不一样的地方</h1><p>Java线程和操作系统线程是两个不同的概念，但它们之间有着紧密的关系。Java线程是由Java虚拟机（JVM）管理的，而操作系统线程是由操作系统管理的。</p>
+<p>Java线程是在JVM中实现的，它们由Java程序员编写的代码控制，具有轻量级和可移植性的优势。Java线程可以在不同的操作系统上运行，而无需对Java代码进行修改。在Java中，线程是通过Thread类和Runnable接口来实现的。</p>
+<p>操作系统线程是由操作系统内核管理的，它们是操作系统的一部分。每个操作系统线程都有一个唯一的标识符和一组状态信息，如运行状态、就绪状态和阻塞状态等。操作系统线程通常被称为内核线程或系统线程。</p>
+<p>Java线程和操作系统线程之间的关系是，Java线程是由操作系统线程实现的。在Java中，当一个线程被创建时，它会被映射到一个或多个操作系统线程中。JVM使用操作系统线程来执行Java线程中的代码，以及在Java线程等待输入/输出或睡眠时，让CPU去执行其他的线程。</p>
+<p>Java线程和操作系统线程之间的不同之处包括：</p>
+<ol>
+<li><strong>线程调度方式不同</strong>：Java线程是由JVM进行调度，而操作系统线程是由操作系统内核进行调度。</li>
+<li><strong>线程切换开销不同</strong>：由于Java线程是在用户空间中实现的，所以线程切换的开销比较小；而操作系统线程是在内核空间中实现的，所以线程切换的开销比较大。</li>
+<li><strong>线程并发数不同</strong>：由于Java线程是由JVM管理的，所以Java线程的并发数受到JVM的限制；而操作系统线程的数量受到操作系统的限制。</li>
+<li><strong>线程资源占用不同</strong>：由于Java线程是在用户空间中实现的，所以它们的资源占用相对较小；而操作系统线程是在内核空间中实现的，所以它们的资源占用相对较大。</li>
+</ol>
+<p>总之，Java线程和操作系统线程都是实现并发编程的重要手段，它们之间存在紧密的关系，但也有不同之处。在实际应用中，程序员需要根据具体情况选择合适的线程模型和编程方式，以提高程序的性能和可维护性。</p>
+<h1 id="操作系统用户态和内核态概念"><a href="#操作系统用户态和内核态概念" class="headerlink" title="操作系统用户态和内核态概念"></a>操作系统用户态和内核态概念</h1><p>操作系统中有两种运行态，分别是用户态和内核态。</p>
+<p>用户态（User Mode）是指<strong>操作系统为应用程序提供的一种运行状态</strong>。在用户态下，应用程序只能访问自己的内存空间和部分操作系统内置的服务，不能直接访问操作系统的核心资源。这是出于安全和稳定性的考虑，以避免应用程序误操作或恶意攻击导致系统崩溃或数据丢失。<strong>在用户态下，操作系统会限制应用程序的访问权限，同时对其进行监控和管理</strong>。</p>
+<p>内核态（Kernel Mode）是指<strong>操作系统为内核提供的一种运行状态</strong>。在内核态下，内核可以直接访问操作系统的所有资源和硬件设备，并且可以执行特权指令。<strong>内核态下的操作系统拥有最高的权限</strong>，可以进行所有的操作。例如，<strong>内核可以管理内存、处理中断、调度任务、控制硬件等</strong>。但是，由于内核态的操作具有很高的风险，一旦出现错误或失误，可能会导致整个系统崩溃或数据损坏。</p>
+<p>在操作系统中，用户态和内核态之间的<strong>切换是通过系统调用（System Call）来实现的</strong>。当应用程序需要访问操作系统的核心资源时，它会发起一个系统调用，此时操作系统将当前进程的状态从用户态切换到内核态，处理完请求后再切换回用户态，将结果返回给应用程序。由于用户态和内核态之间的切换需要耗费一定的时间和资源，因此操作系统的设计者要尽量减少这种切换的次数，以提高系统的性能和响应速度。</p>
+<h1 id="socket传输过程"><a href="#socket传输过程" class="headerlink" title="socket传输过程"></a>socket传输过程</h1><p>Socket是一种通信协议，它可以在网络中的两个进程之间<strong>建立可靠的双向通信连接</strong>。在Socket传输过程中，通常包括以下几个步骤：</p>
+<ol>
+<li><p><strong>创建Socket对象</strong>：在客户端和服务器端分别创建一个Socket对象。客户端Socket对象用于向服务器端发起请求，而服务器端Socket对象用于监听客户端的请求并接受连接。</p>
+</li>
+<li><p><strong>建立连接</strong>：客户端Socket对象通过指定服务器端的地址和端口号来连接服务器端Socket对象。如果连接成功，客户端Socket和服务器端Socket之间就建立了一条<strong>TCP连接</strong>。</p>
+</li>
+<li><p><strong>发送数据</strong>：一旦连接建立成功，客户端和服务器端就可以相互发送数据了。在发送数据之前，需要将数据打包成数据包，并将数据包通过Socket对象发送给对方。</p>
+</li>
+<li><p><strong>接收数据</strong>：接收数据的过程与发送数据的过程类似，只是不同的是数据的接收方需要通过Socket对象从网络中读取数据，并将数据解包成可读的数据内容。</p>
+</li>
+<li><p><strong>断开连接</strong>：在数据传输完成之后，需要通过关闭Socket对象来释放资源并断开连接。客户端和服务器端都可以通过调用close()方法来关闭连接。</p>
+</li>
+</ol>
+<p>在Socket传输过程中，需要注意以下几点：</p>
+<ol>
+<li><p><strong>Socket连接建立是一个阻塞过程，即在连接建立之前，程序会一直等待，直到连接建立成功或建立失败。</strong></p>
+</li>
+<li><p><strong>数据的发送和接收是一个同步过程，即发送方必须等待接收方的响应才能继续发送，接收方必须等待发送方的数据到达才能继续处理。</strong></p>
+</li>
+<li><p>Socket传输的数据是以<strong>数据包的形式进行</strong>的，数据包<strong>包括数据内容和数据头，其中数据头包括了数据的长度、类型和校验等信息，以确保数据的完整性和正确性</strong>。</p>
+</li>
+</ol>
+<p>总之，Socket是一种<strong>基于TCP协议的可靠的网络通信协议</strong>，它可以在网络中的两个进程之间建立可靠的双向通信连接，实现数据的传输和交互。</p>
+<h1 id="java读文件，字节流和字符流，涉及什么类，参数是什么，分别适用哪些场景"><a href="#java读文件，字节流和字符流，涉及什么类，参数是什么，分别适用哪些场景" class="headerlink" title="java读文件，字节流和字符流，涉及什么类，参数是什么，分别适用哪些场景"></a>java读文件，字节流和字符流，涉及什么类，参数是什么，分别适用哪些场景</h1><p>在Java中，读取文件可以使用字节流和字符流两种方式。</p>
+<ol>
+<li><strong>字节流读取文件：</strong></li>
+</ol>
+<p>字节流是一种基于字节的I/O流，用于读取和写入二进制数据。在Java中，可以使用<strong>InputStream和OutputStream两个类</strong>来实现字节流的读取和写入。</p>
+<p>读取文件的代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;file.txt&quot;</span>);</span><br><span class="line"><span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">while</span> ((len = fis.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 处理读取到的数据</span></span><br><span class="line">&#125;</span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
+
+<p>其中，FileInputStream类表示一个输入字节流，用于读取文件。read()方法用于读取文件中的数据到缓冲区中，并返回读取到的字节数。当已经到达文件末尾时，read()方法返回-1。close()方法用于关闭输入流。</p>
+<p><strong>字节流适用于读取二进制文件或者非文本文件，例如图片、音频、视频等。</strong></p>
+<ol start="2">
+<li><strong>字符流读取文件：</strong></li>
+</ol>
+<p>字符流是一种基于字符的I/O流，用于读取和写入文本数据。在Java中，可以使用<strong>Reader和Writer两个类</strong>来实现字符流的读取和写入。与字节流不同，<strong>字符流会自动处理字符编码和换行符等特殊字符</strong>。</p>
+<p>读取文件的代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">&quot;file.txt&quot;</span>);</span><br><span class="line"><span class="keyword">char</span>[] buffer = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">while</span> ((len = fr.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 处理读取到的数据</span></span><br><span class="line">&#125;</span><br><span class="line">fr.close();</span><br></pre></td></tr></table></figure>
+
+<p>其中，FileReader类表示一个输入字符流，用于读取文件。read()方法用于读取文件中的数据到缓冲区中，并返回读取到的字符数。当已经到达文件末尾时，read()方法返回-1。close()方法用于关闭输入流。</p>
+<p><strong>字符流适用于读取文本文件，例如配置文件、日志文件、文本文件等。</strong></p>
+<p>总之，<strong>字节流适用于读取二进制文件，字符流适用于读取文本文件</strong>。在使用时需要根据具体的场景来选择合适的流类型。</p>
+<h1 id="序列化和反序列化的定义"><a href="#序列化和反序列化的定义" class="headerlink" title="序列化和反序列化的定义"></a>序列化和反序列化的定义</h1><p>序列化和反序列化是<strong>将对象转换为字节流和将字节流转换为对象</strong>的过程。</p>
+<p>序列化是将对象转换为字节流的过程，可以将对象保存到本地磁盘或通过网络传输到另一个计算机。在Java中，可以通过实现Serializable接口来实现对象的序列化。序列化后的字节流可以被传输到其它系统中，然后再通过反序列化恢复成原来的对象。</p>
+<p>反序列化是将字节流转换为对象的过程，可以从本地磁盘或网络中接收序列化的字节流，并将其转换为原来的对象。在Java中，可以使用<strong>ObjectInputStream类来实现反序列化操作</strong>。</p>
+<p>序列化和反序列化是Java中重要的数据持久化方式，可以将对象持久化到本地磁盘或通过网络传输到其它计算机。<strong>序列化可以用于对象的缓存、对象的传输和存储等场景</strong>。但需要注意的是，序列化和反序列化会消耗大量的计算资源和网络带宽，所以在实际应用中需要根据具体的场景来选择合适的持久化方式。</p>
+<h1 id="Hessian和JSON是一个层面的东西吗"><a href="#Hessian和JSON是一个层面的东西吗" class="headerlink" title="Hessian和JSON是一个层面的东西吗"></a>Hessian和JSON是一个层面的东西吗</h1><p>Hessian和JSON不是一个层面的东西。</p>
+<p>Hessian是一种<strong>基于二进制的RPC（远程过程调用）协议</strong>，用于实现分布式系统中的远程调用。它将Java对象序列化为二进制流，并通过网络传输到远程系统，然后在远程系统上将其反序列化为原来的Java对象。Hessian协议具有简单、高效、安全等特点，被<strong>广泛应用于分布式系统和微服务架构中</strong>。</p>
+<p>JSON是一种<strong>轻量级的数据交换格式</strong>，常用于<strong>Web应用程序中的数据传输</strong>。它将数据序列化为文本格式，并通过网络传输到另一个系统，然后在另一个系统上将其反序列化为原来的数据。JSON格式具有简单、易读、易写等特点，被<strong>广泛应用于Web应用程序中</strong>。</p>
+<p>虽然Hessian和JSON都涉及到数据的序列化和反序列化，但它们的应用场景和实现方式不同。<strong>Hessian主要用于分布式系统和微服务架构中的远程调用，而JSON主要用于Web应用程序中的数据传输。Hessian采用二进制格式进行序列化，而JSON采用文本格式进行序列化</strong>。因此，在选择数据序列化和反序列化方案时，需要根据具体的应用场景来选择合适的方式。</p>
+<h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p>Java动态代理是Java中的一种强大的技术，它可以<strong>在运行时动态地生成代理类来代替原始的类，从而实现对原始类的增强或修改。</strong></p>
+<p>Java动态代理的实现方式通常涉及两个核心接口：<strong>InvocationHandler和Proxy</strong>。InvocationHandler接口定义了代理类的调用处理程序，它包含一个invoke()方法，用于在代理类中处理调用请求并返回结果。Proxy类可以使用InvocationHandler来动态创建代理对象，代理对象将请求转发给InvocationHandler进行处理。</p>
+<p>使用Java动态代理的步骤如下：</p>
+<ol>
+<li><p>定义一个接口，用于表示被代理类的行为和方法。</p>
+</li>
+<li><p>实现InvocationHandler接口，定义代理类的调用处理程序，并在invoke()方法中实现增强或修改的逻辑。</p>
+</li>
+<li><p>使用Proxy类的静态方法newProxyInstance()来创建代理对象，该方法需要传入ClassLoader对象、被代理类实现的接口列表和InvocationHandler对象。</p>
+</li>
+<li><p>使用代理对象调用方法，代理对象将请求转发给InvocationHandler进行处理。</p>
+</li>
+</ol>
+<p><strong>Java动态代理通常用于实现AOP（面向切面编程）和RPC（远程过程调用）等场景。它可以在运行时动态地生成代理对象，从而避免了手动编写代理类的繁琐过程，同时也提供了更大的灵活性和可扩展性。</strong></p>
+<h1 id="Linux命令实现：统计文件中某个字符串的个数"><a href="#Linux命令实现：统计文件中某个字符串的个数" class="headerlink" title="Linux命令实现：统计文件中某个字符串的个数"></a>Linux命令实现：统计文件中某个字符串的个数</h1><p>在Linux中，可以使用<strong>grep和wc</strong>命令来实现统计文件中某个字符串的个数。具体步骤如下：</p>
+<ol>
+<li><p>打开终端，进入到包含目标文件的目录下。</p>
+</li>
+<li><p>使用grep命令搜索文件中包含目标字符串的行，使用-c选项统计匹配的行数，将结果输出到控制台。例如，要统计文件test.txt中字符串”hello world”的出现次数，可以输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c &quot;hello world&quot; test.txt</span><br></pre></td></tr></table></figure>
+
+<p>该命令会输出文件test.txt中字符串”hello world”出现的次数。</p>
+</li>
+<li><p>如果需要在多个文件中查找目标字符串，可以使用grep命令的-r选项递归搜索目录下的所有文件。例如，要在目录/home/user中的所有文件中查找字符串”hello world”，可以输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -r &quot;hello world&quot; &#x2F;home&#x2F;user</span><br></pre></td></tr></table></figure>
+
+<p>该命令会搜索目录/home/user下所有文件中包含字符串”hello world”的行，并统计匹配的行数。</p>
+</li>
+<li><p>如果需要统计多个文件中字符串出现的总次数，可以将grep命令的输出传递给wc命令，使用-l选项统计行数。例如，要统计目录/home/user下所有文件中字符串”hello world”出现的总次数，可以输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -r &quot;hello world&quot; &#x2F;home&#x2F;user | wc -l</span><br></pre></td></tr></table></figure>
+
+<p>该命令会搜索目录/home/user下所有文件中包含字符串”hello world”的行，并统计匹配的行数，然后将行数传递给wc命令进行统计。</p>
+</li>
+</ol>
+<h1 id="布隆过滤器概念，功能，怎么实现的"><a href="#布隆过滤器概念，功能，怎么实现的" class="headerlink" title="布隆过滤器概念，功能，怎么实现的"></a>布隆过滤器概念，功能，怎么实现的</h1><p>布隆过滤器（Bloom Filter）是一种数据结构，<strong>用于判断一个元素是否存在于一个集合中</strong>。它可以高效地判断元素是否在集合中，但<strong>有一定的误判率</strong>。</p>
+<p>布隆过滤器的基本原理是，使用多个哈希函数对输入元素进行哈希，然后将哈希值映射到一个位数组中的一组位置。如果这些位置都被标记为“1”，则认为元素在集合中；否则，元素不在集合中。<strong>为了减少误判率，位数组的大小通常比集合元素的数量大得多，同时哈希函数的数量也要足够多</strong>。</p>
+<p>布隆过滤器的主要功能是判断元素是否存在于集合中。它可以<strong>用于缓存、去重、过滤等场景</strong>，例如网页爬虫中的URL去重、邮件服务器中的垃圾邮件过滤等。</p>
+<p>布隆过滤器的实现主要涉及以下几个步骤：</p>
+<ol>
+<li><p>初始化位数组，将所有位都标记为“0”。</p>
+</li>
+<li><p>定义多个哈希函数，用于将输入元素映射到位数组中的一组位置。哈希函数应该能够产生均匀分布的哈希值，并保证哈希值的范围不超过位数组的大小。</p>
+</li>
+<li><p>将输入元素分别传递给多个哈希函数，得到多个哈希值。</p>
+</li>
+<li><p>将多个哈希值映射到位数组中的相应位置，并将这些位置标记为“1”。</p>
+</li>
+<li><p>判断元素是否在集合中时，将输入元素分别传递给多个哈希函数，得到多个哈希值，再检查这些位置是否都被标记为“1”。如果都被标记为“1”，则认为元素在集合中；否则，元素不在集合中。</p>
+</li>
+</ol>
+<p>需要注意的是，由于布隆过滤器存在一定的误判率，因此不能完全替代传统的数据结构，<strong>例如哈希表或红黑树。在使用布隆过滤器时，需要根据具体的应用场景和误判率要求来选择合适的参数，例如位数组大小和哈希函数数量等</strong>。</p>
+<h1 id="int和Integer的区别、使用场景"><a href="#int和Integer的区别、使用场景" class="headerlink" title="int和Integer的区别、使用场景"></a>int和Integer的区别、使用场景</h1><p>int 和 Integer 都是 Java 中表示整数的类型，两者的主要区别如下：</p>
+<ol>
+<li><strong>类型</strong>：int 是一种基本数据类型，而 Integer 是一种包装类，它是 int 的封装类。</li>
+<li><strong>可空性</strong>：int 是一个原始类型，它的值不能为 null，而 Integer 是一个类，它的值可以为 null。</li>
+<li><strong>内存占用</strong>：int 是一个原始类型，它的大小是 4 个字节（32 位），而 Integer 是一个类，它需要额外的内存来存储对象的基本信息，因此它的内存占用比 int 大。</li>
+<li><strong>自动装箱和拆箱</strong>：Java 中可以自动将 int 转换为 Integer，这个过程称为自动装箱，也可以将 Integer 转换为 int，这个过程称为自动拆箱。</li>
+</ol>
+<p>使用场景方面，一般来说，应该优先使用基本数据类型 int，因为它的运算速度更快，占用的内存更小，而且不需要进行装箱和拆箱操作。只有在以下情况下才需要使用 Integer：</p>
+<ol>
+<li>需要使用 null 值表示缺省或未知的情况时，可以使用 Integer 类型。</li>
+<li>需要将整数作为对象进行处理时，可以使用 Integer 类型。</li>
+<li>在一些集合类中，例如 List，只能存储对象类型，因此需要使用 Integer 类型来表示整数。</li>
+</ol>
+<p>总之，int 和 Integer 都是 Java 中表示整数的类型，应根据具体的场景选择使用哪种类型。</p>
+<h1 id="string为什么设计成不可变"><a href="#string为什么设计成不可变" class="headerlink" title="string为什么设计成不可变"></a>string为什么设计成不可变</h1><p>在 Java 中，String 被设计成不可变的，主要有以下几个原因：</p>
+<ol>
+<li><p><strong>安全性</strong>：由于 String 是不可变的，所以它的值一旦被设置就不能被修改，这可以保证程序的安全性。例如，<strong>在进行数据库连接时，使用不可变的字符串可以防止 SQL 注入攻击</strong>。</p>
+</li>
+<li><p><strong>线程安全</strong>：由于 String 是不可变的，多个线程可以同时访问同一个字符串对象，而不需要担心并发修改的问题。这<strong>使得 String 在多线程环境下更加安全和可靠</strong>。</p>
+</li>
+<li><p><strong>缓存</strong>：由于 String 是不可变的，Java 运行时可以缓存字符串对象的值，从而提高程序的性能，避免重复创建字符串对象。</p>
+</li>
+<li><p><strong>数据共享</strong>：由于 String 是不可变的，多个字符串变量可以共享同一个 String 对象。这可以节省内存，提高程序的性能。</p>
+</li>
+</ol>
+<p>除了上述原因外，不可变的字符串还有其他的优点，例如可以提高字符串的操作效率，避免内存泄漏等问题。因此，在 Java 中，String 被设计成不可变的，这是一个非常好的设计选择。</p>
+<h1 id="什么是线程不安全"><a href="#什么是线程不安全" class="headerlink" title="什么是线程不安全"></a>什么是线程不安全</h1><p>线程不安全指的是在多线程环境下，对某个共享的资源（例如共享变量、共享数据结构等）进行并发访问时，会<strong>出现数据不一致、数据丢失、死锁等问题</strong>，从而导致程序运行出现错误或异常的情况。具体来说，线程不安全的表现通常包括以下几个方面：</p>
+<ol>
+<li><p><strong>数据竞争</strong>：当多个线程同时访问同一个共享变量时，可能会发生数据竞争的问题。例如，一个线程正在修改一个共享变量的值，而另一个线程同时也在访问这个变量，会导致数据不一致的问题。</p>
+</li>
+<li><p><strong>死锁</strong>：当多个线程同时持有多个锁时，可能会出现死锁的情况。当一个线程等待另一个线程释放锁时，可能会导致程序无法继续执行。</p>
+</li>
+<li><p><strong>资源耗尽</strong>：当多个线程同时竞争有限的资源时，可能会出现资源耗尽的情况。例如，在高并发情况下，如果多个线程同时请求同一资源，可能会导致内存不足、CPU 占用过高等问题。</p>
+</li>
+</ol>
+<p>为了避免线程不安全的问题，需要采用线程安全的措施，例如使用同步锁、原子变量、线程安全的数据结构等。同时，在多线程环境下编写程序时，需要特别注意线程安全的问题，避免出现数据不一致、死锁等问题。</p>
+<h1 id="final修饰一个对象是什么不变"><a href="#final修饰一个对象是什么不变" class="headerlink" title="final修饰一个对象是什么不变"></a>final修饰一个对象是什么不变</h1><p>当 final 关键字用于修饰一个对象时，它并不是表示对象本身是不变的，而是表示该对象的引用是不可变的。也就是说，一旦 final 对象被初始化后，就不能再将其指向另一个对象。</p>
+<p>例如，下面的代码中，final 关键字用于修饰了一个 StringBuilder 对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final StringBuilder sb &#x3D; new StringBuilder(&quot;hello&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>这意味着 sb 这个引用变量不能再指向另一个 StringBuilder 对象，但是 sb 引用指向的 StringBuilder 对象的内容是可以改变的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sb.append(&quot; world&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>这样做是合法的，因为 StringBuilder 对象本身是可变的。</p>
+<p>需要注意的是，当 final 关键字用于修饰基本类型的变量时，该变量是不可变的，而当 final 关键字用于修饰引用类型的变量时，该引用变量是不可变的，但是引用对象本身是可变的。</p>
+<p>在 Java 中，使用 final 关键字的主要目的是为了增强代码的可读性、可维护性和安全性，同时也可以提高程序的性能。</p>
+<h1 id="弱引用和软引用的区别"><a href="#弱引用和软引用的区别" class="headerlink" title="弱引用和软引用的区别"></a>弱引用和软引用的区别</h1><p>在 Java 中，弱引用和软引用都是用来描述一种对象引用的方式，它们与普通的强引用不同，不会阻止垃圾回收器回收对象。它们的区别在于垃圾回收器何时会回收被引用的对象。</p>
+<ol>
+<li><p>弱引用（Weak Reference）：弱引用是一种<strong>比较弱</strong>的引用类型，当一个对象只被弱引用引用时，在<strong>下一次垃圾回收时，该对象就会被回收</strong>。弱引用通常用在需要缓存对象的场景中，可以在内存不足时自动释放缓存对象，避免内存溢出。</p>
+</li>
+<li><p>软引用（Soft Reference）：软引用是一种<strong>比弱引用更强的引用类型</strong>，当一个对象只被软引用引用时，在内存不足时，垃圾回收器会尽可能地保留这些对象，直到 JVM 认为内存不足时，才会回收这些对象。软引用通常用在需要缓存对象的场景中，可以在内存不足时自动释放缓存对象，但是相比弱引用，软引用可以更好地保留缓存对象，避免缓存对象被频繁地回收和重新创建。</p>
+</li>
+</ol>
+<p>总的来说，弱引用和软引用都是用来解决内存泄漏和缓存问题的，它们都可以帮助开发人员更好地管理内存和资源，提高程序的性能和可靠性。但是需要注意的是，过度地使用弱引用和软引用可能会导致程序的性能下降，因此需要根据具体的场景和需求来选择合适的引用类型。</p>
+<h3 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h3><p>软引用是一种相对强引用弱化了一些的引用，需要用java.lang.ref.SoftReference类来实现，可以让对象豁免一些垃圾收集。</p>
+<p>对于只有软引用的对象来说：</p>
+<ul>
+<li><strong>当系统内存充足时，它，不会，被回收</strong></li>
+<li><strong>当系统内存不足时，它，会，被回收</strong></li>
+</ul>
+<p>软引用<strong>通常用在对内存敏感的程序中</strong>，比如<strong>高速缓存</strong>（用到了软引用），内存够用的时候就保留，不够就回收。</p>
+<h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3><p>弱引用需要用java.lang.ref.WeakReference类来实现，它比软引用的生存期更短</p>
+<p>对于只有弱引用的对象来说，<strong>只要垃圾回收机制一运行，不管JVM内存空间是否足够，都会回收该对象的内存</strong>。</p>
+<h3 id="软-弱引用适用场景"><a href="#软-弱引用适用场景" class="headerlink" title="软/弱引用适用场景"></a>软/弱引用适用场景</h3><p>假如有一个应用需要读取大量本地图片：</p>
+<ul>
+<li>如果每次读取图片都从硬盘读取则会严重影响性能</li>
+<li>如果一次性全部加载到内存中又可能造成内存溢出</li>
+</ul>
+<p>此时，使用软引用可以解决这个问题。</p>
+<p>设计思路：用一个HashMap来保存图片路径和相应图片对象关联的软引用之间的映射关系，在内存不足时，JVM会自动回收这些缓存图片对象所占用的空间，从而有效避免了OOM的问题。</p>
+<p><code>Map&lt;String,SoftReference&lt;Bitmap&gt;&gt; imageCache = new HashMap&lt;String,SoftReference&lt;Bitmap&gt;&gt;();</code></p>
+<h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><p>三次握手是 <strong>TCP（传输控制协议）</strong>在建立连接时使用的一种可靠的协议。在 TCP 连接建立时，需要进行三次握手，以确保发送方和接收方都能够正确地收发数据。三次握手的过程如下：</p>
+<p><strong>第一次握手</strong>：客户端向服务器发送一个 <strong>SYN 包（SYN=1，ACK=0）</strong>，表示客户端要发送数据给服务器，并请求建立连接。此时客户端进入 SYN_SENT 状态。</p>
+<p><strong>第二次握手</strong>：服务器收到客户端发来的 SYN 包后，<strong>回复一个 SYN/ACK 包（SYN=1，ACK=1）</strong>，表示服务器已经收到客户端的请求，并同意建立连接。此时服务器进入 SYN_RCVD 状态。</p>
+<p><strong>第三次握手</strong>：客户端收到服务器发来的 SYN/ACK 包后，再回复一个 <strong>ACK 包（SYN=0，ACK=1）</strong>，表示客户端已经收到服务器的回复，并确认建立连接。此时客户端和服务器都进入 ESTABLISHED 状态，可以开始进行数据传输。</p>
+<p>通过三次握手，可以确保客户端和服务器之间的连接已经建立，并且双方都能够发送和接收数据。三次握手的过程是可靠的，可以避免连接建立失败或者数据丢失的情况。在 TCP 连接断开时，也需要进行四次握手的操作来关闭连接。</p>
+<h1 id="Session和Cookie"><a href="#Session和Cookie" class="headerlink" title="Session和Cookie"></a>Session和Cookie</h1><p>Session 和 Cookie 都是<strong>用于在 Web 应用程序中管理用户状态和数据</strong>的技术。</p>
+<ul>
+<li><p>Cookie 是一种在<strong>客户端保存数据</strong>的技术。当浏览器向服务器发送请求时，服务器可以通过设置响应头中的 Set-Cookie 字段来告诉浏览器设置一个 Cookie。浏览器会将该 Cookie 保存在客户端，当下次再向服务器发送请求时，会自动将该 Cookie 发送给服务器。服务器可以通过读取请求头中的 Cookie 字段来获取客户端保存的数据。<strong>Cookie 可以设置过期时间、域名、路径等属性，可以用来实现用户自动登录、购物车等功能</strong>。</p>
+</li>
+<li><p>Session 是一种在<strong>服务器端保存数据</strong>的技术。当用户第一次访问一个 Web 应用程序时，服务器会为该用户创建一个 Session 对象，并为该 Session 分配一个唯一的 Session ID。服务器可以通过 Session ID 来区分不同用户的请求，并<strong>将用户的状态和数据保存在 Session 对象中</strong>。服务器可以使用各种技术来管理 Session，例如将 Session 对象保存在内存中、保存在数据库中、保存在分布式缓存中等。Session 可以存储大量的数据，但是每个用户的 Session 数据都会保存在服务器端，如果同时有大量用户访问，会占用大量的服务器资源。<strong>Session 通常用于实现用户登录、权限控制、购物车、表单数据等功能</strong>。</p>
+</li>
+</ul>
+<p>总的来说，<strong>Cookie 适合保存少量的数据，可以在客户端进行快速的读写操作，但是安全性较低；Session 适合保存大量的数据，可以在服务器端进行管理和控制，但是会占用大量的服务器资源</strong>。在实际开发中，可以根据具体的需求和业务场景来选择使用 Cookie 还是 Session。</p>
+<h1 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h1><p>ACID 是数据库事务的四个基本特性：<strong>原子性</strong>（Atomicity）、<strong>一致性</strong>（Consistency）、<strong>隔离性</strong>（Isolation）和<strong>持久性</strong>（Durability）。</p>
+<p>原子性：一个事务中的所有操作要么全部执行成功，要么全部执行失败，不能只执行其中的一部分操作。如果事务执行失败，则所有的操作都必须回滚到事务开始之前的状态。</p>
+<p>一致性：一个事务执行结束后，<strong>数据库的状态必须是符合预期的约束条件</strong>，即数据库的完整性约束、业务规则等不变。</p>
+<p>隔离性：多个事务同时执行时，每个事务的执行都应该与其他事务的执行相<strong>互隔离，不应该相互影响</strong>。每个事务所看到的数据应该是一致的，不能看到其他事务未提交的数据。</p>
+<p>持久性：一旦一个事务提交，<strong>它所做的改变就应该永久保存在数据库中</strong>，并且对于任何故障都不应该丢失。</p>
+<p>ACID 是保证数据库事务的可靠性和一致性的基本特性。当多个事务同时执行时，ACID 可以确保每个事务的执行是独立的，不会互相影响，从而保证数据的正确性和一致性。在实际应用中，如果需要对数据进行复杂的操作，需要使用事务来保证数据的一致性。</p>
+<h1 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h1><p>进程间通信（Inter-Process Communication，IPC）是指在不同进程之间进行数据交换和通信的过程。在操作系统中，进程是指正在运行的程序实例，不同进程之间需要进行数据交换和通信来完成协作和协同工作。常见的进程间通信方式包括以下几种：</p>
+<ol>
+<li><p><strong>管道（Pipe）</strong>：管道是一种单向通信方式，只能在具有亲缘关系的进程之间进行通信，而且只能在一个方向上传输数据。管道可以是匿名管道（只在父子进程之间使用）或命名管道（允许不同进程之间使用）。</p>
+</li>
+<li><p><strong>命名管道（Named Pipe）</strong>：命名管道是一种特殊的文件，可以在不同的进程之间共享，进程可以通过文件的读写操作进行通信。</p>
+</li>
+<li><p><strong>信号（Signal）</strong>：信号是一种异步通信方式，进程可以通过系统调用向其他进程发送信号，接收信号的进程可以根据信号的类型来执行相应的操作。</p>
+</li>
+<li><p><strong>共享内存（Shared Memory）</strong>：共享内存是一种高效的进程间通信方式，可以在多个进程之间共享同一块物理内存空间，进程可以直接读写共享内存中的数据，不需要进行数据拷贝和传输，效率较高。</p>
+</li>
+<li><p><strong>信号量（Semaphore）</strong>：信号量是一种计数器，用于控制多个进程对共享资源的访问，可以实现进程同步和互斥。</p>
+</li>
+<li><p><strong>消息队列（Message Queue）</strong>：消息队列是一种进程间通信方式，可以实现进程之间的异步通信，进程可以通过消息队列发送和接收消息。</p>
+</li>
+<li><p><strong>套接字（Socket）</strong>：套接字是一种通用的进程间通信方式，可以在不同主机的进程之间进行通信，常用于实现网络通信和分布式系统。</p>
+</li>
+</ol>
+<p>以上是常见的进程间通信方式，不同的方式适用于不同的场景和需求。在实际开发中，需要根据具体的应用场景和需求来选择合适的进程间通信方式。</p>
+<h1 id="页面交换"><a href="#页面交换" class="headerlink" title="页面交换"></a>页面交换</h1><p>页面交换（Page swapping）是指在操作系统内存管理中，<strong>将内存中的一部分页面（Page）暂时写入到磁盘上的交换区（Swap Area）中，以释放内存空间供其他程序使用的过程</strong>。当系统内存不足时，操作系统会选择一些页面将其写入到交换区中，以腾出一些内存空间。当需要使用这些页面时，操作系统会将其从交换区中读取到内存中。</p>
+<p>页面交换是操作系统内存管理中的重要功能，它可以在内存不足时，通过将部分页面写入到磁盘中，释放内存空间以供其他程序使用。在实际应用中，页面交换有助于提高系统的稳定性和可靠性，<strong>避免系统因内存不足而崩溃或死机</strong>。但是，由于磁盘的读写速度比内存慢很多，所以<strong>页面交换会对系统的性能产生一定的影响</strong>。因此，在设计和使用操作系统时，需要合理配置页面交换功能的参数，以平衡系统的稳定性和性能。</p>
+<h1 id="String、StringBuffer、StringBuider"><a href="#String、StringBuffer、StringBuider" class="headerlink" title="String、StringBuffer、StringBuider"></a>String、StringBuffer、StringBuider</h1><ul>
+<li><p>String类</p>
+<ul>
+<li>String是一个final类，代表不可变的字符序列</li>
+<li>字符串是不可变的。一个字符串对象一旦被配置，其内容是不可变的。</li>
+</ul>
+</li>
+<li><p>StringBuffer类</p>
+<ul>
+<li>java.lang.StringBuffer代表可变的字符序列，可以对字符串内容进行增删。</li>
+<li>很多方法与String相同，但StingBuffer是可变长度的。</li>
+<li>StringBuffer是一个容器。</li>
+</ul>
+</li>
+<li><p>StringBuilder类</p>
+<ul>
+<li>StringBuilder 和 StringBuffer 非常类似，均代表可变的字符序列，而且方法也一样</li>
+<li>String：不可变字符序列</li>
+<li>StringBuffer：可变字符序列、效率低、<strong>线程安全</strong></li>
+<li>StringBuilder(JDK1.5)：可变字符序列、效率高、<strong>线程不安全</strong></li>
+</ul>
+</li>
+</ul>
+<p>String、StringBuffer、StringBuilder 都是 Java 中用来表示字符串的类，它们之间的区别如下：</p>
+<ol>
+<li><p>String 是<strong>不可变</strong>的字符序列，即一旦创建就不能修改。每次对 String 进行修改操作时，都会创建一个新的 String 对象，因此<strong>效率相对较低</strong>。</p>
+</li>
+<li><p>StringBuffer 是<strong>可变的</strong>字符序列，它的操作不会创建新的对象，而是直接修改原来的对象，因此<strong>效率相对较高</strong>。StringBuffer 是<strong>线程安全</strong>的，即多个线程同时访问一个 StringBuffer 对象时，不会出现数据不一致的情况。</p>
+</li>
+<li><p>StringBuilder 也是<strong>可变</strong>的字符序列，它与 StringBuffer 的区别在于它是<strong>非线程安全的</strong>。由于 StringBuilder 不需要考虑线程安全的问题，因此<strong>在单线程环境下，它的效率比 StringBuffer 更高</strong>。</p>
+</li>
+</ol>
+<p>使用场景：</p>
+<ol>
+<li><p>如果需要频繁对字符串进行修改操作，应该使用 StringBuffer 或 StringBuilder。</p>
+</li>
+<li><p>如果字符串不需要修改，应该使用 String。</p>
+</li>
+</ol>
+<p>效率：</p>
+<ol>
+<li><p>在频繁进行字符串操作时，StringBuffer 和 StringBuilder 的效率比 String 要高。</p>
+</li>
+<li><p>StringBuilder 的效率比 StringBuffer 更高，因为它不需要考虑线程安全的问题。</p>
+</li>
+</ol>
+<p>安全性：</p>
+<ol>
+<li><p>String 是不可变的，因此是线程安全的。</p>
+</li>
+<li><p>StringBuffer 是线程安全的，因为它对方法进行了同步处理。</p>
+</li>
+<li><p>StringBuilder 是非线程安全的，因此在多线程环境下，需要使用同步操作来保证数据的一致性。</p>
+</li>
+</ol>
+<p>优缺点：</p>
+<ol>
+<li><p>String 的优点是简单易用，缺点是效率低。</p>
+</li>
+<li><p>StringBuffer 的优点是线程安全，可靠性高，缺点是效率相对较低。</p>
+</li>
+<li><p>StringBuilder 的优点是效率高，缺点是线程不安全。</p>
+</li>
+</ol>
+<p>综上所述，String、StringBuffer、StringBuilder 都有各自的优点和缺点，应根据实际需求选择合适的类型。如果需要频繁进行字符串操作并且需要线程安全，应该使用 StringBuffer；如果在单线程环境下进行字符串操作，应该使用 StringBuilder；如果字符串不需要修改，应该使用 String。</p>
+<h1 id="线程使用方式"><a href="#线程使用方式" class="headerlink" title="线程使用方式"></a>线程使用方式</h1><p>在 Java 中，有两种方式可以使用线程：<strong>继承 Thread 类和实现 Runnable 接口</strong>。</p>
+<ol>
+<li><strong>继承 Thread 类</strong></li>
+</ol>
+<p>继承 Thread 类是使用线程最简单的方式。只需要创建一个类，继承 Thread 类并重写 run() 方法即可。然后创建该类的对象，调用 start() 方法启动线程。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 线程执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建对象并启动线程</span></span><br><span class="line">MyThread myThread = <span class="keyword">new</span> MyThread();</span><br><span class="line">myThread.start();</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>实现 Runnable 接口</strong></li>
+</ol>
+<p>实现 Runnable 接口是使用线程的另一种方式。需要创建一个类，实现 Runnable 接口并重写 run() 方法。然后创建 Thread 对象，将实现了 Runnable 接口的类作为参数传入，并调用 start() 方法启动线程。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 线程执行的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建对象并启动线程</span></span><br><span class="line">MyRunnable myRunnable = <span class="keyword">new</span> MyRunnable();</span><br><span class="line">Thread thread = <span class="keyword">new</span> Thread(myRunnable);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ol>
+<li><p>在使用线程时，需要注意线程安全的问题，避免出现数据竞争等问题。</p>
+</li>
+<li><p>在使用线程时，需要注意线程的生命周期，避免出现死锁等问题。</p>
+</li>
+<li><p>在使用线程时，需要合理利用同步机制，避免出现数据不一致等问题。</p>
+</li>
+</ol>
+<p>综上所述，线程的使用方式主要有继承 Thread 类和实现 Runnable 接口两种方式，具体选择哪种方式，应根据实际情况来决定。同时，在使用线程时需要注意线程安全、线程生命周期和同步机制等问题。</p>
+<h1 id="ThreadLocal相关问题"><a href="#ThreadLocal相关问题" class="headerlink" title="ThreadLocal相关问题"></a>ThreadLocal相关问题</h1><p>ThreadLocal 是 Java 提供的一个<strong>线程本地变量技术</strong>，能够在多线程环境下为每个线程提供独立的变量副本，从而<strong>避免数据竞争等问题</strong>。下面是一些与 ThreadLocal 相关的问题及其解答：</p>
+<ol>
+<li>ThreadLocal 是什么？</li>
+</ol>
+<p>ThreadLocal 是 Java 提供的一个线程本地变量技术。它能够为每个线程提供独立的变量副本，从而避免多个线程之间的数据竞争。</p>
+<ol start="2">
+<li>ThreadLocal 的作用是什么？</li>
+</ol>
+<p>ThreadLocal 的作用是为每个线程提供一个独立的变量副本，从而避免多个线程之间的数据竞争。</p>
+<ol start="3">
+<li>如何使用 ThreadLocal？</li>
+</ol>
+<p>使用 ThreadLocal 需要创建一个 ThreadLocal 对象，并重写它的 initialValue() 方法来初始化变量。然后可以通过 get() 方法获取当前线程的变量副本，通过 set() 方法来设置当前线程的变量副本。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThreadLocal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Integer&gt; threadLocal = <span class="keyword">new</span> ThreadLocal&lt;Integer&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> Integer <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            threadLocal.set(threadLocal.get() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;t1: &quot;</span> + threadLocal.get());</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            threadLocal.set(threadLocal.get() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;t2: &quot;</span> + threadLocal.get());</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>ThreadLocal 的适用场景是什么？</li>
+</ol>
+<p>ThreadLocal 主要适用于需要在多线程环境下保持数据的一致性，避免多个线程之间的数据竞争的场景。比如，在 Web 应用程序中，可以使用 ThreadLocal 来保存当前用户的信息，从而避免多个线程之间的数据竞争。</p>
+<ol start="5">
+<li>ThreadLocal 的缺点是什么？</li>
+</ol>
+<p>ThreadLocal 的缺点是可能会导致内存泄漏。因为 ThreadLocal 中存储的变量副本只有在当前线程结束时才会被销毁，如果程序中有很多线程，每个线程都创建了一个 ThreadLocal 变量，而这些变量又都没有及时被清理，可能会导致内存泄漏问题。</p>
+<ol start="6">
+<li>如何避免 ThreadLocal 的内存泄漏问题？</li>
+</ol>
+<p>可以在使用完 ThreadLocal 变量后，调用它的 remove() 方法来清理当前线程的变量副本。另外，也可以使用 Java 8 中引入的 lambda 表达式来避免内存泄漏问题。</p>
+<p>示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThreadLocal</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Integer&gt; threadLocal = ThreadLocal.withInitial(() -&gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            threadLocal.set(threadLocal.get() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;t1: &quot;</span> + threadLocal.get());</span><br><span class="line">            threadLocal.remove();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            threadLocal.set(threadLocal.get() + <span class="number">1</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;t2: &quot;</span> + threadLocal.get());</span><br><span class="line">            threadLocal.remove();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>综上所述，ThreadLocal 是 Java 提供的一个线程本地变量技术，能够为每个线程提供独立的变量副本，避免多个线程之间的数据竞争。在使用 ThreadLocal 时需要注意内存泄漏的问题，并及时清理线程的变量副本。</p>
+<h1 id="索引相关问题（唯一、聚簇、非聚簇，创建和使用，创建考虑的问题，数据结构）"><a href="#索引相关问题（唯一、聚簇、非聚簇，创建和使用，创建考虑的问题，数据结构）" class="headerlink" title="索引相关问题（唯一、聚簇、非聚簇，创建和使用，创建考虑的问题，数据结构）"></a>索引相关问题（唯一、聚簇、非聚簇，创建和使用，创建考虑的问题，数据结构）</h1><p>索引是数据库中一种重要的数据结构，用于加快数据的查找和查询速度。下面是一些与索引相关的问题及其解答：</p>
+<ol>
+<li>什么是索引？</li>
+</ol>
+<p>索引是数据库中一种数据结构，用于加快数据的查找和查询速度。它通过对数据进行排序和分组，建立起一种快速查找的数据结构，使得查询可以避免全表扫描，从而提高查询效率。</p>
+<ol start="2">
+<li>索引有哪些类型？</li>
+</ol>
+<p>索引主要有唯一索引、聚簇索引和非聚簇索引三种类型。</p>
+<ul>
+<li><strong>唯一索引</strong>：保证索引列的唯一性，即不允许重复的值存在。</li>
+<li><strong>聚簇索引</strong>：按照索引列的顺序对表进行排序，并将表中的数据存储在同一簇中，使得物理存储上相邻的数据也是逻辑上相邻的。</li>
+<li><strong>非聚簇索引</strong>：将索引列的值与对应数据的位置关系存储在一个数据结构中，而不是像聚簇索引一样将数据存储在同一簇中。</li>
+</ul>
+<ol start="3">
+<li>如何创建索引？</li>
+</ol>
+<p>在数据库中创建索引可以使用 CREATE INDEX 语句，语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] INDEX index_name <span class="keyword">ON</span> table_name (column1, column2, ...);</span><br></pre></td></tr></table></figure>
+
+<p>其中，UNIQUE 表示创建唯一索引，index_name 表示索引的名称，table_name 表示表的名称，column1、column2 等表示索引列的名称。</p>
+<ol start="4">
+<li>索引的创建需要考虑哪些问题？</li>
+</ol>
+<p>在创建索引时需要考虑以下几个问题：</p>
+<ul>
+<li><strong>索引对查询性能的影响</strong>：虽然索引可以加快查询速度，但是过多的索引也会影响数据的插入、更新和删除性能。</li>
+<li><strong>索引列的选择</strong>：应该选择经常用于查询的列作为索引列，而不是所有列都建立索引。</li>
+<li><strong>索引的唯一性</strong>：需要根据实际需求选择是否创建唯一索引。</li>
+<li><strong>索引的大小</strong>：索引的大小会影响查询性能和存储空间，需要根据实际情况选择适当的索引类型和大小。</li>
+<li><strong>索引的维护成本</strong>：索引的维护成本包括创建、删除、修改等操作的成本，需要考虑这些成本是否可以接受。</li>
+</ul>
+<ol start="5">
+<li>索引的数据结构是什么？</li>
+</ol>
+<p>索引的<strong>数据结构主要包括 B-Tree、Hash 等</strong>。其中，B-Tree 是一种平衡树结构，可以支持范围查询和排序操作，适合于对有序数据的索引。Hash 索引则是一种哈希表结构，只适用于等值查询和查找操作，不支持范围查询和排序操作。</p>
+<h1 id="B-B-树，和其他树的区别，优缺点"><a href="#B-B-树，和其他树的区别，优缺点" class="headerlink" title="B/B+树，和其他树的区别，优缺点"></a>B/B+树，和其他树的区别，优缺点</h1><p>B树和B+树是常见的用于数据库索引的树状数据结构，它们的<strong>主要区别在于叶子节点的结构和索引的遍历方式</strong>。下面是它们的详细介绍：</p>
+<ol>
+<li><strong>B树</strong></li>
+</ol>
+<p>B树是一种平衡树结构，它可以在每个节点中存储多个关键字，并且可以适应不同的磁盘块大小。B树的节点可以分为内部节点和叶子节点两种类型，内部节点存储指向下一级子节点的指针，而<strong>叶子节点存储数据的实际值</strong>。</p>
+<p>B树的优点是：</p>
+<ul>
+<li>可以适应不同的磁盘块大小，可以减少磁盘I/O操作的次数，提高查询性能。</li>
+<li>可以支持范围查询和排序操作。</li>
+<li>插入、删除操作比较灵活，不需要像平衡二叉树那样频繁地重新平衡。</li>
+</ul>
+<p>B树的缺点是：</p>
+<ul>
+<li>节点的大小不太灵活，可能出现磁盘空间的浪费或者节点过小的情况。</li>
+<li>节点的查找速度较慢，因为需要在每个节点中进行线性搜索。</li>
+</ul>
+<ol start="2">
+<li><strong>B+树</strong></li>
+</ol>
+<p>B+树是在B树的基础上进行改进的一种数据结构，它<strong>将所有的关键字都存储在叶子节点中，并且叶子节点之间按照顺序链接，形成一个有序的链表</strong>。内部节点只存储关键字和指向下一级子节点的指针。</p>
+<p>B+树的优点是：</p>
+<ul>
+<li>叶子节点之间按照顺序链接，可以支持范围查询和排序操作，效率更高。</li>
+<li>叶子节点的大小固定，可以减少磁盘I/O操作的次数，提高查询性能。</li>
+<li>叶子节点存储了所有的关键字，内部节点只存储关键字和指针，可以大大减少内存的使用。</li>
+</ul>
+<p>B+树的缺点是：</p>
+<ul>
+<li>插入、删除操作相对复杂，需要维护叶子节点之间的链接关系。</li>
+<li>不支持随机访问，需要通过顺序遍历叶子节点才能找到目标值。</li>
+</ul>
+<ol start="3">
+<li>其他树</li>
+</ol>
+<p>除了B树和B+树之外，还有一些其他的树状数据结构，比如红黑树、AVL树等。这些树的主要区别在于节点的平衡和遍历方式。红黑树和AVL树都是自平衡二叉搜索树，可以快速定位目标值，但是它们的节点大小固定，不太适合用于磁盘上的索引。同时，在数据量较大的情况下，B树和B+树的查询性能更好，因为它们可以减少磁盘I/O操作的次数。</p>
+<h1 id="binlog"><a href="#binlog" class="headerlink" title="binlog"></a>binlog</h1><p>Binlog是<strong>MySQL数据库的一种日志记录机制</strong>，用于记录数据库的所有修改操作，包括插入、更新和删除等操作。它可以用于数据恢复、主从同步、数据分析等场景。</p>
+<p>Binlog的全称是Binary Log，也就是<strong>二进制日志</strong>。它以二进制格式记录数据库的修改操作，而不是以文本格式记录，这样可以大大减少日志文件的大小，提高写入性能。在MySQL 5.6之后的版本中，Binlog默认使用了一种名为“row-based”格式的记录方式，这种方式记录了每行数据的变化情况。</p>
+<p>Binlog主要包括两个部分：事件头和事件体。事件头包括事件类型、时间戳、服务器ID等信息，事件体包括实际的修改操作。Binlog可以通过MySQL提供的命令行工具或者第三方工具进行查看和分析。</p>
+<p>Binlog的主要作用是<strong>用于数据恢复和主从同步</strong>。在数据恢复方面，如果数据库出现了故障或者误操作导致数据丢失，可以通过Binlog中记录的操作进行数据恢复。在主从同步方面，主库会将修改操作记录到Binlog中，从库则通过读取Binlog来同步主库的数据。</p>
+<p>总的来说，Binlog是MySQL数据库的一个重要特性，可以帮助我们实现数据恢复、主从同步等功能，对于数据库的管理和维护非常有帮助。</p>
+<h1 id="分表分库"><a href="#分表分库" class="headerlink" title="分表分库"></a>分表分库</h1><p>分表分库是一种常用的数据库架构设计方案，它的主要目的是为了解决数据库性能瓶颈和数据量增长等问题。下面是一些与分表分库相关的问题以及垂直、水平分库的介绍：</p>
+<ol>
+<li>什么是分表分库？</li>
+</ol>
+<p>分表分库是<strong>将一个大的数据库拆分为多个小的数据库或表的过程</strong>，以减轻单个数据库或表的压力，提高系统的可扩展性和性能。分表分库通常分为垂直分库和水平分库两种方式。</p>
+<ol start="2">
+<li><strong>垂直分库和水平分库有什么区别？</strong></li>
+</ol>
+<p><strong>垂直分库是按照业务功能将不同的表或者字段分布到不同的数据库中，</strong>每个数据库只包含相应的表或者字段。这种方式适合业务复杂、数据量大的场景，可以减轻单个数据库的压力，提高查询性能。</p>
+<p><strong>水平分库是将同一个表的数据按照一定的规则分散到不同的数据库中</strong>，每个数据库只包含部分数据。这种方式适合数据量大、读写压力大的场景，可以提高读写性能和并发能力。</p>
+<ol start="3">
+<li>分表分库的优缺点是什么？</li>
+</ol>
+<p>分表分库的优点包括：</p>
+<ul>
+<li>可以提高系统的可扩展性和性能，适应数据量增长和并发访问的需求。</li>
+<li>可以将不同的业务和数据隔离开来，降低了单个数据库或表的风险和复杂度。</li>
+<li>可以实现数据的备份和恢复，提高系统的可靠性和可用性。</li>
+</ul>
+<p>分表分库的缺点包括：</p>
+<ul>
+<li>需要对系统进行重新架构和改造，增加了系统的复杂度和维护成本。</li>
+<li>数据库之间的数据同步和管理需要更加复杂和严格，需要考虑数据一致性和容错性。</li>
+<li>可能会导致查询性能的下降，特别是跨库查询的场景。</li>
+</ul>
+<ol start="4">
+<li>分表分库应用场景有哪些？</li>
+</ol>
+<p><strong>分表分库适用于数据量大、读写压力大、并发访问多的场景，比如电商、社交、游戏等业务</strong>。具体应用场景包括：</p>
+<ul>
+<li>数据库性能瓶颈明显，需要进行水平扩展。</li>
+<li>数据库容量已经达到上限，需要进行垂直拆分。</li>
+<li>数据库需要支持全球化部署和跨地域访问。</li>
+<li>数据库需要满足数据安全和隔离的需求。</li>
+</ul>
+<p>总之，分表分库是一种常用的数据库架构设计方案，在实际应用中需要根据具体业务场景和需求进行合理的选择和调整。</p>
+<h1 id="算法里大O和小o的区别"><a href="#算法里大O和小o的区别" class="headerlink" title="算法里大O和小o的区别"></a>算法里大O和小o的区别</h1><p>在算法分析中，我们通常使用大O符号和小o符号来表示算法的渐进时间复杂度。它们的具体含义如下：</p>
+<ol>
+<li><p>大O符号：<strong>表示算法的渐进上界</strong>，<strong>即算法的最坏时间复杂度</strong>。如果算法的时间复杂度为O(f(n))，则存在一个正常数c和n0，使得当n&gt;=n0时，算法的运行时间T(n)&lt;=c*f(n)。</p>
+</li>
+<li><p>小o符号：<strong>表示算法的渐进上界比O符号更紧</strong>，<strong>即算法的最优时间复杂度</strong>。如果算法的时间复杂度为o(f(n))，则对于任意正常数c&gt;0，都存在一个正常数n0，使得当n&gt;=n0时，算法的运行时间T(n)&lt;c*f(n)。</p>
+</li>
+</ol>
+<p>大O符号和小o符号的区别在于它们对于算法的渐进时间复杂度的要求不同。<strong>大O符号要求算法的时间复杂度必须不超过某个上界，而小o符号要求算法的时间复杂度必须比某个上界更紧</strong>。因此，如果一个算法的时间复杂度为o(f(n))，那么它的渐进时间复杂度一定比O(f(n))更优秀。</p>
+<p>例如，对于一个算法的渐进时间复杂度为O(n^2)，则可以使用插入排序、冒泡排序、选择排序等排序算法。如果一个算法的渐进时间复杂度为o(n^2)，则可以使用快速排序、归并排序等排序算法，因为它们的时间复杂度更优秀。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E9%98%BF%E9%87%8C%E8%8F%9C%E9%B8%9F%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95/">https://liuwqtech.github.io/2023/04/02/面试/阿里菜鸟后端面试/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/23/%E7%AE%97%E6%B3%95/%E6%A0%A1%E6%8B%9B%E5%86%B2%E5%88%BA%E9%9B%86%E8%AE%AD/L02-%E8%AF%BE%E5%89%8D%E6%B5%8B%E8%AF%84/"><img class="prev-cover" src="http://qn.liuwqtech.top/e6c9d24ely1h5shh4d6uuj20l00dwq4s.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">L02-课前测评</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/02/%E9%9D%A2%E8%AF%95/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AC%AC%E4%BA%8C%E5%AD%A3/"><img class="next-cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java面试题第二季</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/02/面试/Java面试题第一季/" title="Java面试题第一季"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">Java面试题第一季</div></div></a></div><div><a href="/2023/04/02/面试/Java面试题第二季/" title="Java面试题第二季"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">Java面试题第二季</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">数组和链表的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF"><span class="toc-number">2.</span> <span class="toc-text">集合接口继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF%E6%A0%91"><span class="toc-number">2.1.</span> <span class="toc-text">Collection接口继承树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF%E6%A0%91"><span class="toc-number">2.2.</span> <span class="toc-text">Map接口继承树</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Set%E5%92%8CList%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">Set和List的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList%E5%92%8CLinkedList%E5%8C%BA%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">ArrayList和LinkedList区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Set%E5%93%AA%E4%B8%AA%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84"><span class="toc-number">5.</span> <span class="toc-text">Set哪个是有序的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.</span> <span class="toc-text">HashMap底层实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap-1-7%E5%92%8C1-8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.</span> <span class="toc-text">HashMap 1.7和1.8的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%93%BE%E8%A1%A8%E8%BD%AC%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E9%98%88%E5%80%BC%E6%98%AF8"><span class="toc-number">8.</span> <span class="toc-text">为什么链表转红黑树的阈值是8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E8%80%8C%E4%B8%8D%E6%98%AF%E5%85%B6%E4%BB%96%E7%9A%84%E6%A0%91%EF%BC%9F%E6%AF%94%E5%A6%82%E8%AF%B4%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">9.</span> <span class="toc-text">为什么使用红黑树而不是其他的树？比如说二叉树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%90%97"><span class="toc-number">10.</span> <span class="toc-text">HashMap线程安全吗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E7%8E%B0%E8%B1%A1"><span class="toc-number">10.1.</span> <span class="toc-text">故障现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">10.2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections"><span class="toc-number">10.2.1.</span> <span class="toc-text">Collections</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConcurrentHashMap"><span class="toc-number">10.2.2.</span> <span class="toc-text">ConcurrentHashMap</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E9%9B%86%E5%90%88%EF%BC%8C%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">有哪些线程安全的集合，怎么实现的？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-number">12.</span> <span class="toc-text">红黑树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">13.</span> <span class="toc-text">调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-number">13.1.</span> <span class="toc-text">进程调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6"><span class="toc-number">13.2.</span> <span class="toc-text">磁盘调度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E9%94%81"><span class="toc-number">14.</span> <span class="toc-text">MySQL锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E8%8C%83%E5%BC%8F"><span class="toc-number">15.</span> <span class="toc-text">MySQL范式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%B4%A2%E5%BC%95"><span class="toc-number">16.</span> <span class="toc-text">介绍索引，为什么需要索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95%E4%B8%80%E5%AE%9A%E4%BC%9A%E5%8F%98%E5%BF%AB%E5%90%97"><span class="toc-number">17.</span> <span class="toc-text">使用索引一定会变快吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%85%A2%E7%B4%A2%E5%BC%95%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5%EF%BC%8C%E6%80%8E%E4%B9%88%E8%B0%83%E4%BC%98"><span class="toc-number">18.</span> <span class="toc-text">慢索引怎么排查，怎么调优</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-select-xxx-from-xx-where-a-a-100-%E4%BC%9A%E8%B5%B0%E7%B4%A2%E5%BC%95%E5%90%97%EF%BC%8C%E6%80%8E%E4%B9%88%E6%94%B9%E4%BC%9A%E8%B5%B0%E7%B4%A2%E5%BC%95"><span class="toc-number">19.</span> <span class="toc-text">MySQL select xxx from xx where a*a &#x3D; 100 会走索引吗，怎么改会走索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4G%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%96%87%E6%9C%AC%EF%BC%8C%E7%BB%9F%E8%AE%A1%E5%8D%95%E8%AF%8D%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="toc-number">20.</span> <span class="toc-text">4G大小的文本，统计单词的个数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">21.</span> <span class="toc-text">Redis数据结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6"><span class="toc-number">22.</span> <span class="toc-text">Redis持久化机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9-%E5%87%BB%E7%A9%BF-%E7%A9%BF%E9%80%8F%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D"><span class="toc-number">23.</span> <span class="toc-text">Redis缓存雪崩&#x2F;击穿&#x2F;穿透分别是什么，如何避免</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87"><span class="toc-number">24.</span> <span class="toc-text">项目如何优化提升效率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot-SpringCloud"><span class="toc-number">25.</span> <span class="toc-text">SpringBoot&#x2F;SpringCloud</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ioc%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">26.</span> <span class="toc-text">ioc怎么实现的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bean%E6%98%AF%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B%EF%BC%8C%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97"><span class="toc-number">27.</span> <span class="toc-text">bean是单例还是多例，是线程安全的吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringBoot%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">28.</span> <span class="toc-text">SpringBoot的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Boot-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%91%A2%EF%BC%9F"><span class="toc-number">29.</span> <span class="toc-text">Spring Boot 自动配置的注解呢？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B6%85%E5%8D%96%E9%97%AE%E9%A2%98"><span class="toc-number">30.</span> <span class="toc-text">超卖问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">31.</span> <span class="toc-text">介绍线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">31.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A03%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">31.2.</span> <span class="toc-text">线程池3个常用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">31.2.1.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3"><span class="toc-number">31.2.2.</span> <span class="toc-text">了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%82%B9"><span class="toc-number">31.2.3.</span> <span class="toc-text">重点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E5%90%8E%EF%BC%8C%E4%BB%80%E4%B9%88%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="toc-number">31.3.</span> <span class="toc-text">任务提交后，什么流程？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%EF%BC%8C%E7%8A%B6%E6%80%81%E8%BD%AC%E5%8C%96"><span class="toc-number">32.</span> <span class="toc-text">线程的状态，状态转化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="toc-number">33.</span> <span class="toc-text">如何保证线程安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">34.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CAS%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">35.</span> <span class="toc-text">CAS是什么，有什么问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS-Demo"><span class="toc-number">35.1.</span> <span class="toc-text">CAS Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">35.2.</span> <span class="toc-text">底层原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Unsafe"><span class="toc-number">35.2.1.</span> <span class="toc-text">Unsafe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS"><span class="toc-number">35.2.2.</span> <span class="toc-text">CAS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS%E7%BC%BA%E7%82%B9"><span class="toc-number">35.3.</span> <span class="toc-text">CAS缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ABA%E9%97%AE%E9%A2%98"><span class="toc-number">35.4.</span> <span class="toc-text">ABA问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BC%95%E5%8F%91"><span class="toc-number">35.4.1.</span> <span class="toc-text">如何引发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">35.4.2.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%AD%90%E5%BC%95%E7%94%A8"><span class="toc-number">35.4.2.1.</span> <span class="toc-text">原子引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E5%8E%9F%E5%AD%90%E5%BC%95%E7%94%A8"><span class="toc-number">35.4.2.2.</span> <span class="toc-text">时间戳原子引用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="toc-number">36.</span> <span class="toc-text">JVM内存模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">37.</span> <span class="toc-text">什么时候触发垃圾回收</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">38.</span> <span class="toc-text">创建一个对象的过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ClassLoader%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">39.</span> <span class="toc-text">ClassLoader是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">40.</span> <span class="toc-text">双亲委派机制的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E7%BA%BF%E7%A8%8B%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%95%A5%E5%85%B3%E7%B3%BB%EF%BC%8C%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-number">41.</span> <span class="toc-text">Java线程和操作系统线程有啥关系，不一样的地方</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E6%A6%82%E5%BF%B5"><span class="toc-number">42.</span> <span class="toc-text">操作系统用户态和内核态概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B"><span class="toc-number">43.</span> <span class="toc-text">socket传输过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E8%AF%BB%E6%96%87%E4%BB%B6%EF%BC%8C%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%EF%BC%8C%E6%B6%89%E5%8F%8A%E4%BB%80%E4%B9%88%E7%B1%BB%EF%BC%8C%E5%8F%82%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%88%86%E5%88%AB%E9%80%82%E7%94%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF"><span class="toc-number">44.</span> <span class="toc-text">java读文件，字节流和字符流，涉及什么类，参数是什么，分别适用哪些场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">45.</span> <span class="toc-text">序列化和反序列化的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hessian%E5%92%8CJSON%E6%98%AF%E4%B8%80%E4%B8%AA%E5%B1%82%E9%9D%A2%E7%9A%84%E4%B8%9C%E8%A5%BF%E5%90%97"><span class="toc-number">46.</span> <span class="toc-text">Hessian和JSON是一个层面的东西吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">47.</span> <span class="toc-text">动态代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4%E5%AE%9E%E7%8E%B0%EF%BC%9A%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E4%B8%AD%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="toc-number">48.</span> <span class="toc-text">Linux命令实现：统计文件中某个字符串的个数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%E6%A6%82%E5%BF%B5%EF%BC%8C%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84"><span class="toc-number">49.</span> <span class="toc-text">布隆过滤器概念，功能，怎么实现的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">50.</span> <span class="toc-text">int和Integer的区别、使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#string%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%88%90%E4%B8%8D%E5%8F%AF%E5%8F%98"><span class="toc-number">51.</span> <span class="toc-text">string为什么设计成不可变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8"><span class="toc-number">52.</span> <span class="toc-text">什么是线程不安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#final%E4%BF%AE%E9%A5%B0%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%98"><span class="toc-number">53.</span> <span class="toc-text">final修饰一个对象是什么不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8%E5%92%8C%E8%BD%AF%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">54.</span> <span class="toc-text">弱引用和软引用的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8"><span class="toc-number">54.0.1.</span> <span class="toc-text">软引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="toc-number">54.0.2.</span> <span class="toc-text">弱引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF-%E5%BC%B1%E5%BC%95%E7%94%A8%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">54.0.3.</span> <span class="toc-text">软&#x2F;弱引用适用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">55.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session%E5%92%8CCookie"><span class="toc-number">56.</span> <span class="toc-text">Session和Cookie</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACID"><span class="toc-number">57.</span> <span class="toc-text">ACID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">58.</span> <span class="toc-text">进程间通信</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E4%BA%A4%E6%8D%A2"><span class="toc-number">59.</span> <span class="toc-text">页面交换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String%E3%80%81StringBuffer%E3%80%81StringBuider"><span class="toc-number">60.</span> <span class="toc-text">String、StringBuffer、StringBuider</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">61.</span> <span class="toc-text">线程使用方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadLocal%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-number">62.</span> <span class="toc-text">ThreadLocal相关问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%88%E5%94%AF%E4%B8%80%E3%80%81%E8%81%9A%E7%B0%87%E3%80%81%E9%9D%9E%E8%81%9A%E7%B0%87%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%88%9B%E5%BB%BA%E8%80%83%E8%99%91%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-number">63.</span> <span class="toc-text">索引相关问题（唯一、聚簇、非聚簇，创建和使用，创建考虑的问题，数据结构）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-B-%E6%A0%91%EF%BC%8C%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%91%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">64.</span> <span class="toc-text">B&#x2F;B+树，和其他树的区别，优缺点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#binlog"><span class="toc-number">65.</span> <span class="toc-text">binlog</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E8%A1%A8%E5%88%86%E5%BA%93"><span class="toc-number">66.</span> <span class="toc-text">分表分库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%87%8C%E5%A4%A7O%E5%92%8C%E5%B0%8Fo%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">67.</span> <span class="toc-text">算法里大O和小o的区别</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
