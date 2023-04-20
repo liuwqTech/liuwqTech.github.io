@@ -1,0 +1,489 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>实习-美团移动端开发面试 | 小新's Blog</title><meta name="keywords" content="面试"><meta name="author" content="小新,1096463510@qq.com"><meta name="copyright" content="小新"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="视频一面访问权限修饰符在Java中，访问权限修饰符指定了类、接口、方法、变量等成员的访问级别。Java中有四种访问权限修饰符：  public：可以被任何类访问，无访问限制。 protected：可以被同一包内的类以及其他包中的子类访问。 default（默认）：如果没有指定访问权限修饰符，则默认为此。可以被同一包内的其他类访问。 private：只能被同一类中的其他成员访问，无法被其他类访问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实习-美团移动端开发面试">
+<meta property="og:url" content="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E5%AE%9E%E4%B9%A0-%E7%BE%8E%E5%9B%A2%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="小新&#39;s Blog">
+<meta property="og:description" content="视频一面访问权限修饰符在Java中，访问权限修饰符指定了类、接口、方法、变量等成员的访问级别。Java中有四种访问权限修饰符：  public：可以被任何类访问，无访问限制。 protected：可以被同一包内的类以及其他包中的子类访问。 default（默认）：如果没有指定访问权限修饰符，则默认为此。可以被同一包内的其他类访问。 private：只能被同一类中的其他成员访问，无法被其他类访问。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png">
+<meta property="article:published_time" content="2023-04-02T03:16:46.000Z">
+<meta property="article:modified_time" content="2023-04-20T12:57:32.472Z">
+<meta property="article:author" content="小新">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png"><link rel="shortcut icon" href="http://qn.liuwqtech.top/008i3skNgy1gpw51zrippj305k05k74p.jpg"><link rel="canonical" href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E5%AE%9E%E4%B9%A0-%E7%BE%8E%E5%9B%A2%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小新","link":"链接: ","source":"来源: 小新's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-20 20:57:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4suzt6aj30u00u077g.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">84</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">32</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小新's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实习-美团移动端开发面试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-02T03:16:46.000Z" title="发表于 2023-04-02 11:16:46">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-20T12:57:32.472Z" title="更新于 2023-04-20 20:57:32">2023-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实习-美团移动端开发面试"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="视频一面"><a href="#视频一面" class="headerlink" title="视频一面"></a>视频一面</h1><h2 id="访问权限修饰符"><a href="#访问权限修饰符" class="headerlink" title="访问权限修饰符"></a>访问权限修饰符</h2><p>在Java中，访问权限修饰符指定了类、接口、方法、变量等成员的访问级别。Java中有四种访问权限修饰符：</p>
+<ol>
+<li><strong>public</strong>：可以被任何类访问，无访问限制。</li>
+<li><strong>protected</strong>：可以被同一包内的类以及其他包中的子类访问。</li>
+<li><strong>default</strong>（默认）：如果没有指定访问权限修饰符，则默认为此。可以被同一包内的其他类访问。</li>
+<li><strong>private</strong>：只能被同一类中的其他成员访问，无法被其他类访问。</li>
+</ol>
+<p>访问权限修饰符的使用可以帮助我们控制类成员的访问级别，从而提高代码的安全性和可维护性。</p>
+<h2 id="范型"><a href="#范型" class="headerlink" title="范型"></a>范型</h2><p>在Java中，泛型（Generics）是一种参数化类型的机制，它允许我们在定义类、接口和方法时使用类型参数，从而使得代码更加通用和类型安全。</p>
+<p>使用泛型可以<strong>将数据类型的检查和转换从运行时提前到编译时</strong>，并且可以使代码更加简洁和可读。在使用泛型时，我们可以通过以下方式来定义类型参数：</p>
+<ol>
+<li>在类或接口的名称后加上尖括号（&lt;&gt;），在尖括号中指定类型参数，如：<code>class MyClass&lt;T&gt; &#123; &#125;</code>。</li>
+<li>在方法的返回类型前加上尖括号（&lt;&gt;），在尖括号中指定类型参数，如：<code>public &lt;T&gt; T myMethod() &#123; &#125;</code>。</li>
+</ol>
+<p>在使用泛型时，可以使用以下<strong>通配符</strong>：</p>
+<ol>
+<li><code>?</code>：表示任意类型，通常用于方法的参数类型或返回类型。</li>
+<li><code>extends</code>：表示指定类型的子类或实现类，通常用于限制类型参数的范围，如：<code>&lt;T extends Number&gt;</code>。</li>
+<li><code>super</code>：表示指定类型的父类，通常用于限制泛型类或方法的参数类型，如：<code>List&lt;? super Integer&gt;</code>。</li>
+</ol>
+<p>泛型的使用可以<strong>使代码更加通用和类型安全，从而提高代码的可维护性和可读性。</strong></p>
+<h2 id="软件设计角度-范型的好处"><a href="#软件设计角度-范型的好处" class="headerlink" title="软件设计角度-范型的好处"></a>软件设计角度-范型的好处</h2><p>在软件设计中，泛型可以带来以下好处：</p>
+<ol>
+<li><p><strong>提高代码重用性</strong>：泛型可以使代码更加通用和灵活，从而使代码可以被更多的场景和需求所重用。</p>
+</li>
+<li><p><strong>提高代码可读性和可维护性</strong>：泛型可以使代码更加简洁和清晰，从而使代码更容易被理解和维护。</p>
+</li>
+<li><p><strong>提高代码的类型安全性</strong>：泛型可以在编译时捕获类型错误，从而避免在运行时出现类型转换错误或类型不匹配的问题。</p>
+</li>
+<li><p><strong>实现算法的通用性</strong>：泛型可以使算法适用于不同类型的数据，使算法更加通用和灵活。</p>
+</li>
+<li><p><strong>提高代码的可扩展性</strong>：泛型可以使代码更加容易扩展和修改，从而使代码更加适应变化的需求。</p>
+</li>
+</ol>
+<p>总之，泛型可以使代码更加灵活、通用、清晰和安全，从而提高代码的质量和可维护性。因此，在软件设计中，我们应该充分利用泛型的优势，尽可能地使用泛型来实现代码的通用性和灵活性。</p>
+<h2 id="java跨平台"><a href="#java跨平台" class="headerlink" title="java跨平台"></a>java跨平台</h2><p><strong>Java实现跨平台主要是通过Java虚拟机</strong>（Java Virtual Machine，JVM）实现的。Java代码编译后会生成字节码文件（.class文件），这些字节码文件可以被任何平台上的Java虚拟机解释执行。因此，只要在不同平台上都有对应的Java虚拟机，就可以在这些平台上运行Java程序，实现跨平台的效果。</p>
+<p>Java虚拟机是一个运行在不同平台上的软件，它可以将Java字节码解释成平台相关的机器码。Java虚拟机负责管理Java程序的内存、线程、垃圾回收等方面的操作，使得Java程序可以在不同平台上具有相同的行为和性能。</p>
+<p>除了Java虚拟机，Java还提供了一些跨平台的API和工具，如Java标准库、Java Web开发工具等，这些工具和API也可以帮助Java程序实现跨平台的效果。</p>
+<p>总之，Java通过Java虚拟机和跨平台的API和工具实现了跨平台的效果，使得Java程序可以在不同平台上运行和使用，为Java的广泛应用提供了基础和保障。</p>
+<h2 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h2><p>线程和进程是操作系统中的两个基本概念，它们之间有以下区别：</p>
+<ol>
+<li><p><strong>定义不同</strong>：进程是操作系统分配资源的基本单位，而线程是CPU调度的基本单位。</p>
+</li>
+<li><p><strong>资源分配不同</strong>：进程拥有独立的内存空间、文件句柄、网络连接等资源，而线程共享进程的资源。</p>
+</li>
+<li><p><strong>创建和销毁开销不同</strong>：创建和销毁一个进程的开销较大，包括为进程分配资源、初始化进程控制块等，而创建和销毁线程的开销较小。</p>
+</li>
+<li><p><strong>上下文切换开销不同</strong>：上下文切换是指从一个任务切换到另一个任务时，需要保存和恢复任务的执行状态。线程的上下文切换开销较小，因为线程共享进程的资源，切换时只需要保存和恢复线程的执行状态即可；而进程的上下文切换开销较大，因为进程拥有独立的资源，切换时需要保存和恢复进程的所有资源状态。</p>
+</li>
+<li><p><strong>并发性不同</strong>：不同线程之间可以共享进程的资源，因此可以实现并发执行；而不同进程之间不能直接共享资源，因此需要通过进程间通信来实现并发执行。</p>
+</li>
+</ol>
+<p>总之，线程是进程的一部分，线程共享进程的资源，可以实现并发执行，上下文切换开销小；而进程拥有独立的资源，上下文切换开销大，需要通过进程间通信来实现并发执行。</p>
+<h2 id="一个应用有几个进程"><a href="#一个应用有几个进程" class="headerlink" title="一个应用有几个进程"></a>一个应用有几个进程</h2><p><strong>一个应用程序可以由一个或多个进程组成</strong>，这取决于应用程序的实现方式和功能需求。</p>
+<p>一般情况下，一个简单的应用程序只需要一个进程即可完成所有功能，例如一个计算器应用程序只需要一个进程来处理用户的输入和输出结果。</p>
+<p>但是，对于一些复杂的应用程序，例如浏览器、操作系统等，可能需要多个进程来协同完成任务。例如，现代的浏览器通常使用多个进程来处理不同的任务，例如渲染页面、处理JavaScript、管理插件等等。</p>
+<p>此外，一些应用程序还可能会启动其他进程来完成一些特定的任务，例如数据库管理系统会启动一个独立的进程来处理数据库的事务。</p>
+<p>因此，一个应用程序可以有一个或多个进程，这取决于应用程序的实现方式和功能需求。</p>
+<h2 id="线程之间共享什么资源"><a href="#线程之间共享什么资源" class="headerlink" title="线程之间共享什么资源"></a>线程之间共享什么资源</h2><p>线程是一个进程内的执行单元，同一进程内的多个线程可以共享进程的资源。线程之间可以共享的资源包括以下几种：</p>
+<ol>
+<li><p><strong>堆内存</strong>：在Java中，所有线程共享进程的堆内存，即通过new关键字创建的对象所在的内存空间。</p>
+</li>
+<li><p><strong>静态变量</strong>：静态变量是存储在方法区中的，同一进程内的多个线程可以共享静态变量。</p>
+</li>
+<li><p><strong>共享锁</strong>：通过锁机制可以实现线程之间的同步，多个线程可以共享同一把锁。</p>
+</li>
+<li><p><strong>I/O资源</strong>：例如打开的文件、网络连接等资源，多个线程可以共享这些资源。</p>
+</li>
+<li><p><strong>运行时环境</strong>：包括线程的优先级、线程组、线程状态等运行时信息，这些信息在整个进程内是共享的。</p>
+</li>
+</ol>
+<p>需要注意的是，多个线程共享资源时需要考虑线程安全性，因为多个线程同时访问共享资源可能会导致数据不一致或者其他问题。因此，在多线程编程中，需要使用同步机制来确保线程之间的安全访问共享资源。</p>
+<h2 id="为什么要用线程池"><a href="#为什么要用线程池" class="headerlink" title="为什么要用线程池"></a>为什么要用线程池</h2><p>使用线程池有以下几个优点：</p>
+<ol>
+<li><p><strong>降低系统开销</strong>：创建和销毁线程的开销较大，如果每个任务都创建一个线程，会导致系统资源的浪费和效率降低。使用线程池可以避免频繁创建和销毁线程，从而减少系统开销。</p>
+</li>
+<li><p><strong>提高响应速度</strong>：线程池中的线程可以重复利用，当有新任务到来时，可以立即分配一个线程来处理，而不需要等待创建新线程，从而提高响应速度。</p>
+</li>
+<li><p><strong>提高系统稳定性</strong>：当系统中有大量任务需要处理时，如果没有线程池，每个任务都需要创建一个线程，容易导致系统资源耗尽，甚至出现系统崩溃的情况。使用线程池可以限制同时处理的任务数，避免系统资源被耗尽的情况，从而提高系统的稳定性。</p>
+</li>
+<li><p><strong>方便管理线程</strong>：线程池中的线程可以进行统一管理，包括线程的创建、销毁、状态监控等操作，方便管理线程。</p>
+</li>
+<li><p><strong>提高代码可读性和可维护性</strong>：使用线程池可以将任务的执行逻辑与线程管理的逻辑分离，从而提高代码的可读性和可维护性。</p>
+</li>
+</ol>
+<p>综上所述，使用线程池可以优化系统资源的利用、提高响应速度、提高系统稳定性、方便管理线程和提高代码的可读性和可维护性。</p>
+<h2 id="线程池内部实现的原理"><a href="#线程池内部实现的原理" class="headerlink" title="线程池内部实现的原理"></a>线程池内部实现的原理</h2><p>线程池的内部实现原理如下：</p>
+<ol>
+<li><p><strong>线程池的初始化</strong>：在创建线程池时，会初始化一定数量的线程，并将这些线程放入线程池中等待任务的到来。</p>
+</li>
+<li><p><strong>任务提交</strong>：当有任务需要执行时，可以将任务提交到线程池中，线程池会根据自身的策略从池中选取一个空闲的线程来执行该任务。</p>
+</li>
+<li><p><strong>任务执行</strong>：当线程池中的线程被选中执行任务时，线程会从任务队列中取出一个任务并执行。执行完任务后，线程会返回到线程池中并等待下一个任务的到来。</p>
+</li>
+<li><p><strong>线程池的扩容和缩容</strong>：线程池内部会维护一个线程数的上限和下限，当任务量较大时，线程池会根据预设的策略动态地增加线程的数量，以满足任务的处理需求；当任务量减少时，线程池会将多余的线程回收并释放资源。</p>
+</li>
+<li><p><strong>线程安全和异常处理</strong>：线程池会对任务的执行进行管理和监控，确保任务的执行是线程安全的，并对线程抛出的异常进行处理和记录。</p>
+</li>
+</ol>
+<p>线程池的实现涉及到线程的管理、任务队列的维护、线程池容量的控制、异常处理等方面，需要综合考虑线程安全性、执行效率、资源利用率等因素。在实际应用中，需要根据具体的场景和需求选择合适的线程池实现方式和参数配置，以达到最优的性能和效果。</p>
+<h2 id="编程：用数组实现栈的pop和push方法"><a href="#编程：用数组实现栈的pop和push方法" class="headerlink" title="编程：用数组实现栈的pop和push方法"></a>编程：用数组实现栈的pop和push方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stack</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] stack;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> top;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Stack</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">        stack = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        top = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>.size = size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (top == size - <span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Stack is full&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            top++;</span><br><span class="line">            stack[top] = data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (top == -<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Stack is empty&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> data = stack[top];</span><br><span class="line">            top--;</span><br><span class="line">            <span class="keyword">return</span> data;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个实现中，我们使用一个数组 <code>stack</code> 来存储栈的元素。在初始化的时候，我们创建一个大小为 <code>size</code> 的数组，并将栈的顶部 <code>top</code> 初始化为 -1。当执行 <code>push</code> 方法时，如果栈已满，则输出错误信息；否则，将顶部指针 <code>top</code> 加 1，并将元素存储在数组 <code>stack</code> 中。当执行 <code>pop</code> 方法时，如果栈为空，则输出错误信息并返回 -1；否则，将栈顶元素取出并返回，并将顶部指针 <code>top</code> 减 1。</p>
+<p>需要注意的是，在Java中，数组的下标是从0开始的，因此我们在实现中需要将栈的顶部初始值设为-1，而不是0。此外，由于Java中数组的大小是固定的，因此在使用时需要预先指定栈的大小，如果栈的元素数量超过了指定的大小，就会导致栈溢出。因此，在实际应用中，需要根据具体的场景和需求选择合适的数据结构实现。</p>
+<h2 id="上述代码的通用性分析"><a href="#上述代码的通用性分析" class="headerlink" title="上述代码的通用性分析"></a>上述代码的通用性分析</h2><p>上面的 Java 代码实现了一个基于数组的栈，是一种比较简单直观的实现方式。这种实现方式通用性较好，可以用于各种不同的场景和应用中，但也存在一些限制和缺陷：</p>
+<ol>
+<li><strong>数组的大小是固定的，无法动态扩展，一旦数组大小不足，就会导致栈溢出</strong>。</li>
+<li><strong>栈的元素类型是固定的，无法存储不同类型的元素</strong>。</li>
+<li><strong>在栈的弹出操作中，如果栈中存在 null 元素，就无法区分是栈中本来就存在的 null 元素还是弹出操作返回的 null 值</strong>。</li>
+<li><strong>在多线程环境下，可能会存在线程安全问题，需要进行同步处理</strong>。</li>
+</ol>
+<p>针对这些问题，我们可以通过使用链表等其它数据结构来实现栈，从而实现更灵活和高效的栈。例如，使用链表实现栈可以实现动态扩展和支持不同类型的元素，而使用线程安全的数据结构可以解决线程安全问题。</p>
+<p>总之，实现一个通用型的栈需要根据具体的场景和需求来选择合适的数据结构和实现方式。</p>
+<h2 id="HashMap的优势"><a href="#HashMap的优势" class="headerlink" title="HashMap的优势"></a>HashMap的优势</h2><p>HashMap 是 Java 中非常常用的一种数据结构，它是基于哈希表实现的，可以快速地进行插入、查找和删除操作。HashMap 的主要优势如下：</p>
+<ol>
+<li><p><strong>快速的查找和插入操作</strong>：HashMap 基于哈希表实现，可以根据键的哈希值快速地查找和插入元素，时间复杂度为 O(1)，在处理大量数据时非常高效。</p>
+</li>
+<li><p><strong>动态扩容</strong>：HashMap 内部会根据元素数量和加载因子等参数来自动扩容，可以动态适应不同的数据量，避免了静态数组的大小限制。</p>
+</li>
+<li><p><strong>可以存储 null 值</strong>：HashMap 允许键和值均为 null，这使得它可以处理更加复杂的数据结构。</p>
+</li>
+<li><p><strong>线程非安全但高效</strong>：HashMap 是非线程安全的，因此在多线程环境下需要进行同步处理。但是在单线程环境下，HashMap 的性能非常高，远远超过了同步的 Hashtable 等线程安全的数据结构。</p>
+</li>
+</ol>
+<p>总的来说，HashMap 是一种非常灵活和高效的数据结构，适用于各种不同的场景和需求。但是需要注意的是，在多线程环境下需要进行同步处理，否则可能会出现线程安全问题。</p>
+<h2 id="HashMap中的k怎么计算的"><a href="#HashMap中的k怎么计算的" class="headerlink" title="HashMap中的k怎么计算的"></a>HashMap中的k怎么计算的</h2><p>在 HashMap 中，计算键的哈希值是通过调用键的 hashCode() 方法来实现的。hashCode() 方法是 Object 类的一个方法，所有对象都可以调用该方法，它返回一个 int 类型的哈希值。</p>
+<p>在 HashMap 中，当插入一个键值对时，会先计算该键的哈希值，然后根据哈希值来确定该键值对在数组中的位置。计算哈希值的过程是通过将键的 hashCode() 值与一个常数进行异或运算，并且通过取模运算来确保哈希值在数组范围内。具体来说，计算哈希值的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> h = key.hashCode();</span><br><span class="line"><span class="keyword">int</span> index = (h ^ (h &gt;&gt;&gt; <span class="number">16</span>)) &amp; (length - <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其中，key.hashCode() 返回键的哈希值，h ^ (h &gt;&gt;&gt; 16) 是对哈希值进行扰动，可以减少哈希冲突的概率，length 是数组的长度，&amp; (length - 1) 是取模运算，确保哈希值在数组范围内。</p>
+<p>需要注意的是，为了保证 HashMap 的性能和正确性，计算哈希值的方法应该满足以下两个条件：</p>
+<ol>
+<li><strong>如果两个键相等，它们的哈希值必须相等</strong>。</li>
+<li><strong>哈希值的分布应该尽可能均匀，避免哈希冲突</strong>。</li>
+</ol>
+<p>因此，在自定义类作为键时，需要重写该类的 hashCode() 方法，确保它满足上述条件，从而保证在 HashMap 中能够正确地查找和插入对应的值。</p>
+<h2 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a>哈希冲突</h2><p>在 HashMap 中，当<strong>两个键具有相同的哈希值时</strong>，称为哈希冲突。这种情况下，<strong>HashMap 会使用链表或红黑树等数据结构，将具有相同哈希值的键值对存储在同一个桶中，从而避免键值对的覆盖</strong>。</p>
+<p>在处理哈希冲突时，HashMap 会<strong>调用键的 equals() 方法来判断两个键是否相等</strong>。如果两个键相等，它们的哈希值也必须相等。因此，在自定义类作为键时，需要同时重写 equals() 和 hashCode() 方法，确保这两个方法的实现能够同时满足以下两个条件：</p>
+<ol>
+<li><strong>如果两个键相等，它们的哈希值必须相等</strong>。</li>
+<li><strong>如果两个键的哈希值相等，它们不一定相等，需要通过 equals() 方法来进一步比较</strong>。</li>
+</ol>
+<p>具体来说，HashMap 在处理哈希冲突时，会先比较两个键的哈希值是否相等，如果相等则继续调用 equals() 方法来比较两个键是否相等。如果两个键相等，则新插入的键值对会覆盖原有的键值对。如果两个键不相等，则新插入的键值对会被插入到链表或红黑树的末尾。</p>
+<p>需要注意的是，在自定义类作为键时，为了保证 HashMap 的性能和正确性，equals() 和 hashCode() 方法的实现需要同时满足上述两个条件。否则，在哈希冲突的情况下，可能会导致键值对存储在错误的桶中或者无法正确地查找和插入对应的值，从而影响 HashMap 的性能和正确性。</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>死锁（deadlock）是指两个或多个线程（或进程）在执行过程中，由于<strong>互相持有对方需要的资源而相互等待</strong>的一种情况，导致所有线程/进程都无法继续执行下去，从而陷入了一种僵局的状态。</p>
+<p>一般来说，死锁发生的原因是由于多个线程都在竞争有限的资源，而每个线程又在等待其他线程释放它需要的资源。在这种情况下，如果没有外部干预，所有线程都将无法继续执行下去，从而导致程序挂起或崩溃。</p>
+<p>死锁是多线程编程中比较常见的问题之一，如果不加以处理，可能会导致程序的性能下降甚至崩溃。<strong>避免死锁的方法</strong>包括：</p>
+<ol>
+<li><strong>避免使用多个锁，尽量使用同步块来保护共享资源。</strong></li>
+<li><strong>确保所有线程获取锁的顺序一致，避免出现循环等待的情况。</strong></li>
+<li><strong>使用定时锁，避免某个线程一直持有锁而不释放。</strong></li>
+<li><strong>使用可重入锁，避免同一个线程多次获取同一个锁而导致死锁。</strong></li>
+<li><strong>使用线程池等技术来限制并发线程的数量，避免过多的线程竞争相同的资源。</strong></li>
+</ol>
+<p>在实际开发中，避免死锁是多线程编程中的一个重要问题，需要设计者和开发者在设计和编写程序时充分考虑，避免出现死锁的情况。</p>
+<h2 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h2><p>数据库事务（database transaction）是指<strong>一组数据库操作</strong>，这组操作作为一个整体被视为一个<strong>单一的、不可分割的工作单元</strong>。事务中的所有操作要么全部成功执行，要么全部失败而被回滚。数据库事务是保证数据完整性、一致性和可靠性的重要手段之一。</p>
+<p>数据库事务具有以下四个特性，通常称为ACID特性：</p>
+<ol>
+<li><p><strong>原子性</strong>（Atomicity）：事务中的所有操作要么全部成功执行，要么全部失败而被回滚，不能只执行其中的一部分操作。这保证了数据库在任何时刻都处于一致的状态。</p>
+</li>
+<li><p><strong>一致性</strong>（Consistency）：事务执行前后，数据库都必须保持一致性状态。也就是说，事务中的操作必须满足数据库定义的所有约束和规则，包括唯一性、完整性、约束等。</p>
+</li>
+<li><p><strong>隔离性</strong>（Isolation）：事务执行时，它的修改操作对其他事务是隔离的，即其他事务不能看到该事务未提交的修改。这保证了事务的独立性和并发性。</p>
+</li>
+<li><p><strong>持久性</strong>（Durability）：事务成功提交后，其所做的修改操作将永久保存到数据库中，即使发生系统故障或断电也不会丢失。这保证了数据的可靠性和持久性。</p>
+</li>
+</ol>
+<p>在实际应用中，数据库事务被广泛用于保证数据一致性和可靠性，特别是在高并发、高可靠性的系统中。开发人员应该熟练掌握事务的使用方法和常见问题，并根据实际需求进行设计和优化。同时，为了保证事务的ACID特性，应该注意事务的设计原则和执行规范，避免出现数据不一致等问题。</p>
+<h2 id="TCP-UDP区别"><a href="#TCP-UDP区别" class="headerlink" title="TCP/UDP区别"></a>TCP/UDP区别</h2><p>TCP（Transmission Control Protocol）和UDP（User Datagram Protocol）是两种常见的网络传输协议，它们有以下区别：</p>
+<ol>
+<li><p><strong>连接方式</strong>：TCP是面向连接的传输协议，它在传输数据之前需要先建立连接，而UDP是无连接协议，它在传输数据之前不需要建立连接。</p>
+</li>
+<li><p><strong>可靠性</strong>：TCP协议具有可靠性，它能够保证数据的可靠传输，通过确认和重传机制来确保数据的完整性和正确性。而UDP协议没有可靠性保证，数据在传输过程中可能丢失、重复或乱序。</p>
+</li>
+<li><p><strong>速度</strong>：由于TCP协议具有可靠性保障，需要进行确认和重传等操作，因此传输速度相对较慢。而UDP协议没有这些额外的操作，传输速度相对较快。</p>
+</li>
+<li><p><strong>应用场景</strong>：由于TCP协议具有可靠性保障，适合传输大量数据、对数据完整性要求较高的应用场景，如文件传输、电子邮件等。而UDP协议适合传输实时性要求较高的数据，如音频、视频等实时流媒体数据。</p>
+</li>
+</ol>
+<p>总之，TCP协议提供了可靠的数据传输，适用于需要保证数据完整性和可靠性的应用场景，而UDP协议则提供了快速的数据传输和实时性保证，适用于对数据实时性要求较高的应用场景。</p>
+<h2 id="编程：判断单链表是否有环"><a href="#编程：判断单链表是否有环" class="headerlink" title="编程：判断单链表是否有环"></a>编程：判断单链表是否有环</h2><p>判断单链表是否有环可以使用快慢指针的方法。具体实现如下：</p>
+<ol>
+<li><p>定义两个指针：slow指针和fast指针，初始时都指向单链表的头节点。</p>
+</li>
+<li><p>slow指针每次向后移动一个节点，fast指针每次向后移动两个节点。</p>
+</li>
+<li><p>如果存在环，fast指针最终会追上slow指针，此时可以判断单链表存在环；如果不存在环，fast指针会先到达链表的末尾，此时可以判断单链表不存在环。</p>
+</li>
+</ol>
+<p>下面是Java代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line">    ListNode fast = head.next;</span><br><span class="line">    <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fast == <span class="keyword">null</span> || fast.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，ListNode是单链表节点的定义，代码中判断是否存在环的逻辑是通过快慢指针来实现的，如果快指针追上慢指针，则说明存在环，否则不存在。</p>
+<h2 id="小程序的劣势"><a href="#小程序的劣势" class="headerlink" title="小程序的劣势"></a>小程序的劣势</h2><p>小程序相对于原生APP和Web应用有以下劣势：</p>
+<ol>
+<li><p><strong>功能受限</strong>：小程序需要在微信提供的框架下进行开发，因此其功能受限于微信平台的能力和限制，无法实现一些高级功能，如后台运行、推送、动态权限等。</p>
+</li>
+<li><p><strong>用户难以发现</strong>：小程序需要通过微信的小程序入口才能被用户发现和使用，而且微信的小程序入口相对较为隐蔽，用户需要通过搜索或扫描二维码等方式才能找到对应的小程序，相对于APP的应用商店或Web的搜索引擎来说，用户体验不如。</p>
+</li>
+<li><p><strong>用户体验受限</strong>：小程序的用户界面相对于原生APP来说较为简单，不能够实现一些高级的交互效果和动画效果，用户体验相对较为受限。</p>
+</li>
+<li><p><strong>开发成本相对较高</strong>：虽然小程序的开发成本相对于原生APP来说较低，但是相对于Web应用来说，小程序的开发成本还是比较高的，需要进行专门的学习和开发。</p>
+</li>
+</ol>
+<p>总之，小程序相对于原生APP和Web应用来说还存在一些劣势，但是其具有跨平台、开发成本低和用户获取成本低等优势，因此在一些特定的场景下，小程序仍然是一种非常有价值的应用形式。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1096463510@qq.com">小新</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://liuwqtech.github.io/2023/04/02/%E9%9D%A2%E8%AF%95/%E5%AE%9E%E4%B9%A0-%E7%BE%8E%E5%9B%A2%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/">https://liuwqtech.github.io/2023/04/02/面试/实习-美团移动端开发面试/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://liuwqTech.github.io" target="_blank">小新's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw4zwo9g9j30jd0j8wgz.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" target="_blank"><img class="post-qr-code-img" src="http://qn.liuwqtech.top/008i3skNgy1gpw504owa0j30ft0im40s.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/02/%E9%9D%A2%E8%AF%95/%E5%AE%9E%E4%B9%A0-%E9%98%BF%E9%87%8C%E8%8F%9C%E9%B8%9FJava%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/"><img class="prev-cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">实习-阿里菜鸟Java开发面试</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/02/%E9%9D%A2%E8%AF%95/Java%E9%9D%A2%E8%AF%95%E9%A2%98%E7%AC%AC%E4%BA%8C%E5%AD%A3/"><img class="next-cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java面试题第二季</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/02/面试/Java面试题第一季/" title="Java面试题第一季"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">Java面试题第一季</div></div></a></div><div><a href="/2023/04/02/面试/Java面试题第二季/" title="Java面试题第二季"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">Java面试题第二季</div></div></a></div><div><a href="/2023/04/02/面试/实习-阿里菜鸟Java开发面试/" title="实习-阿里菜鸟Java开发面试"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">实习-阿里菜鸟Java开发面试</div></div></a></div><div><a href="/2023/04/02/面试/阿里菜鸟后端面试/" title="阿里菜鸟后端面试"><img class="cover" src="http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-02</div><div class="title">阿里菜鸟后端面试</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">V</span><span class="switch-btn"></span><span class="second-comment">a</span></div></div><div class="comment-wrap"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E4%B8%80%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">视频一面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.1.</span> <span class="toc-text">访问权限修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">范型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%92%E5%BA%A6-%E8%8C%83%E5%9E%8B%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.3.</span> <span class="toc-text">软件设计角度-范型的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E8%B7%A8%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.4.</span> <span class="toc-text">java跨平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.</span> <span class="toc-text">进程和线程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E6%9C%89%E5%87%A0%E4%B8%AA%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.6.</span> <span class="toc-text">一个应用有几个进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E4%BB%80%E4%B9%88%E8%B5%84%E6%BA%90"><span class="toc-number">1.7.</span> <span class="toc-text">线程之间共享什么资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.8.</span> <span class="toc-text">为什么要用线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.9.</span> <span class="toc-text">线程池内部实现的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%EF%BC%9A%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E6%A0%88%E7%9A%84pop%E5%92%8Cpush%E6%96%B9%E6%B3%95"><span class="toc-number">1.10.</span> <span class="toc-text">编程：用数组实现栈的pop和push方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E8%BF%B0%E4%BB%A3%E7%A0%81%E7%9A%84%E9%80%9A%E7%94%A8%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">1.11.</span> <span class="toc-text">上述代码的通用性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.12.</span> <span class="toc-text">HashMap的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap%E4%B8%AD%E7%9A%84k%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E7%9A%84"><span class="toc-number">1.13.</span> <span class="toc-text">HashMap中的k怎么计算的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81"><span class="toc-number">1.14.</span> <span class="toc-text">哈希冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-number">1.15.</span> <span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.16.</span> <span class="toc-text">数据库事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-UDP%E5%8C%BA%E5%88%AB"><span class="toc-number">1.17.</span> <span class="toc-text">TCP&#x2F;UDP区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%EF%BC%9A%E5%88%A4%E6%96%AD%E5%8D%95%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="toc-number">1.18.</span> <span class="toc-text">编程：判断单链表是否有环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8A%A3%E5%8A%BF"><span class="toc-number">1.19.</span> <span class="toc-text">小程序的劣势</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('http://qn.liuwqtech.top//%E9%9D%A2%E8%AF%95/%E5%B0%81%E9%9D%A21.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 小新</div><div class="footer_custom_text">Hi, welcome to my <a href="https://liuwqtech.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a2f109a6.js","daovoice")
+</script><script>var isChatBtn = true
+daovoice('init', {
+  app_id: 'a2f109a6',},{
+  launcher: { 
+     disableLauncherIcon: isChatBtn // 悬浮 ICON 是否显示
+  },
+});
+daovoice('update');
+
+if (isChatBtn) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      daovoice('show')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: true // 悬浮 ICON 是否显示
+        },
+      });
+    }
+    function chatBtnShow () {
+      daovoice('update', {},{
+        launcher: { 
+        disableLauncherIcon: false // 悬浮 ICON 是否显示
+        },
+      });
+    }
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    if (false) {
+      location.hash && e.request.responseURL !== location.href ? pjax.loadUrl(location.href) : pjax.loadUrl('/404.html')
+      return
+    }
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
